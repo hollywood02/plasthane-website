@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nos produits — Plasthane</title>
+  <script>
+    (function () {
+      const t = localStorage.getItem('plasthane-theme');
+      if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../plasthane.css">
+  <style>
+    /* Page hero */
+    .cat-hero { background: var(--bg); border-bottom: 1px solid var(--border); padding: 120px 0 56px; }
+    .cat-hero-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+    .cat-breadcrumb { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 16px; }
+    .cat-breadcrumb a { color: var(--pop); text-decoration: none; }
+    .cat-breadcrumb a:hover { text-decoration: underline; }
+    .cat-h1 { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 900; text-transform: uppercase; line-height: .95; color: var(--text); letter-spacing: -.01em; margin-bottom: 20px; }
+    .cat-sub { font-size: 1rem; color: var(--text-dim); line-height: 1.65; max-width: 560px; }
+
+    /* Grid */
+    .cat-body { max-width: 1200px; margin: 0 auto; padding: 64px 32px 96px; }
+    .cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+    /* Cards — extend .p-card style inline for the larger variant */
+    .cat-card {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 28px 28px 24px;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      transition: border-color .2s, transform .2s;
+    }
+    .cat-card:hover {
+      border-color: var(--pop);
+      transform: translateY(-2px);
+    }
+    .cat-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      color: var(--pop);
+      text-transform: uppercase;
+    }
+    .cat-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      color: var(--text);
+      line-height: 1.1;
+    }
+    .cat-desc {
+      font-size: .875rem;
+      color: var(--text-dim);
+      line-height: 1.6;
+      flex: 1;
+    }
+    .cat-arrow {
+      font-size: 1.1rem;
+      color: var(--pop);
+      margin-top: 8px;
+      display: inline-block;
+      transition: transform .2s;
+    }
+    .cat-card:hover .cat-arrow { transform: translate(3px, -3px); }
+
+    /* CTA section */
+    .cat-cta {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .cat-cta-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 72px 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 16px;
+    }
+    .cat-cta-label {
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+    .cat-cta-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--text);
+      line-height: 1;
+    }
+    .cat-cta-sub {
+      font-size: .95rem;
+      color: var(--text-dim);
+      max-width: 440px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 900px) { .cat-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .cat-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <div class="cursor" id="cur"></div>
+  <div class="cursor-ring" id="curR"></div>
+
+  <nav id="navbar">
+    <a href="../index.html" class="nav-logo">
+      <img src="../brand_assets/logo hq.png" alt="Plasthane" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="./index.html" style="color:var(--pop);">Produits</a></li>
+      <li><a href="../#expertise">Expertise</a></li>
+      <li><a href="../#sur-mesure">Sur mesure</a></li>
+      <li><a href="../a-propos.html">À propos</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="lang-btn">FR&nbsp;/&nbsp;EN</button>
+      <button class="theme-toggle" id="themeToggle" aria-label="Basculer le thème">
+        <svg class="icon-sun" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0z" />
+        </svg>
+        <svg class="icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998z" />
+        </svg>
+      </button>
+      <a href="../#contact" class="btn-a solid">Obtenir un devis</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="cat-hero">
+    <div class="cat-hero-inner">
+      <div class="cat-breadcrumb"><a href="../index.html">Accueil</a> / Produits</div>
+      <h1 class="cat-h1">Nos produits</h1>
+      <p class="cat-sub">12 composantes en uréthane pour convoyeurs à bande — fabriquées au Canada</p>
+    </div>
+  </div>
+
+  <!-- Product grid -->
+  <div class="cat-body">
+    <div class="cat-grid">
+
+      <a class="cat-card" href="./grattoir-primaire.html">
+        <span class="cat-num">01</span>
+        <div class="cat-name">Grattoir primaire</div>
+        <div class="cat-desc">Lame uréthane haute résistance avec tensionnement robuste. Largeurs 18–72 po.</div>
+        <span class="cat-arrow">↗</span>
+      </a>
+
+      <a class="cat-card" href="./grattoir-primaire-grade-minier.html">
+        <span class="cat-num">02</span>
+        <div class="cat-name">Grattoir primaire grade minier</div>
+        <div class="cat-desc">Grade minier, lame montée sur tube d'acier. Largeurs 18–84 po.</div>
+        <span class="cat-arrow">↗</span>
+      </a>
+
+      <a class="cat-card" href="./grattoir-secondaire-droit.html">
+        <span class="cat-num">03</span>
+        <div class="cat-name">Grattoir secondaire droit</div>
+        <div class="cat-desc">Uréthane flexible avec insertions inox. Largeurs 18–72 po.</div>
+        <span class="cat-arrow">↗</span>
+      </a>
+
+      <a class="cat-card" href="./grattoir-courbe.html">
+        <span class="cat-num">04</span>
+        <div class="cat-name">Grattoir courbé</div>
+        <div class="cat-desc">Lame incurvée avec pivot, pour courroies de retour en auge. 18–72 po.</div>
+        <span class="cat-arrow">↗</span>
+      </a>
+
+      <a class="cat-card" href="./grattoir-a-doigts.html">
+        <span class="cat-num">05</span>
+        <div class="cat-name">Grattoir à doigts</div>
+        <div class="cat-desc">Pour courroies à chevrons jusqu'à ½ po d'épaisseur. 18–84 po.</div>
+        <span class="cat-arrow">↗</span>
+      </a>
+
+      <a class="cat-card" href="./grattoir-en-v.html">
+        <span class="cat-num">06</span>
+        <div class="cat-name">Grattoir en V</div>
+        <div class="cat-desc">Dévie latéralement les fines sur le brin de retour. 18–84 po.</div>
+        <span class="cat-arrow">↗</span>
+      </a>
+
+      <a class="cat-card" href="./lit-dimpact.html">
+        <span class="cat-num">07</span>
+        <div class="cat-name">Lit d'impact</div>
+        <div class="cat-desc">Remplacement des barres sans enlever la courroie. 18–72 po.</div>
+        <span class="cat-arrow">↗</span>
+      </a>
+
+      <a class="cat-card" href="./systeme-de-jupes.html">
+        <span class="cat-num">08</span>
+        <div class="cat-name">Système de jupes</div>
+        <div class="cat-desc">Triple lèvre uréthane, Cam-Lock exclusif Plasthane. Rouleaux jusqu'à 25 pi.</div>
+        <span class="cat-arrow">↗</span>
+      </a>
+
+      <a class="cat-card" href="./garde-de-rouleau-de-retour.html">
+        <span class="cat-num">09</span>
+        <div class="cat-name">Garde de rouleau de retour</div>
+        <div class="cat-desc">Conforme CSST, rebord uréthane anti-abrasion.</div>
+        <span class="cat-arrow">↗</span>
+      </a>
+
+      <a class="cat-card" href="./rouleaux-guide.html">
+        <span class="cat-num">10</span>
+        <div class="cat-name">Rouleaux guide</div>
+        <div class="cat-desc">Double roulements scellés, arbre acier ou inox.</div>
+        <span class="cat-arrow">↗</span>
+      </a>
+
+      <a class="cat-card" href="./rouleaux-de-retour-sidewall.html">
+        <span class="cat-num">11</span>
+        <div class="cat-name">Rouleaux de retour sidewall</div>
+        <div class="cat-desc">Pour courroie beltwall, uréthane durable.</div>
+        <span class="cat-arrow">↗</span>
+      </a>
+
+      <a class="cat-card" href="./roues-guide.html">
+        <span class="cat-num">12</span>
+        <div class="cat-name">Roues guide</div>
+        <div class="cat-desc">Grand diamètre, pour courroie à mur corrugué beltwall.</div>
+        <span class="cat-arrow">↗</span>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cat-cta">
+    <div class="cat-cta-inner">
+      <div class="cat-cta-label">Demande groupée</div>
+      <div class="cat-cta-title">Demande de devis multi-produits</div>
+      <p class="cat-cta-sub">Vous avez besoin de plusieurs composantes? Écrivez-nous et nous vous préparerons une soumission complète.</p>
+      <a href="../#contact" class="btn-a solid" style="margin-top:8px;">Contacter Plasthane →</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="ft-left">
+      <div class="ft-logo"><img src="../brand_assets/logo hq.png" alt="Plasthane" /></div>
+      <div class="ft-copy">© 2026 Plasthane. Tous droits réservés. · Québec, Canada</div>
+    </div>
+    <div class="ft-links">
+      <a href="./index.html">Produits</a>
+      <a href="../#sur-mesure">Sur mesure</a>
+      <a href="../a-propos.html">À propos</a>
+      <a href="../contact.html">Contact</a>
+      <a href="#">EN</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      if (isDark) {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('plasthane-theme', 'light');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('plasthane-theme', 'dark');
+      }
+    });
+
+    const cur = document.getElementById('cur');
+    const curR = document.getElementById('curR');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      cur.style.transform = `translate(calc(${mx}px - 50%), calc(${my}px - 50%))`;
+    });
+    (function animR() {
+      rx += (mx - rx) * .1; ry += (my - ry) * .1;
+      curR.style.transform = `translate(calc(${rx}px - 50%), calc(${ry}px - 50%))`;
+      requestAnimationFrame(animR);
+    })();
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => { curR.style.width = '52px'; curR.style.height = '52px'; curR.style.borderColor = 'rgba(242,86,35,.5)'; });
+      el.addEventListener('mouseleave', () => { curR.style.width = '34px'; curR.style.height = '34px'; curR.style.borderColor = 'var(--accent-border)'; });
+    });
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+    });
+  </script>
+</body>
+</html>

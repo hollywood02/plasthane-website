@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grattoir en V — Plasthane</title>
+  <script>
+    (function () {
+      const t = localStorage.getItem('plasthane-theme');
+      if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../plasthane.css">
+  <style>
+    .prod-hero { background: var(--bg); border-bottom: 1px solid var(--border); padding: 120px 0 48px; }
+    .prod-hero-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+    .prod-breadcrumb { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 16px; }
+    .prod-breadcrumb a { color: var(--pop); text-decoration: none; }
+    .prod-breadcrumb a:hover { text-decoration: underline; }
+    .prod-h1 { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; text-transform: uppercase; line-height: 1; color: var(--text); }
+    .prod-body { max-width: 1200px; margin: 0 auto; padding: 64px 32px 96px; display: grid; grid-template-columns: 1fr 420px; gap: 80px; align-items: start; }
+    .prod-img { width: 100%; border-radius: 4px; margin-bottom: 32px; aspect-ratio: 16/9; object-fit: cover; }
+    .prod-desc { font-size: 1rem; line-height: 1.7; color: var(--text-dim); margin-bottom: 32px; }
+    .prod-section-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--text); margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+    .prod-features { list-style: none; padding: 0; margin: 0 0 40px; display: flex; flex-direction: column; gap: 14px; }
+    .prod-features li { padding-left: 20px; position: relative; color: var(--text-dim); font-size: .95rem; line-height: 1.65; }
+    .prod-features li::before { content: '—'; position: absolute; left: 0; color: var(--pop); font-weight: 700; }
+    .prod-dims { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 20px 24px; margin-bottom: 40px; }
+    .prod-dims p { font-size: .9rem; color: var(--text-dim); line-height: 1.6; margin: 0; }
+    .prod-dims a { color: var(--pop); text-decoration: none; }
+    .prod-dims a:hover { text-decoration: underline; }
+    .prod-form-card { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 36px; position: sticky; top: 100px; }
+    .prod-form-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.2rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text); margin-bottom: 6px; }
+    .prod-form-sub { font-size: .8rem; color: var(--text-dim); margin-bottom: 24px; }
+    .prod-form label { display: block; font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 6px; margin-top: 16px; }
+    .prod-form input, .prod-form textarea { width: 100%; background: var(--surface-2); border: 1px solid var(--border); border-radius: 3px; padding: 10px 12px; font-family: 'DM Sans', sans-serif; font-size: .9rem; color: var(--text); outline: none; box-sizing: border-box; transition: border-color .2s; }
+    .prod-form input:focus, .prod-form textarea:focus { border-color: var(--pop); }
+    .prod-form textarea { resize: vertical; min-height: 100px; }
+    .prod-form .submit-btn { margin-top: 24px; width: 100%; background: var(--pop); color: #171717; border: none; border-radius: 3px; padding: 13px; font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; cursor: pointer; transition: background .2s; }
+    .prod-form .submit-btn:hover { background: var(--pop-hi); }
+    @media (max-width: 900px) { .prod-body { grid-template-columns: 1fr; } .prod-form-card { position: static; } }
+  </style>
+</head>
+<body>
+  <div class="cursor" id="cur"></div>
+  <div class="cursor-ring" id="curR"></div>
+  <nav id="navbar">
+    <a href="../index.html" class="nav-logo"><img src="../brand_assets/logo hq.png" alt="Plasthane" /></a>
+    <ul class="nav-links">
+      <li><a href="./index.html">Produits</a></li>
+      <li><a href="../#expertise">Expertise</a></li>
+      <li><a href="../#sur-mesure">Sur mesure</a></li>
+      <li><a href="../a-propos.html">À propos</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="lang-btn">FR&nbsp;/&nbsp;EN</button>
+      <button class="theme-toggle" id="themeToggle" aria-label="Basculer le thème">
+        <svg class="icon-sun" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0z" /></svg>
+        <svg class="icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998z" /></svg>
+      </button>
+      <a href="#devis-form" class="btn-a solid">Obtenir un devis</a>
+    </div>
+  </nav>
+
+  <div class="prod-hero">
+    <div class="prod-hero-inner">
+      <div class="prod-breadcrumb"><a href="../index.html">Accueil</a> / <a href="./index.html">Produits</a> / Grattoir en V</div>
+      <h1 class="prod-h1">Grattoir en V</h1>
+    </div>
+  </div>
+
+  <div class="prod-body">
+    <div>
+      <img class="prod-img" src="https://placehold.co/800x450/1F1F1F/F25623?text=Grattoir+en+V" alt="Grattoir en V" />
+      <p class="prod-desc">Grattoir « en V » en uréthane pour nettoyage efficace et durable du brin de retour des convoyeurs à courroie.</p>
+
+      <div class="prod-section-title">Caractéristiques</div>
+      <ul class="prod-features">
+        <li>Grattoir permettant le nettoyage des fines collées sur le dessus des courroies de retour en les déviant latéralement. Normalement installé devant la poulie de queue du convoyeur, idéalement derrière le point de chargement du convoyeur.</li>
+        <li>Fourni avec notre système de support robuste, permettant un positionnement très précis de la lame par rapport à la courroie. Tout le système de tensionnement est offert avec une peinture cuite assurant une très grande durabilité.</li>
+        <li>Doit être installé perpendiculairement à la courroie.</li>
+        <li>Les sections de lame sont facilement remplaçables via l'utilisation des boulons de montage.</li>
+        <li>Disponible pour différentes largeurs de courroie de 18 à 84 pouces.</li>
+      </ul>
+
+      <div class="prod-section-title">Dimensions et installation</div>
+      <div class="prod-dims">
+        <p>Fiche technique et dessins de dimensions disponibles sur demande. <a href="../index.html#contact">Contactez-nous</a> pour obtenir la documentation complète.</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="prod-form-card" id="devis-form">
+        <div class="prod-form-title">Demande de devis</div>
+        <div class="prod-form-sub">Nous vous répondrons dans les meilleurs délais.</div>
+        <form class="prod-form" action="#" method="post">
+          <label>Nom *</label>
+          <input type="text" name="nom" required placeholder="Jean Tremblay" />
+          <label>Courriel *</label>
+          <input type="email" name="courriel" required placeholder="jean@entreprise.com" />
+          <label>Téléphone</label>
+          <input type="tel" name="telephone" placeholder="418-000-0000" />
+          <label>Quantité</label>
+          <input type="number" name="quantite" min="1" placeholder="1" />
+          <label>Largeur de la courroie (pouces)</label>
+          <input type="text" name="largeur" placeholder="ex. 36" />
+          <label>Message</label>
+          <textarea name="message" placeholder="Décrivez votre application ou vos conditions d'opération…"></textarea>
+          <button type="submit" class="submit-btn">Soumettre la demande →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="ft-left">
+      <div class="ft-logo"><img src="../brand_assets/logo hq.png" alt="Plasthane" /></div>
+      <div class="ft-copy">© 2026 Plasthane. Tous droits réservés. · Québec, Canada</div>
+    </div>
+    <div class="ft-links">
+      <a href="./index.html">Produits</a>
+      <a href="../#sur-mesure">Sur mesure</a>
+      <a href="../a-propos.html">À propos</a>
+      <a href="../contact.html">Contact</a>
+      <a href="#">EN</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      if (isDark) { document.documentElement.removeAttribute('data-theme'); localStorage.setItem('plasthane-theme', 'light'); }
+      else { document.documentElement.setAttribute('data-theme', 'dark'); localStorage.setItem('plasthane-theme', 'dark'); }
+    });
+    const cur = document.getElementById('cur'), curR = document.getElementById('curR');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cur.style.transform = `translate(calc(${mx}px - 50%), calc(${my}px - 50%))`; });
+    (function animR() { rx += (mx - rx) * .1; ry += (my - ry) * .1; curR.style.transform = `translate(calc(${rx}px - 50%), calc(${ry}px - 50%))`; requestAnimationFrame(animR); })();
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => { curR.style.width = '52px'; curR.style.height = '52px'; curR.style.borderColor = 'rgba(242,86,35,.5)'; });
+      el.addEventListener('mouseleave', () => { curR.style.width = '34px'; curR.style.height = '34px'; curR.style.borderColor = 'var(--accent-border)'; });
+    });
+    window.addEventListener('scroll', () => { document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60); });
+  </script>
+</body>
+</html>
