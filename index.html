@@ -1,1440 +1,935 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="brand_assets/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Plasthane — Composantes de convoyeur en uréthane</title>
-  <script>
-    // Prevent flash of wrong theme
-    (function () {
-      const t = localStorage.getItem('plasthane-theme');
-      if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
-    })();
-  </script>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="description" content="Plasthane fabrique des pièces moulées en uréthane de haute qualité pour l'industrie des convoyeurs à bande. Racleurs, rouleaux guide, lits d'impact et plus.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap"
-    rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="plasthane.css">
-
   <style>
-    :root {
-      --bg: #DEDEDE;
-      --surface: #D4D4D4;
-      --surface-2: #C8C8C8;
-      --surface-3: #BCBCBC;
-      --accent: #171717;
-      --accent-hi: #0A0A0A;
-      --accent-glow: rgba(23, 23, 23, 0.15);
-      --accent-border: rgba(23, 23, 23, 0.2);
-      --text: #171717;
-      --text-dim: #4D4D4D;
-      --text-subtle: #9A9A9A;
-      --border: #C8C8C8;
-      --border-hi: #B4B4B4;
-      --pop: #F25623;
-      --pop-hi: #FF6535;
-      --pop-glow: rgba(242, 86, 35, 0.22);
-    }
-
-    *,
-    *::before,
-    *::after {
-      margin: 0;
+    #produits .p-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
       padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* Grain overlay */
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 9999;
-      opacity: 0.4;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
-    }
-
-    /* ─── DARK MODE ─── */
-    html[data-theme="dark"] {
-      --bg: #171717;
-      --surface: #1F1F1F;
-      --surface-2: #272727;
-      --surface-3: #303030;
-      --accent: #DEDEDE;
-      --accent-hi: #EBEBEB;
-      --accent-glow: rgba(222, 222, 222, 0.1);
-      --accent-border: rgba(222, 222, 222, 0.2);
-      --text: #DEDEDE;
-      --text-dim: #6B6B6B;
-      --text-subtle: #333333;
-      --border: #252525;
-      --border-hi: #313131;
-      --pop: #F25623;
-      --pop-hi: #FF6535;
-      --pop-glow: rgba(242, 86, 35, 0.28);
-    }
-
-    html[data-theme="dark"] nav.scrolled {
-      background: rgba(23, 23, 23, 0.94);
-    }
-
-    html[data-theme="dark"] .hero-grid {
-      background-image:
-        linear-gradient(rgba(255, 255, 255, .03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, .03) 1px, transparent 1px);
-    }
-
-    html[data-theme="dark"] .hero-glow {
-      background:
-        radial-gradient(ellipse 50% 55% at 72% 30%, rgba(242, 86, 35, .09) 0%, transparent 60%),
-        radial-gradient(ellipse 30% 40% at 15% 80%, rgba(242, 86, 35, .05) 0%, transparent 55%);
-    }
-
-    html[data-theme="dark"] .hero-wm {
-      -webkit-text-stroke: 1px rgba(255, 255, 255, .035);
-    }
-
-    html[data-theme="dark"] .custom-visual::before {
-      background:
-        linear-gradient(135deg, rgba(255, 255, 255, .03) 0%, transparent 55%),
-        repeating-linear-gradient(-45deg, transparent, transparent 14px, rgba(255, 255, 255, .01) 14px, rgba(255, 255, 255, .01) 28px);
-    }
-
-    html[data-theme="dark"] .f-input {
-      background: var(--surface-2);
-    }
-
-    /* ─── LOGO FILTER ─── */
-    /* White logo → dark navy in light mode */
-    .nav-logo img,
-    .ft-logo img {
-      filter: brightness(0);
-      transition: filter .35s ease;
-    }
-
-    html[data-theme="dark"] .nav-logo img,
-    html[data-theme="dark"] .ft-logo img {
-      filter: none;
-    }
-
-    /* ─── THEME TRANSITION ─── */
-    body,
-    .p-card,
-    .stat-cell,
-    .stats-strip,
-    .marquee-wrap,
-    .f-input,
-    footer,
-    .why-icon {
-      transition: background-color .35s ease, border-color .35s ease;
-    }
-
-    /* ─── THEME TOGGLE ─── */
-    .theme-toggle {
-      width: 30px;
-      height: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: none;
-      border: 1px solid var(--border-hi);
-      cursor: pointer;
-      color: var(--text-dim);
-      transition: border-color .2s ease, color .2s ease;
-      flex-shrink: 0;
-    }
-
-    .theme-toggle:hover {
-      border-color: var(--text);
-      color: var(--text);
-    }
-
-    html[data-theme="dark"] .icon-sun {
-      display: none;
-    }
-
-    html:not([data-theme="dark"]) .icon-moon {
-      display: none;
-    }
-
-    /* Custom cursor */
-    .cursor {
-      width: 7px;
-      height: 7px;
-      background: var(--accent);
-      border-radius: 50%;
-      position: fixed;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      z-index: 10000;
-      transform: translate(-50%, -50%);
-      transition: transform .15s ease;
-    }
-
-    .cursor-ring {
-      width: 34px;
-      height: 34px;
-      border: 1px solid var(--accent-border);
-      border-radius: 50%;
-      position: fixed;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: width .25s ease, height .25s ease, border-color .25s ease;
-    }
-
-    /* ─── TYPOGRAPHY ─── */
-    .f-display {
-      font-family: 'Barlow Condensed', sans-serif;
-    }
-
-    /* ─── NAV ─── */
-    nav {
-      position: fixed;
-      inset-inline: 0;
-      top: 0;
-      z-index: 500;
-      padding: 22px 56px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      transition: background .4s ease, border-color .4s ease;
-      border-bottom: 1px solid transparent;
-    }
-
-    nav.scrolled {
-      background: rgba(222, 222, 222, 0.94);
-      backdrop-filter: blur(16px);
-      border-color: var(--border);
-    }
-
-    .nav-logo img {
-      height: 42px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 40px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      text-decoration: none;
-      transition: color .2s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--text);
-    }
-
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-    }
-
-    .lang-btn {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      background: none;
-      border: none;
-      cursor: pointer;
-      transition: color .2s ease;
-    }
-
-    .lang-btn:hover {
-      color: var(--text);
-    }
-
-    /* ─── BUTTONS ─── */
-    .btn-a {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      text-decoration: none;
-      padding: 12px 24px;
-      cursor: pointer;
-      border: none;
-      transition: transform .18s ease, background .18s ease, color .18s ease, box-shadow .18s ease;
-    }
-
-    .btn-a.solid {
-      background: var(--pop);
-      color: #171717;
-      box-shadow: 0 4px 20px var(--pop-glow);
-    }
-
-    .btn-a.solid:hover {
-      background: var(--pop-hi);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 28px var(--pop-glow);
-    }
-
-    .btn-a.solid:active {
-      transform: translateY(0);
-    }
-
-    .btn-a.ghost {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border-hi);
-    }
-
-    .btn-a.ghost:hover {
-      border-color: var(--accent-border);
-      color: var(--accent-hi);
-      transform: translateY(-2px);
-    }
-
-    /* ─── HERO ─── */
-    .hero {
-      height: 100svh;
-      min-height: 700px;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 0 56px 88px;
-    }
-
-    /* Industrial grid background */
-    .hero-grid {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      background-image:
-        linear-gradient(rgba(23, 23, 23, .07) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(23, 23, 23, .07) 1px, transparent 1px);
-      background-size: 64px 64px;
-      mask-image: linear-gradient(to bottom, transparent 5%, black 30%, black 70%, transparent 100%);
-    }
-
-    /* Radial accent glow */
-    .hero-glow {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      background:
-        radial-gradient(ellipse 50% 55% at 72% 30%, rgba(242, 86, 35, .07) 0%, transparent 60%),
-        radial-gradient(ellipse 30% 40% at 15% 80%, rgba(242, 86, 35, .04) 0%, transparent 55%);
-    }
-
-    /* Oversized watermark */
-    .hero-wm {
-      position: absolute;
-      bottom: -5%;
-      right: -2%;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 900;
-      font-size: 28vw;
-      line-height: 1;
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(23, 23, 23, .06);
-      text-transform: uppercase;
-      user-select: none;
-      z-index: 0;
-    }
-
-    .hero-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      margin-bottom: 24px;
-      z-index: 1;
-      position: relative;
-      opacity: 0;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      row-gap: 6px;
-    }
-    .hero-label-ca {
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: .18em;
-      color: var(--pop);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .hero-label::before {
-      content: '';
-      width: 24px;
-      height: 1px;
-      background: var(--text-dim);
-      flex-shrink: 0;
-    }
-
-    .hero-h1 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 800;
-      line-height: .91;
-      letter-spacing: -.025em;
-      text-transform: uppercase;
-      font-size: clamp(68px, 9.5vw, 148px);
-      z-index: 1;
-      position: relative;
-    }
-
-    .hero-h1 .line {
-      display: block;
-      overflow: hidden;
-    }
-
-    .hero-h1 .line-inner {
-      display: block;
-      transform: translateY(110%);
-    }
-
-    .hero-h1 .accent-word {
-      color: var(--pop);
-    }
-
-    .hero-bottom {
-      margin-top: 40px;
-      z-index: 1;
-      position: relative;
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      opacity: 0;
-    }
-
-    .hero-copy {
-      font-size: 15px;
-      line-height: 1.72;
-      color: var(--text-dim);
-      max-width: 420px;
-    }
-
-    .hero-ctas {
-      display: flex;
-      gap: 14px;
-      flex-shrink: 0;
-    }
-
-    /* Scroll cue */
-    .scroll-cue {
-      position: absolute;
-      bottom: 44px;
-      right: 56px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      z-index: 1;
-      opacity: 0;
-    }
-
-    .scroll-cue span {
-      font-size: 9px;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      writing-mode: vertical-rl;
-    }
-
-    .scroll-bar {
-      width: 1px;
-      height: 52px;
-      background: linear-gradient(to bottom, var(--pop), transparent);
-      animation: pulse-bar 2.2s ease-in-out infinite;
-    }
-
-    @keyframes pulse-bar {
-
-      0%,
-      100% {
-        opacity: .25;
-        transform: scaleY(1);
-        transform-origin: top;
-      }
-
-      50% {
-        opacity: 1;
-        transform: scaleY(.65);
-      }
-    }
-
-    /* ─── STATS STRIP ─── */
-    .stats-strip {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .stat-cell {
-      padding: 52px 40px;
-      border-right: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .stat-cell:last-child {
-      border-right: none;
-    }
-
-    .stat-num {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 800;
-      font-size: clamp(42px, 4.5vw, 68px);
-      line-height: 1;
-      letter-spacing: -.02em;
-      color: var(--text);
-    }
-
-    .stat-num .unit {
-      font-size: .55em;
-      color: var(--pop);
-    }
-
-    .stat-label {
-      font-size: 12px;
-      color: var(--text-dim);
-      font-weight: 400;
-      line-height: 1.55;
-      letter-spacing: .02em;
-    }
-
-    /* ─── MARQUEE ─── */
-    .marquee-wrap {
-      overflow: hidden;
-      padding: 20px 0;
-      border-bottom: 1px solid var(--border);
-      background: var(--surface);
-    }
-
-    .marquee-track {
-      display: flex;
       gap: 0;
-      animation: marquee-scroll 35s linear infinite;
-      width: max-content;
     }
-
-    .marquee-item {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-      padding: 0 32px;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: var(--text-subtle);
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-
-    .marquee-dot {
-      width: 3px;
-      height: 3px;
-      background: var(--pop);
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    @keyframes marquee-scroll {
-      from {
-        transform: translateX(0);
-      }
-
-      to {
-        transform: translateX(-50%);
-      }
-    }
-
-    /* ─── SECTION COMMONS ─── */
-    .section-pad {
-      padding: 120px 56px;
-    }
-
-    .sec-label {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: .25em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      margin-bottom: 14px;
-    }
-
-    .sec-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 800;
-      font-size: clamp(38px, 5vw, 72px);
-      line-height: .93;
-      letter-spacing: -.01em;
-      text-transform: uppercase;
-    }
-
-    .sec-title .hi {
-      color: var(--pop);
-    }
-
-    /* ─── PRODUCTS ─── */
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      margin-top: 64px;
-    }
-
-    .p-card {
-      background: var(--bg);
-      padding: 40px 36px;
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-      transition: background .3s ease;
+    #produits .p-card-text {
+      padding: 28px 24px;
       display: flex;
       flex-direction: column;
-      gap: 14px;
-      min-height: 240px;
+      gap: 0;
     }
-
-    .p-card::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: var(--pop);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform .45s cubic-bezier(.4, 0, .2, 1);
-    }
-
-    .p-card:hover {
-      background: var(--surface-2);
-    }
-
-    .p-card:hover::after {
-      transform: scaleX(1);
-    }
-
-    .p-card:hover .p-arrow {
-      transform: translate(3px, -3px);
-      color: var(--accent);
-    }
-
-    .p-num {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: .18em;
-      color: var(--text-subtle);
-    }
-
-    .p-name {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 20px;
-      letter-spacing: .03em;
-      text-transform: uppercase;
-      line-height: 1.1;
-    }
-
-    .p-desc {
-      font-size: 13px;
-      color: var(--text-dim);
-      line-height: 1.65;
-      flex: 1;
-    }
-
-    .p-arrow {
-      align-self: flex-end;
-      font-size: 18px;
-      transition: transform .3s cubic-bezier(.4, 0, .2, 1), color .3s ease;
-    }
-
-    /* ─── WHY ─── */
-    .why-layout {
-      display: flex;
-      flex-direction: column;
-      gap: 56px;
-    }
-    .why-intro {
-      display: grid;
-      grid-template-columns: 420px 1fr;
-      gap: 80px;
-      align-items: start;
-    }
-
-    .why-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px 56px;
-    }
-
-    .why-item {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .why-icon {
-      width: 44px;
-      height: 44px;
-      border: 1px solid var(--border-hi);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--accent);
-    }
-
-    .why-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 18px;
-      text-transform: uppercase;
-      letter-spacing: .04em;
-    }
-
-    .why-desc {
-      font-size: 13.5px;
-      color: var(--text-dim);
-      line-height: 1.72;
-    }
-
-    /* ─── CUSTOM MFG ─── */
-    .custom-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-
-    .custom-visual {
-      position: relative;
-      overflow: hidden;
-      aspect-ratio: 5/4;
-      background: var(--surface-2);
-    }
-
-    .custom-visual img {
+    #produits .p-card-text .p-num { margin-bottom: 8px; }
+    #produits .p-card-text .p-name { margin-bottom: 12px; }
+    #produits .p-card-text .p-desc { margin-bottom: 16px; }
+    #produits .p-card-text .p-arrow { align-self: flex-start; margin-top: auto; }
+    #produits .p-card-img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      opacity: .7;
+      object-fit: contain;
+      display: block;
+      padding: 12px;
+      background: #fff;
     }
-
-    .custom-visual::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      background:
-        linear-gradient(135deg, rgba(50, 56, 65, .06) 0%, transparent 55%),
-        repeating-linear-gradient(-45deg,
-          transparent, transparent 14px,
-          rgba(50, 56, 65, .025) 14px, rgba(50, 56, 65, .025) 28px);
+    @media (max-width: 768px) {
+      #produits .p-card { grid-template-columns: 1fr 140px; }
+      #produits .p-card-text { padding: 16px 14px; }
+      #produits .p-card-img { height: 100%; min-height: 130px; padding: 8px; }
     }
-
-    .custom-visual-tag {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 2;
-      padding: 16px 24px;
-      background: linear-gradient(to top, rgba(8, 8, 8, .85) 0%, transparent 100%);
-      font-size: 11px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--text-dim);
+    @media (max-width: 480px) {
+      #produits .p-card { grid-template-columns: 1fr 110px; }
+      #produits .p-card-img { min-height: 110px; }
     }
-
-    /* ─── CONTACT ─── */
-    .contact-layout {
-      display: grid;
-      grid-template-columns: 380px 1fr;
-      gap: 80px;
+    /* ─── HOMEPAGE MOBILE OVERRIDES ─── */
+    @media (max-width: 768px) {
+      .hero-s { padding: 110px 20px 0 !important; }
+      .hero-s .hero-dots { display: none !important; }
+      .hero-s > div[style*="padding-bottom"] { padding-bottom: 56px !important; }
+      .ind-header { padding: 0 20px 32px !important; }
+      .ind-track { padding: 0 16px !important; }
+      .divider-m { margin: 0 20px !important; }
+      .form-2col { grid-template-columns: 1fr !important; }
     }
-
-    .contact-info {
-      display: flex;
-      flex-direction: column;
-      gap: 36px;
-    }
-
-    .c-item {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-
-    .c-label {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-    }
-
-    .c-val {
-      font-size: 15px;
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-
-    .f-group {
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-    }
-
-    .f-label {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-    }
-
-    .f-input {
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 13px 16px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      outline: none;
-      width: 100%;
-      transition: border-color .2s ease, box-shadow .2s ease;
-    }
-
-    .f-input:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px var(--accent-glow);
-    }
-
-    .f-input::placeholder {
-      color: var(--text-subtle);
-    }
-
-    textarea.f-input {
-      resize: vertical;
-      min-height: 110px;
-    }
-
-    /* ─── FOOTER ─── */
-    footer {
-      padding: 44px 56px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .ft-left {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .ft-logo img {
-      height: 18px;
-      opacity: .55;
-    }
-
-    .ft-copy {
-      font-size: 12px;
-      color: var(--text-dim);
-      letter-spacing: .03em;
-    }
-
-    .ft-links {
-      display: flex;
-      gap: 28px;
-    }
-
-    .ft-links a {
-      font-size: 12px;
-      color: var(--text-dim);
-      text-decoration: none;
-      letter-spacing: .04em;
-      transition: color .2s ease;
-    }
-
-    .ft-links a:hover {
-      color: var(--text);
-    }
-
-    /* ─── REVEAL ─── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(36px);
-    }
-
-    .reveal-left {
-      opacity: 0;
-      transform: translateX(-36px);
-    }
-
-    .reveal-right {
-      opacity: 0;
-      transform: translateX(36px);
-    }
-
-    /* Section divider */
-    .divider {
-      height: 1px;
-      background: var(--border);
+    @media (max-width: 480px) {
+      .hero-s { padding: 96px 16px 0 !important; }
+      .ind-header { padding: 0 16px 24px !important; }
+      .ind-track { padding: 0 12px !important; }
+      .divider-m { margin: 0 16px !important; }
     }
   </style>
 </head>
-
 <body>
 
-  <!-- Cursor -->
-  <div class="cursor" id="cur"></div>
-  <div class="cursor-ring" id="curR"></div>
-
-  <!-- ═══════════════ NAV ═══════════════ -->
-  <nav id="navbar">
-    <a href="#" class="nav-logo">
-      <img src="brand_assets/logo hq.png" alt="Plasthane" />
-    </a>
+  <!-- ═══ NAV ═══ -->
+  <nav>
+    <a href="/" class="nav-logo"><img src="brand_assets/logo hq.png" alt="Plasthane"></a>
     <ul class="nav-links">
-      <li><a href="produits/index.html">Produits</a></li>
+      <li>
+        <a href="PRODUITS/" data-i18n="nav-products">Produits ▾</a>
+        <div class="nav-dropdown">
+          <a href="PRODUITS/grattoir-primaire.html" data-i18n="p01-name">Grattoir primaire</a>
+          <a href="PRODUITS/grattoir-primaire-grade-minier.html" data-i18n="p02-name">Grattoir primaire grade minier</a>
+          <a href="PRODUITS/grattoir-secondaire-droit.html" data-i18n="p03-name">Grattoir secondaire droit</a>
+          <a href="PRODUITS/grattoir-courbe.html" data-i18n="p04-name">Grattoir courbé</a>
+          <a href="PRODUITS/grattoir-a-doigts.html" data-i18n="p05-name">Grattoir à doigts</a>
+          <a href="PRODUITS/grattoir-en-v.html" data-i18n="p06-name">Grattoir en V</a>
+          <a href="PRODUITS/lit-dimpact.html" data-i18n="p07-name">Lit d'impact</a>
+          <a href="PRODUITS/systeme-de-jupes.html" data-i18n="p08-name">Système de jupes</a>
+          <a href="PRODUITS/garde-de-rouleau-de-retour.html" data-i18n="p09-name">Garde de rouleau de retour</a>
+          <a href="PRODUITS/rouleaux-guide.html" data-i18n="p10-name">Rouleaux guide</a>
+          <a href="PRODUITS/rouleaux-de-retour-sidewall.html" data-i18n="p11-name">Rouleaux de retour sidewall</a>
+          <a href="PRODUITS/roues-guide.html" data-i18n="p12-name">Roues guide</a>
+        </div>
+      </li>
       <li><a href="#expertise">Expertise</a></li>
-      <li><a href="#sur-mesure">Sur mesure</a></li>
-      <li><a href="a-propos.html">À propos</a></li>
+      <li><a href="#sur-mesure" data-i18n="nav-custom">Sur mesure</a></li>
+      <li><a href="a-propos.html" data-i18n="nav-about">À propos</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
     <div class="nav-right">
-      <button class="lang-btn">FR&nbsp;/&nbsp;EN</button>
-      <button class="theme-toggle" id="themeToggle" aria-label="Basculer le thème">
-        <svg class="icon-sun" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-          stroke-width="1.5">
-          <path
-            d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0z" />
-        </svg>
-        <svg class="icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-          stroke-width="1.5">
-          <path
-            d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998z" />
-        </svg>
-      </button>
-      <a href="#contact" class="btn-a solid">Obtenir un devis</a>
+      <a href="tel:4504649988" class="nav-phone">450 464-9988</a>
+      <button class="lang-btn">EN</button>
+      <a href="contact.html" class="btn-a solid nav-cta" style="padding:10px 20px; font-size:11px;" data-i18n="cta-quote">Demander un devis</a>
     </div>
+    <button class="nav-burger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
-  <!-- ═══════════════ HERO ═══════════════ -->
-  <section class="hero" id="hero">
-    <div class="hero-grid"></div>
-    <div class="hero-glow"></div>
-    <div class="hero-wm">PL</div>
+  <!-- Mobile menu -->
+  <div class="mobile-menu" style="display:none; position:fixed; inset:0; top:72px; background:var(--navy-dark); z-index:499; padding:32px 20px; flex-direction:column; gap:24px;">
+    <a href="PRODUITS/" style="color:#fff; text-decoration:none; font-size:16px; font-weight:500;" data-i18n="nav-products-plain">Produits</a>
+    <a href="#expertise" style="color:#fff; text-decoration:none; font-size:16px; font-weight:500;">Expertise</a>
+    <a href="#sur-mesure" style="color:#fff; text-decoration:none; font-size:16px; font-weight:500;" data-i18n="nav-custom">Sur mesure</a>
+    <a href="a-propos.html" style="color:#fff; text-decoration:none; font-size:16px; font-weight:500;" data-i18n="nav-about">À propos</a>
+    <a href="contact.html" style="color:#fff; text-decoration:none; font-size:16px; font-weight:500;">Contact</a>
+    <div style="height:1px; background:rgba(255,255,255,0.08); margin:4px 0;"></div>
+    <a href="tel:4504649988" style="color:var(--blue-cta); text-decoration:none; font-size:18px; font-weight:700;">450 464-9988</a>
+    <a href="contact.html" class="btn-a solid" style="text-align:center;" data-i18n="cta-quote">Demander un devis</a>
+  </div>
 
-    <div class="hero-label">
-      <span class="hero-label-ca">
-        <img src="Flag_of_Canada.svg" width="28" height="14" alt="Canada" style="display:inline-block;vertical-align:middle;border-radius:2px;">
-        Manufacturier canadien
-      </span>
-      <span style="color:var(--border-hi);font-size:10px;">·</span>
-      Uréthane industriel
+  <!-- ═══ HERO ═══ -->
+  <section class="hero-s" style="background: var(--navy-dark); padding: 160px 56px 0; position: relative; overflow: hidden;">
+    <!-- Hero Slideshow -->
+    <div class="hero-slideshow" style="position:absolute; inset:0; z-index:0;">
+      <div class="hero-slide" style="position:absolute; inset:0; background-image:url('images-assets/overland_conveyor.jpg'); background-size:cover; background-position:center 40%; will-change:transform,opacity;"></div>
+      <div class="hero-slide" style="position:absolute; inset:0; background-image:url('images-assets/underground_mining.jpg'); background-size:cover; background-position:center; opacity:0; will-change:transform,opacity;"></div>
+      <div class="hero-slide" style="position:absolute; inset:0; background-image:url('images-assets/iron_ore.jpg'); background-size:cover; background-position:center 30%; opacity:0; will-change:transform,opacity;"></div>
+    </div>
+    <!-- Overlays on top of slideshow -->
+    <div style="position:absolute; inset:0; background: linear-gradient(135deg, rgba(10,22,38,0.88), rgba(18,40,68,0.72)); z-index:1;"></div>
+    <div style="position:absolute; inset:0; background: radial-gradient(ellipse at 70% 30%, rgba(29,111,224,0.10) 0%, transparent 60%); z-index:1;"></div>
+    <!-- Slide indicators -->
+    <div class="hero-dots" style="position:absolute; bottom:110px; left:56px; z-index:3; display:flex; gap:10px; align-items:center;">
+      <div class="hero-dot active" data-dot="0" style="width:28px; height:2px; background:var(--blue-cta); cursor:pointer; transition:width .3s ease,opacity .3s ease;"></div>
+      <div class="hero-dot" data-dot="1" style="width:12px; height:2px; background:rgba(255,255,255,0.3); cursor:pointer; transition:width .3s ease,opacity .3s ease;"></div>
+      <div class="hero-dot" data-dot="2" style="width:12px; height:2px; background:rgba(255,255,255,0.3); cursor:pointer; transition:width .3s ease,opacity .3s ease;"></div>
     </div>
 
-    <h1 class="hero-h1">
-      <span class="line"><span class="line-inner">COMPOSANTES</span></span>
-      <span class="line"><span class="line-inner">DE&nbsp;<span class="accent-word">CONVOYEUR</span></span></span>
-      <span class="line"><span class="line-inner">EN URÉTHANE</span></span>
-    </h1>
-
-    <div class="hero-bottom">
-      <p class="hero-copy">Racleurs de bande, rouleaux guide, lits d'impact et systèmes de jupes — fabriqués avec
-        précision pour les industries minières et manufacturières.</p>
-      <div class="hero-ctas">
-        <a href="#produits" class="btn-a solid">Voir les produits</a>
-        <a href="#contact" class="btn-a ghost">Nous contacter</a>
+    <div style="position:relative; z-index:2; max-width:900px; padding-bottom:120px;">
+      <div class="reveal" style="display:inline-flex; align-items:center; gap:10px; margin-bottom:24px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); border-radius:4px; padding:7px 14px 7px 10px;">
+        <img src="Flag_of_Canada.svg" alt="" aria-hidden="true" style="height:18px; width:auto; border-radius:2px;">
+        <p style="font-size:11px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,0.75); margin:0;" data-i18n="hero-badge">Fièrement Canadien</p>
+      </div>
+      <h1 class="f-display reveal" style="font-weight:900; font-size:clamp(48px,7vw,88px); line-height:.9; letter-spacing:-.03em; text-transform:uppercase; color:#fff; margin-bottom:28px;" data-i18n="hero-h1">
+        Composantes de<br><span style="color:var(--blue-cta);">convoyeur</span> en uréthane
+      </h1>
+      <p class="reveal" style="font-size:18px; color:rgba(255,255,255,0.88); max-width:560px; line-height:1.7; margin-bottom:40px;" data-i18n="hero-p">
+        Plasthane fabrique des pièces moulées en uréthane de haute qualité pour l'industrie des convoyeurs à bande. Racleurs, rouleaux guide, lits d'impact, systèmes de jupes et plus.
+      </p>
+      <div class="reveal" style="display:flex; gap:16px; flex-wrap:wrap;">
+        <a href="contact.html" class="btn-a solid" data-i18n="cta-quote">Demander un devis</a>
+        <a href="PRODUITS/" class="btn-a ghost" data-i18n="hero-cta2">Voir nos produits →</a>
       </div>
     </div>
 
-    <div class="scroll-cue" id="scrollCue">
-      <div class="scroll-bar"></div>
-      <span>Défiler</span>
-    </div>
+    <!-- Angled bottom edge -->
+    <div style="position:absolute; bottom:0; left:0; right:0; height:80px; background:var(--steel-light); clip-path:polygon(0 100%, 100% 100%, 100% 0);"></div>
   </section>
 
-  <!-- ═══════════════ STATS ═══════════════ -->
-  <div class="stats-strip" id="stats">
+  <!-- ═══ STATS STRIP ═══ -->
+  <div class="stats-strip">
     <div class="stat-cell">
-      <div class="stat-num" style="font-size:clamp(2rem,3.5vw,3rem);letter-spacing:-.01em;">Depuis <span style="color:var(--pop);">2008</span></div>
-      <div class="stat-label">Fabrication d'uréthane industriel à Beloeil, Québec</div>
+      <div class="stat-num" data-count="2008">2008</div>
+      <div class="stat-label" data-i18n="stat-since">Établis depuis</div>
     </div>
     <div class="stat-cell">
-      <div class="stat-num"><span class="counter" data-target="12">0</span></div>
-      <div class="stat-label">Types de composantes au catalogue — standard et minier</div>
+      <div class="stat-num" data-count="12">12</div>
+      <div class="stat-label" data-i18n="stat-products">Produits</div>
     </div>
     <div class="stat-cell">
-      <div class="stat-num"><span class="counter" data-target="100">0</span><span class="unit">%</span></div>
-      <div class="stat-label">Garantis contre tous défauts de matériaux et de fabrication</div>
+      <div class="stat-num">100%</div>
+      <div class="stat-label" data-i18n="stat-guaranteed">Garanti</div>
     </div>
     <div class="stat-cell">
-      <div class="stat-num" style="font-size:clamp(1.4rem,2.5vw,2rem);letter-spacing:-.01em;">Tests en<br><span style="color:var(--pop);">conditions réelles</span></div>
+      <div class="stat-num">1</div>
+      <div class="stat-label" data-i18n="stat-bench">Banc d'essai réel</div>
     </div>
   </div>
 
-  <!-- ═══════════════ MARQUEE ═══════════════ -->
-  <div class="marquee-wrap">
-    <div class="marquee-track">
-      <!-- set 1 -->
-      <div class="marquee-item"><span>Racleurs primaires</span><span class="marquee-dot"></span></div>
-      <div class="marquee-item"><span>Racleurs grade minier</span><span class="marquee-dot"></span></div>
-      <div class="marquee-item"><span>Racleurs secondaires</span><span class="marquee-dot"></span></div>
-      <div class="marquee-item"><span>Racleur en V</span><span class="marquee-dot"></span></div>
-      <div class="marquee-item"><span>Lits d'impact</span><span class="marquee-dot"></span></div>
-      <div class="marquee-item"><span>Systèmes de jupes</span><span class="marquee-dot"></span></div>
-      <div class="marquee-item"><span>Rouleaux guide</span><span class="marquee-dot"></span></div>
-      <div class="marquee-item"><span>Garde de rouleau de retour</span><span class="marquee-dot"></span></div>
-      <div class="marquee-item"><span>Roues guide</span><span class="marquee-dot"></span></div>
-      <div class="marquee-item"><span>Sur mesure</span><span class="marquee-dot"></span></div>
-      <!-- set 2 (duplicate for seamless loop) -->
-      <div class="marquee-item"><span>Racleurs primaires</span><span class="marquee-dot"></span></div>
-      <div class="marquee-item"><span>Racleurs grade minier</span><span class="marquee-dot"></span></div>
-      <div class="marquee-item"><span>Racleurs secondaires</span><span class="marquee-dot"></span></div>
-      <div class="marquee-item"><span>Racleur en V</span><span class="marquee-dot"></span></div>
-      <div class="marquee-item"><span>Lits d'impact</span><span class="marquee-dot"></span></div>
-      <div class="marquee-item"><span>Systèmes de jupes</span><span class="marquee-dot"></span></div>
-      <div class="marquee-item"><span>Rouleaux guide</span><span class="marquee-dot"></span></div>
-      <div class="marquee-item"><span>Garde de rouleau de retour</span><span class="marquee-dot"></span></div>
-      <div class="marquee-item"><span>Roues guide</span><span class="marquee-dot"></span></div>
-      <div class="marquee-item"><span>Sur mesure</span><span class="marquee-dot"></span></div>
+  <!-- ═══ INDUSTRIES SERVED ═══ -->
+  <section style="background:var(--navy-dark); padding:80px 0 0; overflow:hidden; position:relative;">
+    <!-- Section header -->
+    <div class="ind-header reveal" style="padding:0 56px 48px;">
+      <p class="sec-label" style="color:rgba(255,255,255,0.35);" data-i18n="ind-label">Nos marchés</p>
+      <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px;">
+        <h2 class="f-display" style="font-weight:900; font-size:clamp(32px,4.5vw,56px); text-transform:uppercase; letter-spacing:-.03em; color:#fff; line-height:.92; margin:0;" data-i18n="ind-h2">
+          Présents dans<br><span style="color:var(--blue-cta);">chaque industrie</span>
+        </h2>
+        <p style="font-size:13px; color:rgba(255,255,255,0.4); max-width:280px; line-height:1.6; text-align:right; margin:0;" data-i18n="ind-hint">Glissez pour explorer →</p>
+      </div>
     </div>
-  </div>
 
-  <!-- ═══════════════ PRODUCTS ═══════════════ -->
-  <section class="section-pad" id="produits">
+    <!-- Horizontal drag-scroll track -->
+    <div class="industries-track ind-track" style="display:flex; gap:3px; padding:0 56px 0; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch; cursor:grab; user-select:none; -webkit-user-select:none;">
+
+      <div class="ind-card" data-label="01" style="flex:0 0 clamp(220px,22vw,300px); aspect-ratio:3/4; position:relative; overflow:hidden;">
+        <div class="ind-img" style="position:absolute; inset:0; background-image:url('présents-dans/mines_creative.jpg'); background-size:cover; background-position:center; transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
+        <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(8,18,32,0.92) 0%, rgba(8,18,32,0.3) 45%, rgba(8,18,32,0.05) 100%);"></div>
+        <div class="ind-overlay" style="position:absolute; inset:0; background:rgba(29,111,224,0.0); transition:background 0.4s ease;"></div>
+        <div style="position:absolute; bottom:0; left:0; right:0; padding:24px 20px;">
+          <p style="font-size:10px; font-weight:700; letter-spacing:.25em; text-transform:uppercase; color:var(--blue-cta); margin:0 0 6px;">01</p>
+          <h3 class="f-display" style="font-weight:800; font-size:clamp(16px,2vw,20px); text-transform:uppercase; letter-spacing:-.01em; color:#fff; line-height:1.05; margin:0;" data-i18n="ind-01">Mines</h3>
+        </div>
+        <div class="ind-border" style="position:absolute; top:0; left:0; width:2px; height:0; background:var(--blue-cta); transition:height 0.4s ease;"></div>
+      </div>
+
+      <div class="ind-card" data-label="02" style="flex:0 0 clamp(220px,22vw,300px); aspect-ratio:3/4; position:relative; overflow:hidden;">
+        <div class="ind-img" style="position:absolute; inset:0; background-image:url('présents-dans/carrieres_quarry.jpg'); background-size:cover; background-position:center; transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
+        <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(8,18,32,0.92) 0%, rgba(8,18,32,0.3) 45%, rgba(8,18,32,0.05) 100%);"></div>
+        <div class="ind-overlay" style="position:absolute; inset:0; background:rgba(29,111,224,0.0); transition:background 0.4s ease;"></div>
+        <div style="position:absolute; bottom:0; left:0; right:0; padding:24px 20px;">
+          <p style="font-size:10px; font-weight:700; letter-spacing:.25em; text-transform:uppercase; color:var(--blue-cta); margin:0 0 6px;">02</p>
+          <h3 class="f-display" style="font-weight:800; font-size:clamp(16px,2vw,20px); text-transform:uppercase; letter-spacing:-.01em; color:#fff; line-height:1.05; margin:0;" data-i18n="ind-02">Carrières</h3>
+        </div>
+        <div class="ind-border" style="position:absolute; top:0; left:0; width:2px; height:0; background:var(--blue-cta); transition:height 0.4s ease;"></div>
+      </div>
+
+      <div class="ind-card" data-label="03" style="flex:0 0 clamp(220px,22vw,300px); aspect-ratio:3/4; position:relative; overflow:hidden;">
+        <div class="ind-img" style="position:absolute; inset:0; background-image:url('présents-dans/industries_general.jpg'); background-size:cover; background-position:center; transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
+        <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(8,18,32,0.92) 0%, rgba(8,18,32,0.3) 45%, rgba(8,18,32,0.05) 100%);"></div>
+        <div class="ind-overlay" style="position:absolute; inset:0; background:rgba(29,111,224,0.0); transition:background 0.4s ease;"></div>
+        <div style="position:absolute; bottom:0; left:0; right:0; padding:24px 20px;">
+          <p style="font-size:10px; font-weight:700; letter-spacing:.25em; text-transform:uppercase; color:var(--blue-cta); margin:0 0 6px;">03</p>
+          <h3 class="f-display" style="font-weight:800; font-size:clamp(16px,2vw,20px); text-transform:uppercase; letter-spacing:-.01em; color:#fff; line-height:1.05; margin:0;">Industries</h3>
+        </div>
+        <div class="ind-border" style="position:absolute; top:0; left:0; width:2px; height:0; background:var(--blue-cta); transition:height 0.4s ease;"></div>
+      </div>
+
+      <div class="ind-card" data-label="04" style="flex:0 0 clamp(220px,22vw,300px); aspect-ratio:3/4; position:relative; overflow:hidden;">
+        <div class="ind-img" style="position:absolute; inset:0; background-image:url('présents-dans/port_facilities.jpg'); background-size:cover; background-position:center; transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
+        <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(8,18,32,0.92) 0%, rgba(8,18,32,0.3) 45%, rgba(8,18,32,0.05) 100%);"></div>
+        <div class="ind-overlay" style="position:absolute; inset:0; background:rgba(29,111,224,0.0); transition:background 0.4s ease;"></div>
+        <div style="position:absolute; bottom:0; left:0; right:0; padding:24px 20px;">
+          <p style="font-size:10px; font-weight:700; letter-spacing:.25em; text-transform:uppercase; color:var(--blue-cta); margin:0 0 6px;">04</p>
+          <h3 class="f-display" style="font-weight:800; font-size:clamp(16px,2vw,20px); text-transform:uppercase; letter-spacing:-.01em; color:#fff; line-height:1.05; margin:0;" data-i18n="ind-04">Installations<br>portuaires</h3>
+        </div>
+        <div class="ind-border" style="position:absolute; top:0; left:0; width:2px; height:0; background:var(--blue-cta); transition:height 0.4s ease;"></div>
+      </div>
+
+      <div class="ind-card" data-label="05" style="flex:0 0 clamp(220px,22vw,300px); aspect-ratio:3/4; position:relative; overflow:hidden;">
+        <div class="ind-img" style="position:absolute; inset:0; background-image:url('présents-dans/recycling_plant.jpg'); background-size:cover; background-position:center; transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
+        <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(8,18,32,0.92) 0%, rgba(8,18,32,0.3) 45%, rgba(8,18,32,0.05) 100%);"></div>
+        <div class="ind-overlay" style="position:absolute; inset:0; background:rgba(29,111,224,0.0); transition:background 0.4s ease;"></div>
+        <div style="position:absolute; bottom:0; left:0; right:0; padding:24px 20px;">
+          <p style="font-size:10px; font-weight:700; letter-spacing:.25em; text-transform:uppercase; color:var(--blue-cta); margin:0 0 6px;">05</p>
+          <h3 class="f-display" style="font-weight:800; font-size:clamp(16px,2vw,20px); text-transform:uppercase; letter-spacing:-.01em; color:#fff; line-height:1.05; margin:0;" data-i18n="ind-05">Recyclage</h3>
+        </div>
+        <div class="ind-border" style="position:absolute; top:0; left:0; width:2px; height:0; background:var(--blue-cta); transition:height 0.4s ease;"></div>
+      </div>
+
+      <div class="ind-card" data-label="06" style="flex:0 0 clamp(220px,22vw,300px); aspect-ratio:3/4; position:relative; overflow:hidden;">
+        <div class="ind-img" style="position:absolute; inset:0; background-image:url('présents-dans/bulk_handling.jpg'); background-size:cover; background-position:center; transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
+        <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(8,18,32,0.92) 0%, rgba(8,18,32,0.3) 45%, rgba(8,18,32,0.05) 100%);"></div>
+        <div class="ind-overlay" style="position:absolute; inset:0; background:rgba(29,111,224,0.0); transition:background 0.4s ease;"></div>
+        <div style="position:absolute; bottom:0; left:0; right:0; padding:24px 20px;">
+          <p style="font-size:10px; font-weight:700; letter-spacing:.25em; text-transform:uppercase; color:var(--blue-cta); margin:0 0 6px;">06</p>
+          <h3 class="f-display" style="font-weight:800; font-size:clamp(16px,2vw,20px); text-transform:uppercase; letter-spacing:-.01em; color:#fff; line-height:1.05; margin:0;" data-i18n="ind-06">Manutention<br>en vrac</h3>
+        </div>
+        <div class="ind-border" style="position:absolute; top:0; left:0; width:2px; height:0; background:var(--blue-cta); transition:height 0.4s ease;"></div>
+      </div>
+
+    </div>
+    <!-- Bottom edge into products section -->
+    <div style="height:56px;"></div>
+  </section>
+
+  <!-- ═══ PRODUCTS ═══ -->
+  <section id="produits" class="section-pad">
     <div class="reveal">
-      <div class="sec-label">01 / Catalogue de produits</div>
-      <h2 class="sec-title">Nos&nbsp;<span class="hi">produits</span></h2>
+      <p class="sec-label" data-i18n="prod-label">01 / Catalogue de produits</p>
+      <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:48px; flex-wrap:wrap; gap:20px;">
+        <h2 class="sec-title" data-i18n="prod-h2">Nos <span class="hi">produits</span></h2>
+        <a href="PRODUITS/" style="font-size:13px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--blue-cta); text-decoration:none;" data-i18n="prod-all">Voir tout le catalogue →</a>
+      </div>
     </div>
 
-    <div class="products-grid reveal" style="--delay:.15s">
-      <a class="p-card" href="produits/grattoir-primaire.html" style="text-decoration:none;color:inherit;">
-        <span class="p-num">01</span>
-        <div class="p-name">Racleurs primaires</div>
-        <div class="p-desc">Standard et grade minier pour conditions sévères. Formulations d'uréthane sélectionnées pour
-          maximiser la durée de vie en milieu abrasif.</div>
-        <div class="p-arrow">↗</div>
+    <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;" class="products-grid">
+      <a href="PRODUITS/grattoir-primaire.html" class="p-card reveal">
+        <div class="p-card-text">
+          <span class="p-num">01</span>
+          <span class="p-name" data-i18n="p01-name">Grattoir primaire</span>
+          <span class="p-desc" data-i18n="p01-desc">Lame en uréthane haute résistance à l'abrasion assurant un excellent nettoyage sans endommager la courroie.</span>
+          <span class="p-arrow">→</span>
+        </div>
+        <img class="p-card-img" src="PRODUITS/GRATTOIR-PRIMAIRE/conveyor-scrapper-grattoir-convoyeur-primary-big.jpg" alt="Grattoir primaire">
       </a>
-      <a class="p-card" href="produits/grattoir-secondaire-droit.html" style="text-decoration:none;color:inherit;">
-        <span class="p-num">02</span>
-        <div class="p-name">Racleurs secondaires</div>
-        <div class="p-desc">Racleur droit, courbé et à doigts. Chaque configuration offre un nettoyage optimal adapté à
-          votre type de courroie.</div>
-        <div class="p-arrow">↗</div>
+      <a href="PRODUITS/grattoir-primaire-grade-minier.html" class="p-card reveal">
+        <div class="p-card-text">
+          <span class="p-num">02</span>
+          <span class="p-name" data-i18n="p02-name">Grattoir primaire grade minier</span>
+          <span class="p-desc" data-i18n="p02-desc">Lame extra robuste en uréthane pour conditions extrêmes dans le secteur minier.</span>
+          <span class="p-arrow">→</span>
+        </div>
+        <img class="p-card-img" src="PRODUITS/Grattoir%20primaire%20grade%20minier/conveyor-scrapper-grattoir-convoyeur-primary-mine-duty-big.jpg" alt="Grattoir primaire grade minier">
       </a>
-      <a class="p-card" href="produits/grattoir-en-v.html" style="text-decoration:none;color:inherit;">
-        <span class="p-num">03</span>
-        <div class="p-name">Racleur en V</div>
-        <div class="p-desc">Profil en V pour un nettoyage uniforme sur toute la largeur. Solution idéale pour les
-          matériaux collants et les milieux humides.</div>
-        <div class="p-arrow">↗</div>
+      <a href="PRODUITS/grattoir-secondaire-droit.html" class="p-card reveal">
+        <div class="p-card-text">
+          <span class="p-num">03</span>
+          <span class="p-name" data-i18n="p03-name">Grattoir secondaire droit</span>
+          <span class="p-desc" data-i18n="p03-desc">Lame en uréthane flexible avec insertions d'acier inoxydable pour un nettoyage fin.</span>
+          <span class="p-arrow">→</span>
+        </div>
+        <img class="p-card-img" src="PRODUITS/Grattoir%20secondaire%20droit/conveyor-scrapper-grattoir-convoyeur-straight-big.jpg" alt="Grattoir secondaire droit">
       </a>
-      <a class="p-card" href="produits/lit-dimpact.html" style="text-decoration:none;color:inherit;">
-        <span class="p-num">04</span>
-        <div class="p-name">Lits d'impact</div>
-        <div class="p-desc">Protection de la courroie à la zone de chargement. Absorbe l'énergie des matériaux lourds et
-          prolonge la durée de vie du convoyeur.</div>
-        <div class="p-arrow">↗</div>
+      <a href="PRODUITS/grattoir-courbe.html" class="p-card reveal">
+        <div class="p-card-text">
+          <span class="p-num">04</span>
+          <span class="p-name" data-i18n="p04-name">Grattoir courbé</span>
+          <span class="p-desc" data-i18n="p04-desc">Lame incurvée avec système de pivot, s'adapte aux courroies de retour empreintes.</span>
+          <span class="p-arrow">→</span>
+        </div>
+        <img class="p-card-img" src="PRODUITS/Grattoir%20courb%C3%A9/conveyor-scrapper-grattoir-convoyeur-curved-big.jpg" alt="Grattoir courbé">
       </a>
-      <a class="p-card" href="produits/systeme-de-jupes.html" style="text-decoration:none;color:inherit;">
-        <span class="p-num">05</span>
-        <div class="p-name">Systèmes de jupes</div>
-        <div class="p-desc">Étanchéité latérale à la zone de transfert. Prévient les déversements de matériaux et réduit
-          les émissions de poussière.</div>
-        <div class="p-arrow">↗</div>
+      <a href="PRODUITS/grattoir-a-doigts.html" class="p-card reveal">
+        <div class="p-card-text">
+          <span class="p-num">05</span>
+          <span class="p-name" data-i18n="p05-name">Grattoir à doigts</span>
+          <span class="p-desc" data-i18n="p05-desc">Doigts flexibles en uréthane pour nettoyage intensif des courroies à surface rugueuse.</span>
+          <span class="p-arrow">→</span>
+        </div>
+        <img class="p-card-img" src="PRODUITS/Grattoir%20%C3%A0%20doigts/conveyor-scrapper-grattoir-convoyeur-finger-type-big.jpg" alt="Grattoir à doigts">
       </a>
-      <a class="p-card" href="produits/rouleaux-guide.html" style="text-decoration:none;color:inherit;">
-        <span class="p-num">06</span>
-        <div class="p-name">Rouleaux &amp; roues guide</div>
-        <div class="p-desc">Rouleaux guide, de retour sidewall et roues guide pour convoyeur beltwall. Fabriqués en
-          uréthane haute résistance.</div>
-        <div class="p-arrow">↗</div>
+      <a href="PRODUITS/grattoir-en-v.html" class="p-card reveal">
+        <div class="p-card-text">
+          <span class="p-num">06</span>
+          <span class="p-name" data-i18n="p06-name">Grattoir en V</span>
+          <span class="p-desc" data-i18n="p06-desc">Nettoyage efficace du brin de retour par déflexion latérale des matériaux.</span>
+          <span class="p-arrow">→</span>
+        </div>
+        <img class="p-card-img" src="PRODUITS/Grattoir%20en%20V/conveyor-scrapper-grattoir-convoyeur-v-big.jpg" alt="Grattoir en V">
+      </a>
+      <a href="PRODUITS/lit-dimpact.html" class="p-card reveal">
+        <div class="p-card-text">
+          <span class="p-num">07</span>
+          <span class="p-name" data-i18n="p07-name">Lit d'impact</span>
+          <span class="p-desc" data-i18n="p07-desc">Structure robuste et ajustable pour tout type de convoyeurs à courroie.</span>
+          <span class="p-arrow">→</span>
+        </div>
+        <img class="p-card-img" src="PRODUITS/Lit%20d%E2%80%99impact/conveyor-scrapper-grattoir-convoyeur-impact-bed-big.jpg" alt="Lit d'impact">
+      </a>
+      <a href="PRODUITS/systeme-de-jupes.html" class="p-card reveal">
+        <div class="p-card-text">
+          <span class="p-num">08</span>
+          <span class="p-name" data-i18n="p08-name">Système de jupes</span>
+          <span class="p-desc" data-i18n="p08-desc">Concept d'étanchéité supérieur pour contrôle des fugitives entre trémie et courroie.</span>
+          <span class="p-arrow">→</span>
+        </div>
+        <img class="p-card-img" src="PRODUITS/Syst%C3%A8me%20de%20jupes/conveyor-scrapper-grattoir-convoyeur-skirting-system-big.jpg" alt="Système de jupes">
+      </a>
+      <a href="PRODUITS/garde-de-rouleau-de-retour.html" class="p-card reveal">
+        <div class="p-card-text">
+          <span class="p-num">09</span>
+          <span class="p-name" data-i18n="p09-name">Garde de rouleau de retour</span>
+          <span class="p-desc" data-i18n="p09-desc">Garde protecteur robuste d'angle rentrant tel que requis par la CSST.</span>
+          <span class="p-arrow">→</span>
+        </div>
+        <img class="p-card-img" src="PRODUITS/Garde%20de%20rouleau%20de%20retour/conveyor-scrapper-grattoir-convoyeur-return-roll-guard-big.jpg" alt="Garde de rouleau de retour">
+      </a>
+      <a href="PRODUITS/rouleaux-guide.html" class="p-card reveal">
+        <div class="p-card-text">
+          <span class="p-num">10</span>
+          <span class="p-name" data-i18n="p10-name">Rouleaux guide</span>
+          <span class="p-desc" data-i18n="p10-desc">Appui latéral en uréthane empêchant le désaxement de la courroie.</span>
+          <span class="p-arrow">→</span>
+        </div>
+        <img class="p-card-img" src="PRODUITS/Rouleaux%20guide%20/conveyor-scrapper-grattoir-convoyeur-guide-rolls-big1.jpg" alt="Rouleaux guide">
+      </a>
+      <a href="PRODUITS/rouleaux-de-retour-sidewall.html" class="p-card reveal">
+        <div class="p-card-text">
+          <span class="p-num">11</span>
+          <span class="p-name" data-i18n="p11-name">Rouleaux de retour sidewall</span>
+          <span class="p-desc" data-i18n="p11-desc">Rouleaux en uréthane durable pour courroie de type beltwall sur arbres rigides.</span>
+          <span class="p-arrow">→</span>
+        </div>
+        <img class="p-card-img" src="PRODUITS/Rouleaux%20de%20retour%20sidewall/conveyor-scrapper-grattoir-convoyeur-sidewall-stub-idler-big.jpg" alt="Rouleaux de retour sidewall">
+      </a>
+      <a href="PRODUITS/roues-guide.html" class="p-card reveal">
+        <div class="p-card-text">
+          <span class="p-num">12</span>
+          <span class="p-name" data-i18n="p12-name">Roues guide</span>
+          <span class="p-desc" data-i18n="p12-desc">Guidage de courroie à mur corrugé, grand diamètre, vitesse réduite.</span>
+          <span class="p-arrow">→</span>
+        </div>
+        <img class="p-card-img" src="PRODUITS/Roues%20guide/conveyor-scrapper-grattoir-convoyeur-guiding-wheels-big1.jpg" alt="Roues guide">
       </a>
     </div>
 
-    <div class="reveal" style="text-align:center; margin-top:48px;">
-      <a href="produits/index.html" class="btn-a ghost" style="display:inline-flex;">Voir les 12 produits →</a>
+    <div style="text-align:center; margin-top:48px;" class="reveal">
+      <a href="contact.html" class="btn-a solid" data-i18n="cta-group-quote">Demander une soumission groupée</a>
     </div>
   </section>
 
-  <!-- ═══════════════ WHY PLASTHANE ═══════════════ -->
-  <section class="section-pad" id="expertise"
-    style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
-    <div class="why-layout">
-      <!-- Top row: heading left, text right -->
-      <div class="why-intro">
-        <div>
-          <div class="sec-label reveal">02 / Pourquoi Plasthane</div>
-          <h2 class="sec-title reveal">L'uréthane<br>industriel,<br><span class="hi">maîtrisé.</span></h2>
-          <p class="reveal" style="margin-top:14px; font-size:11px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--pop);">
-            Racleurs de bande · Rouleaux guide · Lits d'impact · Jupes
-          </p>
-        </div>
-        <div>
-          <p class="reveal" style="font-size:15px; line-height:1.8; color:var(--text-dim);">
-            Établie à Beloeil depuis 2008, Plasthane conçoit et fabrique des pièces moulées en uréthane haute performance pour l'industrie des convoyeurs à bande — des mines aux usines manufacturières. Chaque produit est développé et validé dans notre atelier avant d'être livré.
-          </p>
-          <p class="reveal" style="margin-top:16px; font-size:14px; line-height:1.75; color:var(--text-dim);">
-            Nous offrons deux types de service :
-          </p>
-          <ul class="reveal" style="margin-top:10px; padding:0; list-style:none; display:flex; flex-direction:column; gap:10px;">
-            <li style="font-size:14px; line-height:1.65; color:var(--text-dim); padding-left:18px; position:relative;">
-              <span style="position:absolute;left:0;color:var(--pop);font-weight:700;">—</span>
-              Des composantes standards prêtes à commander depuis notre <a href="produits/index.html" style="color:var(--pop);text-decoration:none;">catalogue de 12 produits</a>.
-            </li>
-            <li style="font-size:14px; line-height:1.65; color:var(--text-dim); padding-left:18px; position:relative;">
-              <span style="position:absolute;left:0;color:var(--pop);font-weight:700;">—</span>
-              Des pièces ou recouvrements <a href="#sur-mesure" style="color:var(--pop);text-decoration:none;">fabriqués sur mesure</a> selon vos dessins, dimensions et conditions d'opération.
-            </li>
-          </ul>
-          <p class="reveal" style="margin-top:18px; font-size:14px; line-height:1.75; color:var(--text-dim);">
-            Tous nos produits sont <strong style="color:var(--text);">100% garantis</strong> contre tout défaut de matériaux et de fabrication. Notre banc d'essai — un convoyeur à bande pleine grandeur — nous permet de comparer les formulations d'uréthane et de vous livrer uniquement ce qui performe en conditions réelles.
-          </p>
-          <p class="reveal" style="margin-top:14px; font-size:14px; line-height:1.75; color:var(--text-dim);">
-            <a href="#contact" style="color:var(--pop);text-decoration:none;font-weight:600;">Demandez votre soumission</a> — nous vous répondons rapidement avec une offre personnalisée.
-          </p>
-        </div>
-      </div>
+  <div class="divider divider-m" style="margin:0 56px;"></div>
 
-      <!-- Bottom row: 4 why-items full width -->
-      <div class="why-grid">
-        <div class="why-item reveal">
-          <div class="why-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
+  <!-- ═══ EXPERTISE ═══ -->
+  <section id="expertise" class="section-pad" style="background:var(--steel-surface);">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;" class="expertise-outer">
+      <!-- Left: heading + text -->
+      <div class="reveal">
+        <p class="sec-label" data-i18n="exp-label">02 / Pourquoi Plasthane</p>
+        <h2 class="sec-title" style="margin-bottom:20px;" data-i18n="exp-h2">L'expertise qui fait<br>la <span class="hi">différence</span></h2>
+        <p style="font-size:16px; color:var(--text-muted); max-width:480px; line-height:1.7; margin-bottom:32px;" data-i18n="exp-p">
+          Nos composantes en uréthane sont conçues pour durer dans des conditions extrêmes — abrasion, chocs, humidité. Chaque produit est développé en collaboration avec nos clients, testé sur un convoyeur grandeur réelle, et fabriqué entièrement au Québec.
+        </p>
+        <!-- Accent stats row -->
+        <div style="display:flex; gap:32px; margin-bottom:32px; padding:20px 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+          <div>
+            <div class="f-display" style="font-weight:900; font-size:28px; color:var(--navy-dark); letter-spacing:-.02em; line-height:1;">2008</div>
+            <div style="font-size:11px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--text-muted); margin-top:4px;" data-i18n="exp-since">Fondés</div>
           </div>
-          <div class="why-title">Qualité 100% garantie</div>
-          <div class="why-desc">Chaque pièce est garantie contre tout défaut de matériaux et de fabrication — à prix compétitifs, livrée dans les délais convenus. Sans exception.</div>
+          <div style="width:1px; background:var(--border);"></div>
+          <div>
+            <div class="f-display" style="font-weight:900; font-size:28px; color:var(--navy-dark); letter-spacing:-.02em; line-height:1;">100%</div>
+            <div style="font-size:11px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--text-muted); margin-top:4px;" data-i18n="exp-qc">Fabriqué au Québec</div>
+          </div>
+          <div style="width:1px; background:var(--border);"></div>
+          <div>
+            <div class="f-display" style="font-weight:900; font-size:28px; color:var(--navy-dark); letter-spacing:-.02em; line-height:1;">12</div>
+            <div style="font-size:11px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--text-muted); margin-top:4px;" data-i18n="exp-prods">Produits</div>
+          </div>
         </div>
-        <div class="why-item reveal">
-          <div class="why-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path
-                d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1 1 .03 2.798-1.4 2.556a48.29 48.29 0 01-4.617-.981M5 14.5l-1.42.426c-1.43.241-2.4-1.556-1.4-2.556L5 9.75" />
-            </svg>
+        <a href="a-propos.html" style="font-size:13px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--blue-cta); text-decoration:none; display:inline-flex; align-items:center; gap:6px; transition:gap .2s ease;" onmouseover="this.style.gap='10px'" onmouseout="this.style.gap='6px'" data-i18n="exp-link">À propos de Plasthane →</a>
+      </div>
+      <!-- Right: 2×2 compact cards -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;" class="expertise-grid">
+        <div class="reveal" style="background:var(--white); border:1px solid var(--border); padding:24px 20px;">
+          <div style="width:36px; height:36px; background:var(--navy-dark); display:flex; align-items:center; justify-content:center; margin-bottom:14px;">
+            <svg width="18" height="18" fill="none" stroke="#1D6FE0" stroke-width="2"><path d="M9 12l2 2 4-4m5 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           </div>
-          <div class="why-title">Banc d'essai grandeur réelle</div>
-          <div class="why-desc">Notre convoyeur à bande pleine grandeur nous permet de tester et comparer chaque formulation d'uréthane avant livraison — en conditions de production réelles.</div>
+          <h3 class="f-display" style="font-weight:700; font-size:16px; text-transform:uppercase; letter-spacing:-.01em; margin-bottom:8px;" data-i18n="exp1-title">Qualité 100% garantie</h3>
+          <p style="font-size:13px; color:var(--text-muted); line-height:1.6;" data-i18n="exp1-desc">Tous nos produits sont garantis à 100% contre tout défaut de fabrication.</p>
         </div>
-        <div class="why-item reveal">
-          <div class="why-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path
-                d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" />
-            </svg>
+        <div class="reveal" style="background:var(--white); border:1px solid var(--border); padding:24px 20px;">
+          <div style="width:36px; height:36px; background:var(--navy-dark); display:flex; align-items:center; justify-content:center; margin-bottom:14px;">
+            <svg width="18" height="18" fill="none" stroke="#1D6FE0" stroke-width="2"><path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
           </div>
-          <div class="why-title">Fabrication sur mesure</div>
-          <div class="why-desc">Pièces hors catalogue ou recouvrements fabriqués selon vos dessins, dimensions et conditions d'opération. Si vous pouvez le décrire, on peut le fabriquer.</div>
+          <h3 class="f-display" style="font-weight:700; font-size:16px; text-transform:uppercase; letter-spacing:-.01em; margin-bottom:8px;" data-i18n="exp2-title">Banc d'essai grandeur réelle</h3>
+          <p style="font-size:13px; color:var(--text-muted); line-height:1.6;" data-i18n="exp2-desc">Tests sur convoyeur réel dans des conditions identiques au terrain.</p>
         </div>
-        <div class="why-item reveal">
-          <div class="why-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
+        <div class="reveal" style="background:var(--white); border:1px solid var(--border); padding:24px 20px;">
+          <div style="width:36px; height:36px; background:var(--navy-dark); display:flex; align-items:center; justify-content:center; margin-bottom:14px;">
+            <svg width="18" height="18" fill="none" stroke="#1D6FE0" stroke-width="2"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.573-1.066z"/><circle cx="9" cy="9" r="2"/></svg>
           </div>
-          <div class="why-title">Réponse rapide, livraison fiable</div>
-          <div class="why-desc">Soumission personnalisée dans les plus brefs délais. Nous respectons chaque engagement de livraison — notre réputation repose dessus.</div>
+          <h3 class="f-display" style="font-weight:700; font-size:16px; text-transform:uppercase; letter-spacing:-.01em; margin-bottom:8px;" data-i18n="exp3-title">Fabrication sur mesure</h3>
+          <p style="font-size:13px; color:var(--text-muted); line-height:1.6;" data-i18n="exp3-desc">Ingénierie, atelier acier et usinage complet sur mesure.</p>
+        </div>
+        <div class="reveal" style="background:var(--white); border:1px solid var(--border); padding:24px 20px;">
+          <div style="width:36px; height:36px; background:var(--navy-dark); display:flex; align-items:center; justify-content:center; margin-bottom:14px;">
+            <svg width="18" height="18" fill="none" stroke="#1D6FE0" stroke-width="2"><path d="M3 21V16.5M3 21h4.5M3 21l3.75-3.75M16.5 3H12M16.5 3v4.5M16.5 3L12.75 6.75"/><path d="M14 10l-5.09 5.09a1.5 1.5 0 002.122 2.122L16.12 12.12"/></svg>
+          </div>
+          <h3 class="f-display" style="font-weight:700; font-size:16px; text-transform:uppercase; letter-spacing:-.01em; margin-bottom:8px;" data-i18n="exp4-title">Fièrement québécois</h3>
+          <p style="font-size:13px; color:var(--text-muted); line-height:1.6;" data-i18n="exp4-desc">Fabriqué à Beloeil, Québec — produits de calibre mondial.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════ CUSTOM MFG ═══════════════ -->
-  <section class="section-pad" id="sur-mesure">
-    <div class="custom-layout">
+  <!-- ═══ SUR MESURE ═══ -->
+  <section id="sur-mesure" class="section-pad" style="background:var(--navy-dark);">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;" class="surmesure-grid">
       <div>
-        <div class="sec-label reveal">03 / Sur mesure</div>
-        <h2 class="sec-title reveal">Conçu<br>exactement<br>pour&nbsp;<span class="hi">vous.</span></h2>
-        <p class="reveal" style="margin-top:24px; font-size:15px; line-height:1.8; color:var(--text-dim);">
-          Plasthane fabrique des produits en uréthane sur mesure selon vos besoins. En utilisant uniquement de l'uréthane de première qualité, nous offrons une résistance exceptionnelle à l'abrasion ainsi qu'une multitude de formulations, de formes, de duretés <span style="color:var(--text);font-weight:500;">(de 30 à 90 duro A)</span> et de couleurs — pour s'adapter à toutes vos applications.
+        <p class="sec-label reveal" style="color:rgba(255,255,255,0.4);" data-i18n="sm-label">03 / Fabrication sur mesure</p>
+        <h2 class="sec-title reveal" style="color:#fff; margin-bottom:24px;" data-i18n="sm-h2">Pièces <span class="hi">sur mesure</span><br>en uréthane</h2>
+        <p class="reveal" style="font-size:16px; color:rgba(255,255,255,0.55); line-height:1.7; margin-bottom:32px;" data-i18n="sm-p">
+          Plasthane fabrique des pièces sur mesure en uréthane selon différentes formulations, formes, duretés et couleurs. Dureté disponible : <strong style="color:rgba(255,255,255,0.85);">30 à 90 Duro A</strong>.
         </p>
-        <p class="reveal" style="margin-top:18px; font-size:14px; color:var(--text-dim); line-height:1.7;">
-          Entre autres, nous avons fabriqué :
-        </p>
-        <ul class="reveal" style="margin-top:12px; display:flex; flex-direction:column; gap:9px; list-style:none; padding:0; color:var(--text-dim); font-size:14px; line-height:1.6;">
-          <li style="padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--pop);font-weight:700;">—</span>Rouleaux de convoyeur recouverts d'uréthane</li>
-          <li style="padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--pop);font-weight:700;">—</span>Plusieurs types de butoirs</li>
-          <li style="padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--pop);font-weight:700;">—</span>Pièces de recouvrement pour malaxeurs, séparateurs à vis sans fin, tamis</li>
-          <li style="padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--pop);font-weight:700;">—</span>Racleurs de grade alimentaire</li>
-          <li style="padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--pop);font-weight:700;">—</span>Pièces avec insertion de céramique et d'acier inoxydable</li>
+        <ul class="reveal" style="list-style:none; display:flex; flex-direction:column; gap:14px; margin-bottom:40px;">
+          <li style="font-size:14px; color:rgba(255,255,255,0.6); padding-left:20px; position:relative;">
+            <span style="position:absolute; left:0; color:var(--blue-cta);">—</span>
+            <span data-i18n="sm-li1">Rouleaux de convoyeur recouverts d'uréthane</span>
+          </li>
+          <li style="font-size:14px; color:rgba(255,255,255,0.6); padding-left:20px; position:relative;">
+            <span style="position:absolute; left:0; color:var(--blue-cta);">—</span>
+            <span data-i18n="sm-li2">Pare-chocs de différents types</span>
+          </li>
+          <li style="font-size:14px; color:rgba(255,255,255,0.6); padding-left:20px; position:relative;">
+            <span style="position:absolute; left:0; color:var(--blue-cta);">—</span>
+            <span data-i18n="sm-li3">Pièces de recouvrement pour mélangeurs, séparateurs à vis, tamis</span>
+          </li>
+          <li style="font-size:14px; color:rgba(255,255,255,0.6); padding-left:20px; position:relative;">
+            <span style="position:absolute; left:0; color:var(--blue-cta);">—</span>
+            <span data-i18n="sm-li4">Grattoirs de qualité alimentaire</span>
+          </li>
+          <li style="font-size:14px; color:rgba(255,255,255,0.6); padding-left:20px; position:relative;">
+            <span style="position:absolute; left:0; color:var(--blue-cta);">—</span>
+            <span data-i18n="sm-li5">Pièces avec insertions en céramique et acier inoxydable</span>
+          </li>
         </ul>
-        <p class="reveal" style="margin-top:20px; font-size:14px; line-height:1.75; color:var(--text-dim);">
-          Si vous cherchez une formulation d'uréthane spéciale pour votre application, nous vous guiderons parmi les multiples critères de sélection des résines disponibles. L'uréthane demeure un matériau de premier choix — durable, résistant à l'abrasion, flexible et non dommageable pour les surfaces fragiles.
+        <p class="reveal" style="font-size:15px; color:rgba(255,255,255,0.55); line-height:1.7; margin-bottom:32px;" data-i18n="sm-p2">
+          Si vous cherchez une formulation d'uréthane spéciale pour votre application, il nous fera plaisir de vous guider parmi les multiples critères de sélection des résines disponibles. L'uréthane demeure un matériau de premier choix lorsqu'on désire un matériau durable, résistant à l'abrasion, flexible et non dommageable pour des surfaces plus fragiles.
         </p>
-        <div class="reveal" style="margin-top:36px;">
-          <a href="#contact" class="btn-a solid">Demander une soumission</a>
-        </div>
+        <a href="contact.html" class="btn-a solid reveal" data-i18n="cta-quote-sm">Demandez une soumission</a>
       </div>
-      <div class="custom-visual reveal-right">
-        <img src="https://placehold.co/700x560/1F1F1F/F25623?text=Fabrication+sur+mesure"
-          alt="Fabrication sur mesure en uréthane" />
-        <div class="custom-visual-tag">Atelier de fabrication · Plasthane · Québec</div>
+      <div class="reveal" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:center;">
+        <img src="images-assets/conveyor_components_modern.jpg" alt="Fabrication sur mesure" style="width:100%; height:auto; display:block; opacity:0.9;">
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════ CONTACT ═══════════════ -->
-  <section class="section-pad" id="contact" style="background: var(--surface); border-top: 1px solid var(--border);">
-    <div class="contact-layout">
-      <div>
-        <div class="sec-label reveal">04 / Contact</div>
-        <h2 class="sec-title reveal">Obtenir<br>un&nbsp;<span class="hi">devis</span></h2>
-        <p class="reveal"
-          style="margin-top:20px; font-size:14px; line-height:1.75; color:var(--text-dim); max-width:340px;">
-          Décrivez votre besoin — nous vous répondrons rapidement avec une soumission personnalisée.
-        </p>
-        <div class="contact-info" style="margin-top:48px;">
-          <div class="c-item reveal">
-            <span class="c-label">Téléphone</span>
-            <span class="c-val"><a href="tel:4504649988" style="color:inherit;text-decoration:none;">450 464-9988</a></span>
-          </div>
-          <div class="c-item reveal">
-            <span class="c-label">Télécopieur</span>
-            <span class="c-val">450 446-2378</span>
-          </div>
-          <div class="c-item reveal">
-            <span class="c-label">Courriel</span>
-            <span class="c-val"><a href="mailto:simon@plasthane.com" style="color:inherit;text-decoration:none;">simon@plasthane.com</a></span>
-          </div>
-          <div class="c-item reveal">
-            <span class="c-label">Adresse</span>
-            <span class="c-val">546, des Forges<br>Beloeil, QC&nbsp; J3G 4S5</span>
-          </div>
+  <!-- ═══ CONTACT ═══ -->
+  <section id="contact" class="section-pad">
+    <div class="reveal">
+      <p class="sec-label" data-i18n="ct-label">04 / Nous joindre</p>
+      <h2 class="sec-title" style="margin-bottom:48px;" data-i18n="ct-h2">Demandez un <span class="hi">devis</span></h2>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1.2fr; gap:64px;" class="contact-grid">
+      <div class="reveal">
+        <div style="margin-bottom:36px;">
+          <h3 class="f-display" style="font-weight:700; font-size:18px; text-transform:uppercase; letter-spacing:.05em; margin-bottom:16px; color:var(--navy-mid);" data-i18n="ct-coords">Coordonnées</h3>
+          <p style="font-size:15px; color:var(--text-muted); line-height:1.8;">
+            Plasthane inc.<br>
+            546, des Forges<br>
+            Beloeil, QC J3G 4S5<br>
+            Canada
+          </p>
         </div>
+        <div style="margin-bottom:20px;">
+          <a href="tel:4504649988" style="font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:32px; color:var(--navy-mid); text-decoration:none; letter-spacing:-.01em; display:block; margin-bottom:4px; transition:color .2s ease;" onmouseover="this.style.color='var(--blue-cta)'" onmouseout="this.style.color='var(--navy-mid)'">450 464-9988</a>
+          <p style="font-size:14px; color:var(--text-muted);">Fax : 450 446-2378</p>
+        </div>
+        <a href="mailto:simon@plasthane.com" style="font-size:15px; color:var(--blue-cta); text-decoration:none; font-weight:500;">simon@plasthane.com</a>
       </div>
 
-      <form class="contact-form reveal">
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px;">
+      <form class="reveal" style="display:flex; flex-direction:column; gap:20px;">
+        <div class="form-2col" style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
           <div class="f-group">
-            <label class="f-label">Nom complet</label>
-            <input type="text" class="f-input" placeholder="Jean Tremblay" />
+            <label class="f-label" data-i18n="form-name">Nom *</label>
+            <input type="text" class="f-input" data-i18n-ph="ph-name" placeholder="Votre nom" required>
           </div>
           <div class="f-group">
-            <label class="f-label">Entreprise</label>
-            <input type="text" class="f-input" placeholder="Mine ABC inc." />
+            <label class="f-label" data-i18n="form-email">Courriel *</label>
+            <input type="email" class="f-input" data-i18n-ph="ph-email" placeholder="courriel@exemple.com" required>
+          </div>
+        </div>
+        <div class="form-2col" style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+          <div class="f-group">
+            <label class="f-label" data-i18n="form-phone">Téléphone</label>
+            <input type="tel" class="f-input" placeholder="450 000-0000">
+          </div>
+          <div class="f-group">
+            <label class="f-label" data-i18n="form-subject">Sujet</label>
+            <input type="text" class="f-input" data-i18n-ph="ph-subject" placeholder="Sujet de votre demande">
           </div>
         </div>
         <div class="f-group">
-          <label class="f-label">Courriel</label>
-          <input type="email" class="f-input" placeholder="jean@entreprise.com" />
+          <label class="f-label">Message</label>
+          <textarea class="f-input" data-i18n-ph="ph-message" placeholder="Décrivez votre besoin…"></textarea>
         </div>
-        <div class="f-group">
-          <label class="f-label">Type de produit recherché</label>
-          <input type="text" class="f-input" placeholder="Racleur primaire, lit d'impact, sur mesure…" />
-        </div>
-        <div class="f-group">
-          <label class="f-label">Message / détails</label>
-          <textarea class="f-input"
-            placeholder="Décrivez votre application, les dimensions ou les conditions d'opération…"></textarea>
-        </div>
-        <button type="submit" class="btn-a solid" style="align-self:flex-start; padding:14px 36px;">
-          Envoyer la demande
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
-        </button>
+        <button type="submit" class="btn-a solid" style="align-self:flex-start;" data-i18n="form-submit">Envoyer le message</button>
       </form>
     </div>
   </section>
 
-  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <!-- ═══ FOOTER ═══ -->
   <footer>
-    <div class="ft-left">
-      <div class="ft-logo"><img src="brand_assets/logo hq.png" alt="Plasthane" /></div>
-      <div class="ft-copy">© 2026 Plasthane. Tous droits réservés. · Québec, Canada</div>
+    <div class="ft-grid">
+      <div>
+        <div class="ft-logo"><img src="brand_assets/logo hq.png" alt="Plasthane"></div>
+        <p class="ft-tagline" data-i18n="ft-tagline">Fabricant québécois de composantes en uréthane de haute qualité pour l'industrie des convoyeurs à bande.</p>
+      </div>
+      <div>
+        <p class="ft-heading">Navigation</p>
+        <ul class="ft-nav">
+          <li><a href="/" data-i18n="ft-home">Accueil</a></li>
+          <li><a href="PRODUITS/" data-i18n="nav-products-plain">Produits</a></li>
+          <li><a href="a-propos.html" data-i18n="nav-about">À propos</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="ft-heading">Contact</p>
+        <div class="ft-contact-item"><strong data-i18n="ft-address">Adresse</strong><br>546, des Forges<br>Beloeil, QC J3G 4S5</div>
+        <div class="ft-contact-item"><strong data-i18n="ft-phone">Téléphone</strong><br><a href="tel:4504649988">450 464-9988</a></div>
+        <div class="ft-contact-item"><strong>Fax</strong><br>450 446-2378</div>
+        <div class="ft-contact-item"><a href="mailto:simon@plasthane.com">simon@plasthane.com</a></div>
+      </div>
     </div>
-    <div class="ft-links">
-      <a href="produits/index.html">Produits</a>
-      <a href="#sur-mesure">Sur mesure</a>
-      <a href="a-propos.html">À propos</a>
-      <a href="contact.html">Contact</a>
-      <a href="#">EN</a>
+    <div class="ft-bar">
+      <span class="ft-copy" data-i18n="ft-copy">© 2025 Plasthane inc. Tous droits réservés. · Québec, Canada</span>
     </div>
   </footer>
 
-  <!-- ═══════════════ SCRIPTS ═══════════════ -->
+  <!-- ═══ SCRIPTS ═══ -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script>
-    /* ── Theme init ── */
-    (function () {
-      const saved = localStorage.getItem('plasthane-theme');
-      if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
-    })();
-
-    document.getElementById('themeToggle').addEventListener('click', () => {
-      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      if (isDark) {
-        document.documentElement.removeAttribute('data-theme');
-        localStorage.setItem('plasthane-theme', 'light');
-      } else {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('plasthane-theme', 'dark');
-      }
-    });
-
     gsap.registerPlugin(ScrollTrigger);
 
-    /* ── Cursor ── */
-    const cur = document.getElementById('cur');
-    const curR = document.getElementById('curR');
-    let mx = 0, my = 0, rx = 0, ry = 0;
-    document.addEventListener('mousemove', e => {
-      mx = e.clientX; my = e.clientY;
-      gsap.to(cur, { x: mx, y: my, duration: .08, ease: 'none' });
-    });
-    (function animR() {
-      rx += (mx - rx) * .1; ry += (my - ry) * .1;
-      curR.style.transform = `translate(calc(${rx}px - 50%), calc(${ry}px - 50%))`;
-      requestAnimationFrame(animR);
-    })();
-    document.querySelectorAll('a, button, .p-card').forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        curR.style.width = '52px'; curR.style.height = '52px';
-        curR.style.borderColor = 'rgba(201,106,10,.7)';
-        cur.style.transform = 'translate(-50%,-50%) scale(2)';
-      });
-      el.addEventListener('mouseleave', () => {
-        curR.style.width = '34px'; curR.style.height = '34px';
-        curR.style.borderColor = 'rgba(201,106,10,.3)';
-        cur.style.transform = 'translate(-50%,-50%) scale(1)';
+    document.querySelectorAll('.reveal').forEach(el => {
+      gsap.to(el, {
+        scrollTrigger: { trigger: el, start: 'top 88%', once: true },
+        opacity: 1, y: 0, duration: 0.7, ease: 'power2.out'
       });
     });
 
-    /* ── Nav scroll ── */
-    ScrollTrigger.create({
-      start: 'top -60',
-      onUpdate: s => document.getElementById('navbar').classList.toggle('scrolled', s.progress > 0)
+    document.querySelectorAll('.reveal-left').forEach(el => {
+      gsap.to(el, {
+        scrollTrigger: { trigger: el, start: 'top 88%', once: true },
+        opacity: 1, x: 0, duration: 0.7, ease: 'power2.out'
+      });
     });
 
-    const NOANIM = new URLSearchParams(location.search).has('noanim');
+    document.querySelectorAll('.reveal-right').forEach(el => {
+      gsap.to(el, {
+        scrollTrigger: { trigger: el, start: 'top 88%', once: true },
+        opacity: 1, x: 0, duration: 0.7, ease: 'power2.out'
+      });
+    });
 
-    /* ── No-anim mode for screenshots ── */
-    if (NOANIM) {
-      document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .hero-label, .hero-bottom, #scrollCue, .why-item').forEach(el => {
-        el.style.opacity = '1';
-        el.style.transform = 'none';
+    // Stat counters
+    document.querySelectorAll('.stat-num[data-count]').forEach(el => {
+      const target = parseInt(el.dataset.count);
+      gsap.from(el, {
+        scrollTrigger: { trigger: el, start: 'top 90%', once: true },
+        textContent: 0,
+        duration: 1.5,
+        ease: 'power1.out',
+        snap: { textContent: 1 },
+        onUpdate() { el.textContent = Math.round(gsap.getProperty(el, 'textContent')); }
       });
-      document.querySelectorAll('.hero-h1 .line-inner').forEach(el => {
-        el.style.transform = 'translateY(0%)';
-      });
-      document.querySelectorAll('.counter').forEach(el => {
-        el.textContent = el.dataset.target;
+    });
+
+    // Mobile menu
+    const burger = document.querySelector('.nav-burger');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    if (burger && mobileMenu) {
+      burger.addEventListener('click', () => {
+        const isOpen = mobileMenu.style.display === 'flex';
+        mobileMenu.style.display = isOpen ? 'none' : 'flex';
       });
     }
 
-    if (NOANIM) { /* skip all animations */ } else {
+    // ─── HERO SLIDESHOW ───────────────────────────────────────────────────────
+    (function() {
+      const slides = document.querySelectorAll('.hero-slide');
+      const dots = document.querySelectorAll('.hero-dot');
+      if (!slides.length) return;
 
-      /* ── Hero entrance ── */
-      const heroTL = gsap.timeline({ delay: .2 });
-      heroTL
-        .to('.hero-h1 .line-inner', { y: '0%', duration: 1.1, ease: 'power4.out', stagger: .11 })
-        .to('.hero-label', { opacity: 1, duration: .8, ease: 'power2.out' }, '-=.55')
-        .to('.hero-bottom', { opacity: 1, y: 0, duration: .9, ease: 'power3.out' }, '-=.45')
-        .to('#scrollCue', { opacity: 1, duration: .6 }, '-=.3');
+      let current = 0;
+      let timer;
 
-      /* ── Scroll reveal ── */
-      gsap.utils.toArray('.reveal').forEach(el => {
-        gsap.to(el, {
-          opacity: 1, y: 0, duration: .9, ease: 'power3.out',
-          scrollTrigger: { trigger: el, start: 'top 86%', once: true }
+      function goTo(idx) {
+        const prev = current;
+        current = idx;
+
+        gsap.to(slides[prev], { opacity: 0, duration: 1.4, ease: 'power2.inOut' });
+        gsap.to(slides[current], { opacity: 1, duration: 1.4, ease: 'power2.inOut' });
+
+        // Ken-Burns: zoom out on incoming slide
+        gsap.fromTo(slides[current],
+          { scale: 1.08 },
+          { scale: 1, duration: 7, ease: 'none' }
+        );
+
+        dots.forEach((d, i) => {
+          d.style.width = i === current ? '28px' : '12px';
+          d.style.background = i === current ? 'var(--blue-cta)' : 'rgba(255,255,255,0.3)';
+        });
+      }
+
+      // Initial ken-burns on slide 0
+      gsap.fromTo(slides[0], { scale: 1.08 }, { scale: 1, duration: 7, ease: 'none' });
+
+      function advance() { goTo((current + 1) % slides.length); }
+      timer = setInterval(advance, 5500);
+
+      // Dot click
+      dots.forEach((d, i) => {
+        d.addEventListener('click', () => {
+          clearInterval(timer);
+          goTo(i);
+          timer = setInterval(advance, 5500);
         });
       });
-      gsap.utils.toArray('.reveal-left').forEach(el => {
-        gsap.to(el, {
-          opacity: 1, x: 0, duration: 1, ease: 'power3.out',
-          scrollTrigger: { trigger: el, start: 'top 84%', once: true }
-        });
-      });
-      gsap.utils.toArray('.reveal-right').forEach(el => {
-        gsap.to(el, {
-          opacity: 1, x: 0, duration: 1, ease: 'power3.out',
-          scrollTrigger: { trigger: el, start: 'top 84%', once: true }
-        });
+    })();
+
+    // ─── INDUSTRIES DRAG-SCROLL + AUTO-GLIDE (seamless) ──────────────────────
+    (function() {
+      const track = document.querySelector('.industries-track');
+      if (!track) return;
+
+      // Duplicate all cards so the loop is invisible
+      const origCards = Array.from(track.children);
+      origCards.forEach(card => {
+        const clone = card.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        track.appendChild(clone);
       });
 
-      /* ── Counters ── */
-      document.querySelectorAll('.counter').forEach(el => {
-        ScrollTrigger.create({
-          trigger: el, start: 'top 82%', once: true,
-          onEnter: () => {
-            gsap.to({ v: 0 }, {
-              v: +el.dataset.target, duration: 2.2, ease: 'power2.out',
-              onUpdate() { el.textContent = Math.round(this.targets()[0].v); }
-            });
+      // Remove margin-right from original last card (it's now in the middle)
+      origCards[origCards.length - 1].style.marginRight = '0';
+
+      const halfWidth = () => track.scrollWidth / 2;
+
+      let isDown = false, startX, scrollStart;
+      let paused = false;
+      const speed = 0.6;
+
+      function glide() {
+        if (!paused) {
+          track.scrollLeft += speed;
+          // Silent reset at the halfway point — seamless loop
+          if (track.scrollLeft >= halfWidth()) {
+            track.scrollLeft -= halfWidth();
+          }
+        }
+        requestAnimationFrame(glide);
+      }
+      requestAnimationFrame(glide);
+
+      // Pause on hover
+      track.addEventListener('mouseenter', () => { paused = true; });
+      track.addEventListener('mouseleave', () => {
+        if (!isDown) paused = false;
+        track.style.cursor = 'grab';
+        isDown = false;
+      });
+
+      // Drag
+      track.addEventListener('mousedown', e => {
+        isDown = true;
+        paused = true;
+        track.style.cursor = 'grabbing';
+        startX = e.pageX - track.getBoundingClientRect().left;
+        scrollStart = track.scrollLeft;
+      });
+      track.addEventListener('mouseup', () => {
+        isDown = false;
+        track.style.cursor = 'grab';
+        setTimeout(() => { paused = false; }, 1200);
+      });
+      track.addEventListener('mousemove', e => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - track.getBoundingClientRect().left;
+        track.scrollLeft = scrollStart - (x - startX) * 1.5;
+      });
+
+      track.style.msOverflowStyle = 'none';
+    })();
+
+    // ─── INDUSTRY CARDS HOVER ─────────────────────────────────────────────────
+    document.querySelectorAll('.ind-card').forEach(card => {
+      const img = card.querySelector('.ind-img');
+      const overlay = card.querySelector('.ind-overlay');
+      const border = card.querySelector('.ind-border');
+
+      card.addEventListener('mouseenter', () => {
+        gsap.to(img, { scale: 1.06, duration: 0.7, ease: 'power2.out' });
+        gsap.to(overlay, { background: 'rgba(29,111,224,0.18)', duration: 0.4 });
+        gsap.to(border, { height: '100%', duration: 0.45, ease: 'power2.out' });
+      });
+      card.addEventListener('mouseleave', () => {
+        gsap.to(img, { scale: 1, duration: 0.7, ease: 'power2.out' });
+        gsap.to(overlay, { background: 'rgba(29,111,224,0.0)', duration: 0.4 });
+        gsap.to(border, { height: '0%', duration: 0.35, ease: 'power2.in' });
+      });
+    });
+
+    // Responsive grids
+    const style = document.createElement('style');
+    style.textContent = `
+      .industries-track::-webkit-scrollbar { display: none; }
+      @media (max-width: 1024px) {
+        .products-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        .expertise-outer { grid-template-columns: 1fr !important; gap: 32px !important; }
+        .expertise-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        .surmesure-grid { grid-template-columns: 1fr !important; }
+        .contact-grid { grid-template-columns: 1fr !important; }
+      }
+      @media (max-width: 768px) {
+        .products-grid { grid-template-columns: 1fr !important; }
+        .expertise-grid { grid-template-columns: 1fr !important; }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // ─── LANGUAGE TOGGLE ──────────────────────────────────────────────────────
+    (function() {
+      const T = {
+        // Nav
+        'nav-products':      { fr: 'Produits ▾',         en: 'Products ▾' },
+        'nav-products-plain':{ fr: 'Produits',            en: 'Products' },
+        'nav-custom':        { fr: 'Sur mesure',          en: 'Custom' },
+        'nav-about':         { fr: 'À propos',            en: 'About' },
+        'cta-quote':         { fr: 'Demander un devis',   en: 'Request a quote' },
+        // Hero
+        'hero-badge': { fr: 'Fièrement Canadien', en: 'Proudly Canadian' },
+        'hero-h1':    { fr: 'Composantes de<br><span style="color:var(--blue-cta);">convoyeur</span> en uréthane',
+                        en: 'Urethane<br><span style="color:var(--blue-cta);">conveyor</span> components' },
+        'hero-p':     { fr: 'Plasthane fabrique des pièces moulées en uréthane de haute qualité pour l\'industrie des convoyeurs à bande. Racleurs, rouleaux guide, lits d\'impact, systèmes de jupes et plus.',
+                        en: 'Plasthane manufactures high-quality urethane molded parts for the belt conveyor industry. Scrapers, guide rollers, impact beds, skirting systems and more.' },
+        'hero-cta2':  { fr: 'Voir nos produits →', en: 'See our products →' },
+        // Stats
+        'stat-since':     { fr: 'Établis depuis',      en: 'Established since' },
+        'stat-products':  { fr: 'Produits',             en: 'Products' },
+        'stat-guaranteed':{ fr: 'Garanti',              en: 'Guaranteed' },
+        'stat-bench':     { fr: "Banc d'essai réel",    en: 'Real test bench' },
+        // Industries
+        'ind-label': { fr: 'Nos marchés', en: 'Our markets' },
+        'ind-h2':    { fr: 'Présents dans<br><span style="color:var(--blue-cta);">chaque industrie</span>',
+                       en: 'Present in<br><span style="color:var(--blue-cta);">every industry</span>' },
+        'ind-hint':  { fr: 'Glissez pour explorer →', en: 'Slide to explore →' },
+        'ind-01':    { fr: 'Mines',                    en: 'Mining' },
+        'ind-02':    { fr: 'Carrières',                en: 'Quarries' },
+        'ind-04':    { fr: 'Installations<br>portuaires', en: 'Port<br>facilities' },
+        'ind-05':    { fr: 'Recyclage',                en: 'Recycling' },
+        'ind-06':    { fr: 'Manutention<br>en vrac',   en: 'Bulk<br>handling' },
+        // Products section
+        'prod-label': { fr: '01 / Catalogue de produits', en: '01 / Product catalogue' },
+        'prod-h2':    { fr: 'Nos <span class="hi">produits</span>', en: 'Our <span class="hi">products</span>' },
+        'prod-all':   { fr: 'Voir tout le catalogue →', en: 'View full catalogue →' },
+        'cta-group-quote': { fr: 'Demander une soumission groupée', en: 'Request a group quote' },
+        // Product names & descriptions
+        'p01-name': { fr: 'Grattoir primaire',                  en: 'Primary scraper' },
+        'p01-desc': { fr: "Lame en uréthane haute résistance à l'abrasion assurant un excellent nettoyage sans endommager la courroie.", en: 'High abrasion-resistant urethane blade for excellent belt cleaning without belt damage.' },
+        'p02-name': { fr: 'Grattoir primaire grade minier',     en: 'Mine-duty primary scraper' },
+        'p02-desc': { fr: 'Lame extra robuste en uréthane pour conditions extrêmes dans le secteur minier.', en: 'Extra heavy-duty urethane blade for extreme mining conditions.' },
+        'p03-name': { fr: 'Grattoir secondaire droit',          en: 'Straight secondary scraper' },
+        'p03-desc': { fr: "Lame en uréthane flexible avec insertions d'acier inoxydable pour un nettoyage fin.", en: 'Flexible urethane blade with stainless steel inserts for fine belt cleaning.' },
+        'p04-name': { fr: 'Grattoir courbé',                    en: 'Curved scraper' },
+        'p04-desc': { fr: "Lame incurvée avec système de pivot, s'adapte aux courroies de retour empreintes.", en: 'Curved blade with pivot system, adapts to return-side belts with trough impressions.' },
+        'p05-name': { fr: 'Grattoir à doigts',                  en: 'Finger-type scraper' },
+        'p05-desc': { fr: 'Doigts flexibles en uréthane pour nettoyage intensif des courroies à surface rugueuse.', en: 'Flexible urethane fingers for intensive cleaning of rough-surface belts.' },
+        'p06-name': { fr: 'Grattoir en V',                      en: 'V-type scraper' },
+        'p06-desc': { fr: 'Nettoyage efficace du brin de retour par déflexion latérale des matériaux.', en: 'Effective return-side cleaning through lateral deflection of material.' },
+        'p07-name': { fr: "Lit d'impact",                       en: 'Impact bed' },
+        'p07-desc': { fr: 'Structure robuste et ajustable pour tout type de convoyeurs à courroie.', en: 'Robust and adjustable structure for all types of belt conveyors.' },
+        'p08-name': { fr: 'Système de jupes',                   en: 'Skirting system' },
+        'p08-desc': { fr: 'Concept d\'étanchéité supérieur pour contrôle des fugitives entre trémie et courroie.', en: 'Superior sealing concept for dust and spillage control between chute and belt.' },
+        'p09-name': { fr: 'Garde de rouleau de retour',         en: 'Return roll guard' },
+        'p09-desc': { fr: "Garde protecteur robuste d'angle rentrant tel que requis par la CSST.", en: 'Robust re-entrant angle guard as required by CSST safety standards.' },
+        'p10-name': { fr: 'Rouleaux guide',                     en: 'Guide rollers' },
+        'p10-desc': { fr: 'Appui latéral en uréthane empêchant le désaxement de la courroie.', en: 'Urethane lateral support preventing belt misalignment.' },
+        'p11-name': { fr: 'Rouleaux de retour sidewall',        en: 'Sidewall return rollers' },
+        'p11-desc': { fr: 'Rouleaux en uréthane durable pour courroie de type beltwall sur arbres rigides.', en: 'Durable urethane rollers for beltwall-type belts on rigid shafts.' },
+        'p12-name': { fr: 'Roues guide',                        en: 'Guide wheels' },
+        'p12-desc': { fr: 'Guidage de courroie à mur corrugé, grand diamètre, vitesse réduite.', en: 'Corrugated wall belt guidance, large diameter, reduced speed.' },
+        // Expertise
+        'exp-label':  { fr: '02 / Pourquoi Plasthane', en: '02 / Why Plasthane' },
+        'exp-h2':     { fr: 'L\'expertise qui fait<br>la <span class="hi">différence</span>',
+                        en: 'The expertise that<br>makes the <span class="hi">difference</span>' },
+        'exp-p':      { fr: 'Nos composantes en uréthane sont conçues pour durer dans des conditions extrêmes — abrasion, chocs, humidité. Chaque produit est développé en collaboration avec nos clients, testé sur un convoyeur grandeur réelle, et fabriqué entièrement au Québec.',
+                        en: 'Our urethane components are designed to last in extreme conditions — abrasion, impact, moisture. Every product is co-developed with our clients, tested on a full-size conveyor, and manufactured entirely in Québec.' },
+        'exp-since':  { fr: 'Fondés',                 en: 'Founded' },
+        'exp-qc':     { fr: 'Fabriqué au Québec',     en: 'Made in Québec' },
+        'exp-prods':  { fr: 'Produits',               en: 'Products' },
+        'exp-link':   { fr: 'À propos de Plasthane →', en: 'About Plasthane →' },
+        'exp1-title': { fr: 'Qualité 100% garantie',         en: '100% quality guarantee' },
+        'exp1-desc':  { fr: 'Tous nos produits sont garantis à 100% contre tout défaut de fabrication.', en: 'All our products are 100% guaranteed against any manufacturing defect.' },
+        'exp2-title': { fr: "Banc d'essai grandeur réelle",  en: 'Full-size test bench' },
+        'exp2-desc':  { fr: 'Tests sur convoyeur réel dans des conditions identiques au terrain.', en: 'Tested on a real conveyor under field-identical conditions.' },
+        'exp3-title': { fr: 'Fabrication sur mesure',        en: 'Custom manufacturing' },
+        'exp3-desc':  { fr: 'Ingénierie, atelier acier et usinage complet sur mesure.', en: 'Engineering, steel fabrication shop and complete custom machining.' },
+        'exp4-title': { fr: 'Fièrement québécois',           en: 'Proudly Québécois' },
+        'exp4-desc':  { fr: 'Fabriqué à Beloeil, Québec — produits de calibre mondial.', en: 'Made in Beloeil, Québec — world-class products.' },
+        // Sur mesure
+        'sm-label': { fr: '03 / Fabrication sur mesure', en: '03 / Custom manufacturing' },
+        'sm-h2':    { fr: 'Pièces <span class="hi">sur mesure</span><br>en uréthane',
+                      en: 'Custom <span class="hi">urethane</span><br>parts' },
+        'sm-p':     { fr: 'Plasthane fabrique des pièces sur mesure en uréthane selon différentes formulations, formes, duretés et couleurs. Dureté disponible : <strong style="color:rgba(255,255,255,0.85);">30 à 90 Duro A</strong>.',
+                      en: 'Plasthane manufactures custom urethane parts in various formulations, shapes, hardnesses and colours. Available hardness: <strong style="color:rgba(255,255,255,0.85);">30 to 90 Shore A</strong>.' },
+        'sm-li1':   { fr: "Rouleaux de convoyeur recouverts d'uréthane",              en: 'Urethane-coated conveyor rollers' },
+        'sm-li2':   { fr: 'Pare-chocs de différents types',                           en: 'Bumpers of various types' },
+        'sm-li3':   { fr: 'Pièces de recouvrement pour mélangeurs, séparateurs à vis, tamis', en: 'Lining parts for mixers, screw separators, screens' },
+        'sm-li4':   { fr: 'Grattoirs de qualité alimentaire',                         en: 'Food-grade scrapers' },
+        'sm-li5':   { fr: 'Pièces avec insertions en céramique et acier inoxydable',  en: 'Parts with ceramic and stainless steel inserts' },
+        'sm-p2':        { fr: "Si vous cherchez une formulation d'uréthane spéciale pour votre application, il nous fera plaisir de vous guider parmi les multiples critères de sélection des résines disponibles. L'uréthane demeure un matériau de premier choix lorsqu'on désire un matériau durable, résistant à l'abrasion, flexible et non dommageable pour des surfaces plus fragiles.",
+                          en: "If you are looking for a special urethane formulation for your application, we will be happy to guide you through the many resin selection criteria available. Urethane is the material of choice when you need something durable, abrasion-resistant, flexible, and non-damaging to more delicate surfaces." },
+        'cta-quote-sm': { fr: 'Demandez une soumission', en: 'Request a quote' },
+        // Contact
+        'ct-label':    { fr: '04 / Nous joindre',  en: '04 / Contact us' },
+        'ct-h2':       { fr: 'Demandez un <span class="hi">devis</span>', en: 'Request a <span class="hi">quote</span>' },
+        'ct-coords':   { fr: 'Coordonnées',         en: 'Contact details' },
+        'form-name':   { fr: 'Nom *',               en: 'Name *' },
+        'form-email':  { fr: 'Courriel *',          en: 'Email *' },
+        'form-phone':  { fr: 'Téléphone',           en: 'Phone' },
+        'form-subject':{ fr: 'Sujet',               en: 'Subject' },
+        'form-submit': { fr: 'Envoyer le message',  en: 'Send message' },
+        // Footer
+        'ft-tagline': { fr: "Fabricant québécois de composantes en uréthane de haute qualité pour l'industrie des convoyeurs à bande.", en: 'Québec manufacturer of high-quality urethane components for the belt conveyor industry.' },
+        'ft-home':    { fr: 'Accueil',    en: 'Home' },
+        'ft-address': { fr: 'Adresse',    en: 'Address' },
+        'ft-phone':   { fr: 'Téléphone',  en: 'Phone' },
+        'ft-copy':    { fr: '© 2025 Plasthane inc. Tous droits réservés. · Québec, Canada', en: '© 2025 Plasthane inc. All rights reserved. · Québec, Canada' },
+      };
+
+      // Placeholder translations (applied to input/textarea[data-i18n-ph])
+      const PH = {
+        'ph-name':    { fr: 'Votre nom',               en: 'Your name' },
+        'ph-email':   { fr: 'courriel@exemple.com',    en: 'email@example.com' },
+        'ph-subject': { fr: 'Sujet de votre demande',  en: 'Subject of your request' },
+        'ph-message': { fr: 'Décrivez votre besoin…',  en: 'Describe your need…' },
+      };
+
+      function applyLang(lang) {
+        // Translate all [data-i18n] elements
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.dataset.i18n;
+          if (T[key] && T[key][lang] !== undefined) {
+            el.innerHTML = T[key][lang];
           }
         });
-      });
+        // Translate placeholders
+        document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+          const key = el.dataset.i18nPh;
+          if (PH[key] && PH[key][lang] !== undefined) {
+            el.placeholder = PH[key][lang];
+          }
+        });
+        // Update lang button text
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+          btn.textContent = lang === 'en' ? 'FR' : 'EN';
+        });
+        // Update page metadata
+        document.documentElement.lang = lang === 'en' ? 'en' : 'fr';
+        document.title = lang === 'en'
+          ? 'Plasthane — Urethane Conveyor Components'
+          : 'Plasthane — Composantes de convoyeur en uréthane';
+        localStorage.setItem('plasthane-lang', lang);
+      }
 
-      /* ── Hero watermark parallax ── */
-      gsap.to('.hero-wm', {
-        y: '25%', ease: 'none',
-        scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
-      });
+      // Apply saved language on load
+      const saved = localStorage.getItem('plasthane-lang');
+      if (saved === 'en') applyLang('en');
 
-      /* ── Stagger why items ── */
-      gsap.utils.toArray('.why-item').forEach((el, i) => {
-        gsap.to(el, {
-          opacity: 1, y: 0, duration: .85, ease: 'power3.out',
-          delay: i * .08,
-          scrollTrigger: { trigger: el, start: 'top 87%', once: true }
+      // Button click handler
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const current = localStorage.getItem('plasthane-lang') || 'fr';
+          applyLang(current === 'fr' ? 'en' : 'fr');
         });
       });
+    })();
 
-    } /* end !NOANIM */
   </script>
-</body>
 
+</body>
 </html>

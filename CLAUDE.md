@@ -1,4 +1,49 @@
-# CLAUDE.md — Frontend Website Rules
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Project Overview
+
+Plasthane is a Québec-based manufacturer of urethane conveyor components (scrapers, rollers, impact beds, etc.). This is a **static HTML website** — no build step, no framework, no bundler. All pages are in French.
+
+## Site Architecture
+
+```
+index.html          — Homepage (hero, expertise, sur-mesure, industries, stats, footer)
+a-propos.html       — About page
+contact.html        — Contact / quote request page
+PRODUITS/
+  index.html        — Products listing grid
+  *.html            — 12 individual product detail pages
+current-website/    — Old site reference (read-only, do not modify)
+inspiration/        — Competitor research (read-only)
+brand_assets/       — logo hq.png (only brand asset currently)
+```
+
+## Design System
+
+**Shared stylesheet:** `plasthane.css` (root) — linked as `href="plasthane.css"` from root pages and `href="../plasthane.css"` from `PRODUITS/*.html`.
+
+**Brand color tokens** (defined as CSS variables in `plasthane.css`):
+- `--navy-dark: #0C1E2F` — primary dark background
+- `--navy-mid: #1B3A5C` — secondary navy
+- `--blue-cta: #1D6FE0` — call-to-action blue
+- `--steel-light: #E8ECF1` — page background
+- `--text-dark: #0F1F33`, `--text-muted: #5A6E82`
+
+**Typography:** Barlow Condensed (display headings, `.f-display`) + DM Sans (body). Both loaded via Google Fonts on every page. Tailwind CSS via CDN supplements the stylesheet.
+
+**Component patterns in `plasthane.css`:** nav, nav-dropdown, btn-a (solid/outline variants), mobile-menu. When adding UI components, extend this file rather than adding `<style>` blocks — or if page-specific, use a `<style>` block in the HTML head.
+
+## Page Template Pattern
+
+Every page shares the same nav (with product dropdown) and footer structure. When editing nav or footer, update all pages — there is no shared include system.
+
+Product detail pages (`PRODUITS/*.html`) all follow the same layout: hero band → product-body grid (image left, specs/features right) → related products strip → CTA → footer.
+
+---
+
+# Frontend Website Rules
 
 ## Always Do First
 - **Invoke the `frontend-design` skill** before writing any frontend code, every session, no exceptions.

@@ -1,318 +1,395 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="brand_assets/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>À propos — Plasthane</title>
-  <script>
-    (function () {
-      const t = localStorage.getItem('plasthane-theme');
-      if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
-    })();
-  </script>
+  <meta name="description" content="Plasthane, fabricant québécois de composantes en uréthane pour convoyeurs à bande, établi à Beloeil depuis 2008.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="plasthane.css">
   <style>
-    .ap-hero {
-      border-bottom: 1px solid var(--border);
-      padding: 120px 32px 56px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .ap-breadcrumb {
-      font-size: 11px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      margin-bottom: 16px;
-    }
-    .ap-breadcrumb a { color: var(--pop); text-decoration: none; }
-    .ap-breadcrumb a:hover { text-decoration: underline; }
-    .ap-h1 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(3rem, 6vw, 5rem);
-      font-weight: 800;
-      text-transform: uppercase;
-      line-height: 1;
-      color: var(--text);
-    }
-    .ap-h1 span { color: var(--pop); }
-    .ap-body {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 72px 32px 96px;
+    /* ─── About content grid ─── */
+    .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 72px;
       align-items: start;
+      max-width: 1200px;
+      margin: 0 auto;
     }
-    .ap-section-label {
-      font-size: 11px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--pop);
-      margin-bottom: 20px;
-    }
-    .ap-text p {
+
+    .about-text p {
       font-size: 15px;
       line-height: 1.8;
-      color: var(--text-dim);
+      color: var(--text-muted);
       margin-bottom: 20px;
     }
-    .ap-text p:last-child { margin-bottom: 0; }
-    .ap-text strong { color: var(--text); font-weight: 600; }
-    .ap-stats {
+
+    .about-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .about-text strong {
+      color: var(--text-dark);
+      font-weight: 600;
+    }
+
+    /* Stats sidebar card */
+    .stats-card {
+      background: var(--navy-dark);
+      padding: 40px;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 2px;
-      margin-bottom: 48px;
     }
-    .ap-stat {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 28px 24px;
+
+    .stats-card-item {
+      padding: 24px 20px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
     }
-    .ap-stat-num {
+
+    .stats-card-num {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 3rem;
-      font-weight: 800;
-      color: var(--text);
+      font-weight: 900;
+      font-size: 42px;
+      color: #fff;
       line-height: 1;
+      letter-spacing: -.02em;
     }
-    .ap-stat-num span { color: var(--pop); font-size: 2rem; }
-    .ap-stat-label {
-      font-size: 12px;
-      letter-spacing: .1em;
+
+    .stats-card-num span {
+      color: var(--blue-cta);
+      font-size: 28px;
+    }
+
+    .stats-card-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .12em;
       text-transform: uppercase;
-      color: var(--text-dim);
+      color: rgba(255,255,255,0.5);
       margin-top: 8px;
     }
-    .ap-values {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
+
+    /* Values grid */
+    .values-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
-    .ap-value {
-      padding: 20px 0;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
+
+    .value-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 36px 32px;
+      transition: transform .2s ease, box-shadow .2s ease;
     }
-    .ap-value:first-child { border-top: 1px solid var(--border); }
-    .ap-value-icon {
-      width: 36px;
-      height: 36px;
-      flex-shrink: 0;
+
+    .value-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(12, 30, 47, 0.08);
+    }
+
+    .value-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--navy-dark);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--pop);
-      margin-top: 2px;
+      margin-bottom: 20px;
     }
-    .ap-value-title {
+
+    .value-icon svg {
+      color: var(--blue-cta);
+    }
+
+    .value-title {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1rem;
       font-weight: 700;
-      letter-spacing: .08em;
+      font-size: 18px;
       text-transform: uppercase;
-      color: var(--text);
-      margin-bottom: 4px;
+      letter-spacing: .04em;
+      color: var(--text-dark);
+      margin-bottom: 8px;
     }
-    .ap-value-desc {
+
+    .value-desc {
       font-size: 14px;
-      line-height: 1.65;
-      color: var(--text-dim);
+      line-height: 1.7;
+      color: var(--text-muted);
     }
-    .ap-cta {
-      margin-top: 48px;
-      padding: 40px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 32px;
+
+    /* CTA band */
+    .cta-band {
+      background: var(--navy-dark);
+      text-align: center;
     }
-    .ap-cta-text {
+
+    .cta-band h2 {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.4rem;
-      font-weight: 700;
+      font-weight: 900;
+      font-size: clamp(32px, 4vw, 48px);
       text-transform: uppercase;
-      color: var(--text);
-      line-height: 1.2;
+      letter-spacing: -.02em;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 28px;
     }
-    .ap-cta-text span { color: var(--pop); }
-    @media (max-width: 900px) {
-      .ap-body { grid-template-columns: 1fr; }
-      .ap-cta { flex-direction: column; align-items: flex-start; }
+
+    .cta-band h2 .hi {
+      color: var(--blue-cta);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+      .values-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+      .values-grid {
+        grid-template-columns: 1fr;
+      }
+      .stats-card {
+        padding: 24px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <nav id="navbar">
-    <a href="index.html" class="nav-logo">
-      <img src="brand_assets/logo hq.png" alt="Plasthane" />
-    </a>
+  <!-- ═══ NAV ═══ -->
+  <nav>
+    <a href="index.html" class="nav-logo"><img src="brand_assets/logo hq.png" alt="Plasthane"></a>
     <ul class="nav-links">
-      <li><a href="produits/index.html">Produits</a></li>
-      <li><a href="#expertise">Expertise</a></li>
-      <li><a href="#sur-mesure">Sur mesure</a></li>
+      <li>
+        <a href="PRODUITS/">Produits ▾</a>
+        <div class="nav-dropdown">
+          <a href="PRODUITS/grattoir-primaire.html">Grattoir primaire</a>
+          <a href="PRODUITS/grattoir-primaire-grade-minier.html">Grattoir primaire grade minier</a>
+          <a href="PRODUITS/grattoir-secondaire-droit.html">Grattoir secondaire droit</a>
+          <a href="PRODUITS/grattoir-courbe.html">Grattoir courbé</a>
+          <a href="PRODUITS/grattoir-a-doigts.html">Grattoir à doigts</a>
+          <a href="PRODUITS/grattoir-en-v.html">Grattoir en V</a>
+          <a href="PRODUITS/lit-dimpact.html">Lit d'impact</a>
+          <a href="PRODUITS/systeme-de-jupes.html">Système de jupes</a>
+          <a href="PRODUITS/garde-de-rouleau-de-retour.html">Garde de rouleau de retour</a>
+          <a href="PRODUITS/rouleaux-guide.html">Rouleaux guide</a>
+          <a href="PRODUITS/rouleaux-de-retour-sidewall.html">Rouleaux de retour sidewall</a>
+          <a href="PRODUITS/roues-guide.html">Roues guide</a>
+        </div>
+      </li>
+      <li><a href="index.html#expertise">Expertise</a></li>
+      <li><a href="index.html#sur-mesure">Sur mesure</a></li>
       <li><a href="a-propos.html">À propos</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
     <div class="nav-right">
-      <button class="lang-btn">FR&nbsp;/&nbsp;EN</button>
-      <button class="theme-toggle" id="themeToggle" aria-label="Basculer le thème">
-        <svg class="icon-sun" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0z" />
-        </svg>
-        <svg class="icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998z" />
-        </svg>
-      </button>
-      <a href="index.html#contact" class="btn-a solid">Obtenir un devis</a>
+      <a href="tel:4504649988" class="nav-phone">450 464-9988</a>
+      <button class="lang-btn">EN</button>
+      <a href="contact.html" class="btn-a solid" style="padding:10px 20px; font-size:11px;">Demander un devis</a>
     </div>
+    <button class="nav-burger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
-  <div style="border-bottom: 1px solid var(--border);">
-    <div class="ap-hero">
-      <div class="ap-breadcrumb"><a href="index.html">Accueil</a> / À propos</div>
-      <h1 class="ap-h1">À <span>propos</span><br>de Plasthane</h1>
-    </div>
+  <!-- Mobile menu -->
+  <div class="mobile-menu" style="display:none; position:fixed; inset:0; top:72px; background:var(--navy-dark); z-index:499; padding:32px 20px; flex-direction:column; gap:24px;">
+    <a href="PRODUITS/" style="color:#fff; text-decoration:none; font-size:16px; font-weight:500;">Produits</a>
+    <a href="index.html#expertise" style="color:#fff; text-decoration:none; font-size:16px; font-weight:500;">Expertise</a>
+    <a href="index.html#sur-mesure" style="color:#fff; text-decoration:none; font-size:16px; font-weight:500;">Sur mesure</a>
+    <a href="a-propos.html" style="color:#fff; text-decoration:none; font-size:16px; font-weight:500;">À propos</a>
+    <a href="contact.html" style="color:#fff; text-decoration:none; font-size:16px; font-weight:500;">Contact</a>
+    <a href="tel:4504649988" style="color:var(--blue-cta); text-decoration:none; font-size:18px; font-weight:700; margin-top:16px;">450 464-9988</a>
+    <a href="contact.html" class="btn-a solid" style="text-align:center; margin-top:8px;">Demander un devis</a>
   </div>
 
-  <div class="ap-body">
-
-    <!-- Left: story -->
-    <div>
-      <div class="ap-section-label">Notre histoire</div>
-      <div class="ap-text">
-        <p>
-          Acquise et déménagée à <strong>Beloeil en 2008</strong> dans de nouveaux locaux, Plasthane n'a cessé d'élaborer et de mettre en marché de nouveaux produits pour plusieurs industries, dont celle des convoyeurs à rouleaux pour le transport de matériel en vrac.
-        </p>
-        <p>
-          Fière du développement de composantes haute qualité — racleurs à bande, rouleaux de guidage, lits d'impact et systèmes de jupes — notre équipe continue de relever de nouveaux défis et est prête à répondre à toutes vos demandes de fabrication de pièces en uréthane, simples ou complexes, en petite ou grande quantité.
-        </p>
-        <p>
-          Notre <strong>département d'ingénierie</strong> est en mesure de vous assister dans le développement de vos produits. Notre atelier de fabrication d'acier et d'usinage vous permet également de bénéficier, à faible coût, de supports mécano-soudés au besoin.
-        </p>
-        <p>
-          Notre équipe est dévouée à vous fournir les meilleurs produits de l'industrie au moindre coût possible. Nous comptons des dizaines de clients satisfaits et aspirons à devenir votre fournisseur de pièces en uréthane.
-        </p>
-      </div>
-
-      <div class="ap-cta">
-        <div class="ap-cta-text">Prêt à travailler<br>avec <span>Plasthane ?</span></div>
-        <a href="index.html#contact" class="btn-a solid">Nous contacter</a>
-      </div>
+  <!-- ═══ HERO ═══ -->
+  <section class="page-hero">
+    <div class="reveal">
+      <div class="breadcrumb"><a href="index.html">Accueil</a> / À propos</div>
+      <h1>À propos de <span class="hi">Plasthane</span></h1>
     </div>
+  </section>
 
-    <!-- Right: stats + values -->
-    <div>
-      <div class="ap-section-label">En chiffres</div>
-      <div class="ap-stats">
-        <div class="ap-stat">
-          <div class="ap-stat-num" style="font-size:2.2rem;">2008</div>
-          <div class="ap-stat-label">Établis à Beloeil</div>
-        </div>
-        <div class="ap-stat">
-          <div class="ap-stat-num">12</div>
-          <div class="ap-stat-label">Produits au catalogue</div>
-        </div>
-        <div class="ap-stat">
-          <div class="ap-stat-num">100<span>%</span></div>
-          <div class="ap-stat-label">Garantie fabrication</div>
-        </div>
-        <div class="ap-stat">
-          <div class="ap-stat-num">1</div>
-          <div class="ap-stat-label">Banc d'essai grandeur réelle</div>
+  <!-- ═══ CONTENT ═══ -->
+  <section class="section-pad" style="background:var(--steel-light);">
+    <div class="about-grid">
+
+      <!-- Left: Company story -->
+      <div class="reveal">
+        <p class="sec-label">Notre histoire</p>
+        <div class="about-text">
+          <p>
+            Acquis et déménagé à <strong>Beloeil en 2008</strong> dans de nouveaux locaux, Plasthane n'a cessé de perfectionner ses produits en développant continuellement de nouvelles composantes pour l'industrie des convoyeurs à bande : grattoirs (racleurs), rouleaux guide et système de jupes.
+          </p>
+          <p>
+            Notre <strong>département d'ingénierie</strong> assiste les clients dans le développement de produits.
+          </p>
+          <p>
+            Atelier de fabrication d'acier et d'usinage pour soutiens mécaniques soudés.
+          </p>
+          <p>
+            Des dizaines de clients satisfaits — notre but est d'offrir les meilleurs produits au meilleur coût.
+          </p>
         </div>
       </div>
 
-      <div class="ap-section-label" style="margin-top: 48px;">Nos engagements</div>
-      <div class="ap-values">
-        <div class="ap-value">
-          <div class="ap-value-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
+      <!-- Right: Stats sidebar -->
+      <div class="reveal">
+        <div class="stats-card">
+          <div class="stats-card-item">
+            <div class="stats-card-num" style="font-size:36px;">2008</div>
+            <div class="stats-card-label">Établis à Beloeil</div>
           </div>
-          <div>
-            <div class="ap-value-title">Qualité 100% garantie</div>
-            <div class="ap-value-desc">Chaque pièce est garantie contre tout défaut de matériaux et de fabrication — prix compétitifs, délais respectés.</div>
+          <div class="stats-card-item">
+            <div class="stats-card-num">12</div>
+            <div class="stats-card-label">Produits au catalogue</div>
           </div>
-        </div>
-        <div class="ap-value">
-          <div class="ap-value-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1 1 .03 2.798-1.4 2.556a48.29 48.29 0 01-4.617-.981M5 14.5l-1.42.426c-1.43.241-2.4-1.556-1.4-2.556L5 9.75" />
-            </svg>
+          <div class="stats-card-item">
+            <div class="stats-card-num">100<span>%</span></div>
+            <div class="stats-card-label">Garantie fabrication</div>
           </div>
-          <div>
-            <div class="ap-value-title">Banc d'essai grandeur réelle</div>
-            <div class="ap-value-desc">Notre convoyeur à bande pleine grandeur nous permet de tester et comparer chaque formulation d'uréthane avant livraison.</div>
-          </div>
-        </div>
-        <div class="ap-value">
-          <div class="ap-value-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" />
-            </svg>
-          </div>
-          <div>
-            <div class="ap-value-title">Fabrication sur mesure</div>
-            <div class="ap-value-desc">Pièces hors catalogue, recouvrements et formulations spéciales selon vos dessins et conditions d'opération.</div>
-          </div>
-        </div>
-        <div class="ap-value">
-          <div class="ap-value-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /><path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-            </svg>
-          </div>
-          <div>
-            <div class="ap-value-title">Fièrement québécois</div>
-            <div class="ap-value-desc">Établis à Beloeil, Québec depuis 2008 — manufacturier canadien au service des industries minières et manufacturières.</div>
+          <div class="stats-card-item">
+            <div class="stats-card-num">1</div>
+            <div class="stats-card-label">Banc d'essai grandeur réelle</div>
           </div>
         </div>
       </div>
+
     </div>
+  </section>
 
-  </div>
+  <!-- ═══ VALUES ═══ -->
+  <section class="section-pad" style="background:var(--steel-surface);">
+    <div style="max-width:1200px; margin:0 auto 48px;">
+      <p class="sec-label reveal">Nos engagements</p>
+      <h2 class="sec-title reveal">Nos <span class="hi">valeurs</span></h2>
+    </div>
+    <div class="values-grid">
 
+      <div class="value-card reveal">
+        <div class="value-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <div class="value-title">Qualité 100% garantie</div>
+        <div class="value-desc">Tous nos produits sont garantis à 100% contre défauts de matériaux et de fabrication.</div>
+      </div>
+
+      <div class="value-card reveal">
+        <div class="value-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1 1 .03 2.798-1.4 2.556a48.29 48.29 0 01-4.617-.981M5 14.5l-1.42.426c-1.43.241-2.4-1.556-1.4-2.556L5 9.75" />
+          </svg>
+        </div>
+        <div class="value-title">Banc d'essai grandeur réelle</div>
+        <div class="value-desc">Tester dans des conditions identiques au terrain grâce à notre convoyeur à bande pleine grandeur.</div>
+      </div>
+
+      <div class="value-card reveal">
+        <div class="value-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" />
+          </svg>
+        </div>
+        <div class="value-title">Fabrication sur mesure</div>
+        <div class="value-desc">Département d'ingénierie et atelier de fabrication d'acier pour répondre à vos besoins spécifiques.</div>
+      </div>
+
+      <div class="value-card reveal">
+        <div class="value-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+          </svg>
+        </div>
+        <div class="value-title">Fièrement québécois</div>
+        <div class="value-desc">Contribuer à l'industrie manufacturière canadienne depuis Beloeil, Québec.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══ -->
+  <section class="cta-band section-pad" style="padding-top:80px; padding-bottom:80px;">
+    <div class="reveal">
+      <h2>Prêt à travailler avec <span class="hi">Plasthane?</span></h2>
+      <a href="contact.html" class="btn-a solid">Nous contacter</a>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
   <footer>
-    <div class="ft-left">
-      <div class="ft-logo"><img src="brand_assets/logo hq.png" alt="Plasthane" /></div>
-      <div class="ft-copy">© 2026 Plasthane. Tous droits réservés. · Québec, Canada</div>
+    <div class="ft-grid">
+      <div>
+        <div class="ft-logo"><img src="brand_assets/logo hq.png" alt="Plasthane"></div>
+        <p class="ft-tagline">Fabricant québécois de composantes en uréthane de haute qualité pour l'industrie des convoyeurs à bande.</p>
+      </div>
+      <div>
+        <p class="ft-heading">Navigation</p>
+        <ul class="ft-nav">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="PRODUITS/">Produits</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="ft-heading">Contact</p>
+        <div class="ft-contact-item"><strong>Adresse</strong><br>546, des Forges<br>Beloeil, QC J3G 4S5</div>
+        <div class="ft-contact-item"><strong>Téléphone</strong><br><a href="tel:4504649988">450 464-9988</a></div>
+        <div class="ft-contact-item"><strong>Fax</strong><br>450 446-2378</div>
+        <div class="ft-contact-item"><a href="mailto:simon@plasthane.com">simon@plasthane.com</a></div>
+      </div>
     </div>
-    <div class="ft-links">
-      <a href="produits/index.html">Produits</a>
-      <a href="index.html#sur-mesure">Sur mesure</a>
-      <a href="a-propos.html">À propos</a>
-      <a href="index.html#contact">Contact</a>
-      <a href="#">EN</a>
+    <div class="ft-bar">
+      <span class="ft-copy">&copy; 2025 Plasthane inc. Tous droits réservés. &middot; Québec, Canada</span>
     </div>
   </footer>
 
+  <!-- ═══ SCRIPTS ═══ -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script>
-    document.getElementById('themeToggle').addEventListener('click', () => {
-      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      if (isDark) {
-        document.documentElement.removeAttribute('data-theme');
-        localStorage.setItem('plasthane-theme', 'light');
-      } else {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('plasthane-theme', 'dark');
-      }
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Reveal animations
+    document.querySelectorAll('.reveal').forEach(el => {
+      gsap.to(el, {
+        scrollTrigger: { trigger: el, start: 'top 88%', once: true },
+        opacity: 1, y: 0, duration: 0.7, ease: 'power2.out'
+      });
     });
-    const nav = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 20);
-    });
+
+    // Mobile menu toggle
+    const burger = document.querySelector('.nav-burger');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    if (burger && mobileMenu) {
+      burger.addEventListener('click', () => {
+        const isOpen = mobileMenu.style.display === 'flex';
+        mobileMenu.style.display = isOpen ? 'none' : 'flex';
+      });
+    }
   </script>
+
 </body>
 </html>
