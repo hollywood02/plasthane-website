@@ -94,6 +94,14 @@ nav {
   justify-content: space-between;
   background: var(--navy-dark);
   border-bottom: 1px solid rgba(255,255,255,0.08);
+  transition: background 0.35s ease, backdrop-filter 0.35s ease, border-color 0.35s ease;
+}
+
+nav.scrolled {
+  background: rgba(12, 30, 47, 0.45);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  border-bottom-color: rgba(255,255,255,0.05);
 }
 
 .nav-logo img {
