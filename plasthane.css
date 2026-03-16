@@ -99,6 +99,16 @@ nav {
   -webkit-transform: translateZ(0);
 }
 
+/* Fill the notch / status bar area with the nav background */
+nav::before {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  bottom: 100%;
+  height: env(safe-area-inset-top);
+  background: inherit;
+}
+
 nav.scrolled {
   background: rgba(12, 30, 47, 0.45);
   backdrop-filter: blur(24px) saturate(200%);
