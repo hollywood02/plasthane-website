@@ -116,6 +116,9 @@ nav.scrolled {
   border-bottom-color: rgba(255,255,255,0.05);
 }
 
+.nav-logo {
+  flex-shrink: 0;
+}
 .nav-logo img {
   height: 38px;
   filter: brightness(10);
