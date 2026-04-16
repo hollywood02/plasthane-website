@@ -139,7 +139,7 @@
             <input type="hidden" name="access_key" value="2084f1f5-aab1-414e-90ba-6fb440d00de8">
             <input type="hidden" name="subject" value="Demande de devis — plasthane.com">
             <input type="hidden" name="from_name" value="Plasthane Devis">
-            <input type="hidden" name="redirect" value="https://www.plasthane.com/PRODUITS/?success=1">
+            <input type="hidden" name="botcheck" value="">
             <div class="f-group" style="margin-bottom:16px;">
               <label class="f-label">Nom *</label>
               <input type="text" name="nom" required class="f-input" />
@@ -247,6 +247,36 @@
     // Scroll nav
     window.addEventListener('scroll', () => {
       document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 60);
+    });
+  </script>
+
+  <!-- Toast -->
+  <div class="form-toast" id="formToast">
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="14" fill="#34A853"/><path d="M8 14.5l3.5 3.5 8.5-8.5" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span id="toastMsg">Message envoyé</span>
+  </div>
+  <script>
+    document.querySelectorAll('form[action*="web3forms"]').forEach(form => {
+      form.addEventListener('submit', async e => {
+        e.preventDefault();
+        const btn = form.querySelector('button[type="submit"]');
+        btn.disabled = true;
+        btn.style.opacity = '.6';
+        try {
+          const res = await fetch(form.action, { method: 'POST', body: new FormData(form) });
+          const data = await res.json();
+          if (data.success) {
+            const lang = localStorage.getItem('plasthane-lang') || 'fr';
+            document.getElementById('toastMsg').textContent = lang === 'en' ? 'Message sent' : 'Message envoyé';
+            const toast = document.getElementById('formToast');
+            toast.classList.add('show');
+            form.reset();
+            setTimeout(() => toast.classList.remove('show'), 4000);
+          }
+        } catch(err) {}
+        btn.disabled = false;
+        btn.style.opacity = '';
+      });
     });
   </script>
 
