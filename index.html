@@ -517,30 +517,34 @@
         <a href="mailto:simon@plasthane.com" style="font-size:15px; color:var(--blue-cta); text-decoration:none; font-weight:500;">simon@plasthane.com</a>
       </div>
 
-      <form class="reveal" style="display:flex; flex-direction:column; gap:20px;">
+      <form action="https://api.web3forms.com/submit" method="POST" class="reveal" style="display:flex; flex-direction:column; gap:20px;">
+        <input type="hidden" name="access_key" value="2084f1f5-aab1-414e-90ba-6fb440d00de8">
+        <input type="hidden" name="subject" value="Nouveau message — plasthane.com (Accueil)">
+        <input type="hidden" name="from_name" value="Plasthane Contact">
+        <input type="hidden" name="redirect" value="https://www.plasthane.com/?success=1">
         <div class="form-2col" style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
           <div class="f-group">
             <label class="f-label" data-i18n="form-name">Nom *</label>
-            <input type="text" class="f-input" data-i18n-ph="ph-name" placeholder="Votre nom" required>
+            <input type="text" name="nom" class="f-input" data-i18n-ph="ph-name" placeholder="Votre nom" required>
           </div>
           <div class="f-group">
             <label class="f-label" data-i18n="form-email">Courriel *</label>
-            <input type="email" class="f-input" data-i18n-ph="ph-email" placeholder="courriel@exemple.com" required>
+            <input type="email" name="courriel" class="f-input" data-i18n-ph="ph-email" placeholder="courriel@exemple.com" required>
           </div>
         </div>
         <div class="form-2col" style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
           <div class="f-group">
             <label class="f-label" data-i18n="form-phone">Téléphone</label>
-            <input type="tel" class="f-input" placeholder="450 000-0000">
+            <input type="tel" name="telephone" class="f-input" placeholder="450 000-0000">
           </div>
           <div class="f-group">
             <label class="f-label" data-i18n="form-subject">Sujet</label>
-            <input type="text" class="f-input" data-i18n-ph="ph-subject" placeholder="Sujet de votre demande">
+            <input type="text" name="sujet" class="f-input" data-i18n-ph="ph-subject" placeholder="Sujet de votre demande">
           </div>
         </div>
         <div class="f-group">
           <label class="f-label">Message</label>
-          <textarea class="f-input" data-i18n-ph="ph-message" placeholder="Décrivez votre besoin…"></textarea>
+          <textarea name="message" class="f-input" data-i18n-ph="ph-message" placeholder="Décrivez votre besoin…"></textarea>
         </div>
         <button type="submit" class="btn-a solid" style="align-self:flex-start;" data-i18n="form-submit">Envoyer le message</button>
       </form>

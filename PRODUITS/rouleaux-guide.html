@@ -135,7 +135,11 @@
       <div>
         <div class="quote-card reveal">
           <h3 style="font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:20px; text-transform:uppercase; margin-bottom:24px; color:var(--text-dark);">Demander un devis</h3>
-          <form action="#" method="post">
+          <form action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="2084f1f5-aab1-414e-90ba-6fb440d00de8">
+            <input type="hidden" name="subject" value="Demande de devis — plasthane.com">
+            <input type="hidden" name="from_name" value="Plasthane Devis">
+            <input type="hidden" name="redirect" value="https://www.plasthane.com/PRODUITS/?success=1">
             <div class="f-group" style="margin-bottom:16px;">
               <label class="f-label">Nom *</label>
               <input type="text" name="nom" required class="f-input" />
