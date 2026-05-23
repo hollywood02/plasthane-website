@@ -1,0 +1,824 @@
+{
+  "redirects": [
+    {
+      "source": "/en",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/en/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-manufacturer",
+      "destination": "/a-propos.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-manufacturer/",
+      "destination": "/a-propos.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/contact-conveyor-components-manufacturer",
+      "destination": "/contact.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/contact-conveyor-components-manufacturer/",
+      "destination": "/contact.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/custom-conveyor-components-parts",
+      "destination": "/#sur-mesure",
+      "permanent": true
+    },
+    {
+      "source": "/en/custom-conveyor-components-parts/",
+      "destination": "/#sur-mesure",
+      "permanent": true
+    },
+    {
+      "source": "/en/news-conveyor-components",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/en/news-conveyor-components/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-cleaners-scrapers-rolls",
+      "destination": "/PRODUITS/",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-cleaners-scrapers-rolls/",
+      "destination": "/PRODUITS/",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-cleaners-scrapers-rolls/conveyor-primary-cleaner-scraper",
+      "destination": "/PRODUITS/grattoir-primaire.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-cleaners-scrapers-rolls/conveyor-primary-cleaner-scraper/",
+      "destination": "/PRODUITS/grattoir-primaire.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-cleaners-scrapers-rolls/conveyor-mine-duty-primary-cleaner-scraper",
+      "destination": "/PRODUITS/grattoir-primaire-grade-minier.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-cleaners-scrapers-rolls/conveyor-mine-duty-primary-cleaner-scraper/",
+      "destination": "/PRODUITS/grattoir-primaire-grade-minier.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-cleaners-scrapers-rolls/conveyor-primary-cleaner-scraper-mine-duty",
+      "destination": "/PRODUITS/grattoir-primaire-grade-minier.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-cleaners-scrapers-rolls/conveyor-primary-cleaner-scraper-mine-duty/",
+      "destination": "/PRODUITS/grattoir-primaire-grade-minier.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-cleaners-scrapers-rolls/conveyor-v-plow-cleaner-scraper",
+      "destination": "/PRODUITS/grattoir-en-v.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-cleaners-scrapers-rolls/conveyor-v-plow-cleaner-scraper/",
+      "destination": "/PRODUITS/grattoir-en-v.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-cleaners-scrapers-rolls/conveyor-straight-secondary-cleaner-scraper",
+      "destination": "/PRODUITS/grattoir-secondaire-droit.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-cleaners-scrapers-rolls/conveyor-straight-secondary-cleaner-scraper/",
+      "destination": "/PRODUITS/grattoir-secondaire-droit.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-cleaners-scrapers-rolls/conveyor-secondary-cleaner-straight-scraper",
+      "destination": "/PRODUITS/grattoir-secondaire-droit.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-cleaners-scrapers-rolls/conveyor-secondary-cleaner-straight-scraper/",
+      "destination": "/PRODUITS/grattoir-secondaire-droit.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-cleaners-scrapers-rolls/conveyor-curved-cleaner-scraper",
+      "destination": "/PRODUITS/grattoir-courbe.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-cleaners-scrapers-rolls/conveyor-curved-cleaner-scraper/",
+      "destination": "/PRODUITS/grattoir-courbe.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-cleaners-scrapers-rolls/conveyor-secondary-cleaner-curved-scraper",
+      "destination": "/PRODUITS/grattoir-courbe.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-cleaners-scrapers-rolls/conveyor-secondary-cleaner-curved-scraper/",
+      "destination": "/PRODUITS/grattoir-courbe.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-cleaners-scrapers-rolls/conveyor-finger-type-cleaner",
+      "destination": "/PRODUITS/grattoir-a-doigts.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-cleaners-scrapers-rolls/conveyor-finger-type-cleaner/",
+      "destination": "/PRODUITS/grattoir-a-doigts.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-cleaners-scrapers-rolls/conveyor-impact-bed",
+      "destination": "/PRODUITS/lit-dimpact.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-cleaners-scrapers-rolls/conveyor-impact-bed/",
+      "destination": "/PRODUITS/lit-dimpact.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-cleaners-scrapers-rolls/conveyor-skirting-system",
+      "destination": "/PRODUITS/systeme-de-jupes.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-cleaners-scrapers-rolls/conveyor-skirting-system/",
+      "destination": "/PRODUITS/systeme-de-jupes.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-cleaners-scrapers-rolls/conveyor-return-roll-guard",
+      "destination": "/PRODUITS/garde-de-rouleau-de-retour.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-cleaners-scrapers-rolls/conveyor-return-roll-guard/",
+      "destination": "/PRODUITS/garde-de-rouleau-de-retour.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-cleaners-scrapers-rolls/conveyor-guide-rollers",
+      "destination": "/PRODUITS/rouleaux-guide.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-cleaners-scrapers-rolls/conveyor-guide-rollers/",
+      "destination": "/PRODUITS/rouleaux-guide.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-cleaners-scrapers-rolls/conveyor-sidewall-stub-idlers",
+      "destination": "/PRODUITS/rouleaux-de-retour-sidewall.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-cleaners-scrapers-rolls/conveyor-sidewall-stub-idlers/",
+      "destination": "/PRODUITS/rouleaux-de-retour-sidewall.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-cleaners-scrapers-rolls/conveyor-return-roll-sidewall",
+      "destination": "/PRODUITS/rouleaux-de-retour-sidewall.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-cleaners-scrapers-rolls/conveyor-return-roll-sidewall/",
+      "destination": "/PRODUITS/rouleaux-de-retour-sidewall.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-cleaners-scrapers-rolls/conveyor-belt-guiding-wheels",
+      "destination": "/PRODUITS/roues-guide.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-cleaners-scrapers-rolls/conveyor-belt-guiding-wheels/",
+      "destination": "/PRODUITS/roues-guide.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-cleaners-scrapers-rolls/conveyor-guiding-wheels",
+      "destination": "/PRODUITS/roues-guide.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-cleaners-scrapers-rolls/conveyor-guiding-wheels/",
+      "destination": "/PRODUITS/roues-guide.html",
+      "permanent": true
+    },
+    {
+      "source": "/pieces-convoyeur-grattoirs-rouleaux",
+      "destination": "/PRODUITS/",
+      "permanent": true
+    },
+    {
+      "source": "/pieces-convoyeur-grattoirs-rouleaux/",
+      "destination": "/PRODUITS/",
+      "permanent": true
+    },
+    {
+      "source": "/pieces-convoyeur-grattoirs-rouleaux/grattoir-primaire-convoyeur",
+      "destination": "/PRODUITS/grattoir-primaire.html",
+      "permanent": true
+    },
+    {
+      "source": "/pieces-convoyeur-grattoirs-rouleaux/grattoir-primaire-convoyeur/",
+      "destination": "/PRODUITS/grattoir-primaire.html",
+      "permanent": true
+    },
+    {
+      "source": "/pieces-convoyeur-grattoirs-rouleaux/grattoir-primaire-grade-minier-convoyeur",
+      "destination": "/PRODUITS/grattoir-primaire-grade-minier.html",
+      "permanent": true
+    },
+    {
+      "source": "/pieces-convoyeur-grattoirs-rouleaux/grattoir-primaire-grade-minier-convoyeur/",
+      "destination": "/PRODUITS/grattoir-primaire-grade-minier.html",
+      "permanent": true
+    },
+    {
+      "source": "/pieces-convoyeur-grattoirs-rouleaux/grattoir-en-v-convoyeur",
+      "destination": "/PRODUITS/grattoir-en-v.html",
+      "permanent": true
+    },
+    {
+      "source": "/pieces-convoyeur-grattoirs-rouleaux/grattoir-en-v-convoyeur/",
+      "destination": "/PRODUITS/grattoir-en-v.html",
+      "permanent": true
+    },
+    {
+      "source": "/pieces-convoyeur-grattoirs-rouleaux/grattoir-secondaire-droit-convoyeur",
+      "destination": "/PRODUITS/grattoir-secondaire-droit.html",
+      "permanent": true
+    },
+    {
+      "source": "/pieces-convoyeur-grattoirs-rouleaux/grattoir-secondaire-droit-convoyeur/",
+      "destination": "/PRODUITS/grattoir-secondaire-droit.html",
+      "permanent": true
+    },
+    {
+      "source": "/pieces-convoyeur-grattoirs-rouleaux/grattoir-courbe-convoyeur",
+      "destination": "/PRODUITS/grattoir-courbe.html",
+      "permanent": true
+    },
+    {
+      "source": "/pieces-convoyeur-grattoirs-rouleaux/grattoir-courbe-convoyeur/",
+      "destination": "/PRODUITS/grattoir-courbe.html",
+      "permanent": true
+    },
+    {
+      "source": "/pieces-convoyeur-grattoirs-rouleaux/grattoir-a-doigts-convoyeur",
+      "destination": "/PRODUITS/grattoir-a-doigts.html",
+      "permanent": true
+    },
+    {
+      "source": "/pieces-convoyeur-grattoirs-rouleaux/grattoir-a-doigts-convoyeur/",
+      "destination": "/PRODUITS/grattoir-a-doigts.html",
+      "permanent": true
+    },
+    {
+      "source": "/pieces-convoyeur-grattoirs-rouleaux/lit-dimpact-convoyeur",
+      "destination": "/PRODUITS/lit-dimpact.html",
+      "permanent": true
+    },
+    {
+      "source": "/pieces-convoyeur-grattoirs-rouleaux/lit-dimpact-convoyeur/",
+      "destination": "/PRODUITS/lit-dimpact.html",
+      "permanent": true
+    },
+    {
+      "source": "/pieces-convoyeur-grattoirs-rouleaux/systeme-de-jupes-convoyeur",
+      "destination": "/PRODUITS/systeme-de-jupes.html",
+      "permanent": true
+    },
+    {
+      "source": "/pieces-convoyeur-grattoirs-rouleaux/systeme-de-jupes-convoyeur/",
+      "destination": "/PRODUITS/systeme-de-jupes.html",
+      "permanent": true
+    },
+    {
+      "source": "/pieces-convoyeur-grattoirs-rouleaux/garde-de-rouleau-de-retour-convoyeur",
+      "destination": "/PRODUITS/garde-de-rouleau-de-retour.html",
+      "permanent": true
+    },
+    {
+      "source": "/pieces-convoyeur-grattoirs-rouleaux/garde-de-rouleau-de-retour-convoyeur/",
+      "destination": "/PRODUITS/garde-de-rouleau-de-retour.html",
+      "permanent": true
+    },
+    {
+      "source": "/pieces-convoyeur-grattoirs-rouleaux/rouleaux-guide-convoyeur",
+      "destination": "/PRODUITS/rouleaux-guide.html",
+      "permanent": true
+    },
+    {
+      "source": "/pieces-convoyeur-grattoirs-rouleaux/rouleaux-guide-convoyeur/",
+      "destination": "/PRODUITS/rouleaux-guide.html",
+      "permanent": true
+    },
+    {
+      "source": "/pieces-convoyeur-grattoirs-rouleaux/rouleaux-de-retour-convoyeur-sidewall",
+      "destination": "/PRODUITS/rouleaux-de-retour-sidewall.html",
+      "permanent": true
+    },
+    {
+      "source": "/pieces-convoyeur-grattoirs-rouleaux/rouleaux-de-retour-convoyeur-sidewall/",
+      "destination": "/PRODUITS/rouleaux-de-retour-sidewall.html",
+      "permanent": true
+    },
+    {
+      "source": "/pieces-convoyeur-grattoirs-rouleaux/roues-guide-convoyeur",
+      "destination": "/PRODUITS/roues-guide.html",
+      "permanent": true
+    },
+    {
+      "source": "/pieces-convoyeur-grattoirs-rouleaux/roues-guide-convoyeur/",
+      "destination": "/PRODUITS/roues-guide.html",
+      "permanent": true
+    },
+    {
+      "source": "/manufacturier-pieces-convoyeur",
+      "destination": "/a-propos.html",
+      "permanent": true
+    },
+    {
+      "source": "/manufacturier-pieces-convoyeur/",
+      "destination": "/a-propos.html",
+      "permanent": true
+    },
+    {
+      "source": "/contact-manufacturier-pieces-convoyeur",
+      "destination": "/contact.html",
+      "permanent": true
+    },
+    {
+      "source": "/contact-manufacturier-pieces-convoyeur/",
+      "destination": "/contact.html",
+      "permanent": true
+    },
+    {
+      "source": "/pieces-convoyeur-sur-mesure",
+      "destination": "/#sur-mesure",
+      "permanent": true
+    },
+    {
+      "source": "/pieces-convoyeur-sur-mesure/",
+      "destination": "/#sur-mesure",
+      "permanent": true
+    },
+    {
+      "source": "/nouveautes-pieces-convoyeur",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/nouveautes-pieces-convoyeur/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/amelioration-de-la-performance-dune-souffleuse-neige",
+      "destination": "/#sur-mesure",
+      "permanent": true
+    },
+    {
+      "source": "/amelioration-de-la-performance-dune-souffleuse-neige/",
+      "destination": "/#sur-mesure",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/themes/twentytwelve-child/images/plasthane-logo-white.png",
+      "destination": "/plasthane-logo-white.png",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/11/pieces-convoyeur-grattoir-convoyeur-rouleaux-guides-01.jpg",
+      "destination": "/PRODUITS/pieces-convoyeur-grattoir-convoyeur-rouleaux-guides-01.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/11/conveyor-c1.jpg",
+      "destination": "/images-optimized/hero/overland-conveyor.webp",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/11/belt-conveyor-01.jpg",
+      "destination": "/images-optimized/hero/overland-conveyor.webp",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/11/custom-conveyor-components-01.jpg",
+      "destination": "/images-optimized/sections/conveyor-components-modern.webp",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/conveyor-components-conveyor-parts-bg-012.jpg",
+      "destination": "/images-optimized/hero/overland-conveyor.webp",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/conveyor-components-conveyor-parts-bg-012.jpg&",
+      "destination": "/images-optimized/hero/overland-conveyor.webp",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/11/conveyor-scrapper-grattoir-convoyeur-primary-big.jpg",
+      "destination": "/PRODUITS/GRATTOIR-PRIMAIRE/conveyor-scrapper-grattoir-convoyeur-primary-big.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/11/conveyor-scrapper-grattoir-convoyeur-primary.jpg",
+      "destination": "/PRODUITS/GRATTOIR-PRIMAIRE/conveyor-scrapper-grattoir-convoyeur-primary-big.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/11/conveyor-scrapper-grattoir-convoyeur-primary-mine-duty1.jpg",
+      "destination": "/PRODUITS/Grattoir%20primaire%20grade%20minier/conveyor-scrapper-grattoir-convoyeur-primary-mine-duty-big.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/11/conveyor-scrapper-grattoir-convoyeur-straight.jpg",
+      "destination": "/PRODUITS/Grattoir%20secondaire%20droit/conveyor-scrapper-grattoir-convoyeur-straight-big.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/11/conveyor-scrapper-grattoir-convoyeur-curved1.jpg",
+      "destination": "/PRODUITS/Grattoir%20courb%C3%A9/conveyor-scrapper-grattoir-convoyeur-curved-big.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/11/conveyor-scrapper-grattoir-convoyeur-finger-type1.jpg",
+      "destination": "/PRODUITS/Grattoir%20%C3%A0%20doigts/conveyor-scrapper-grattoir-convoyeur-finger-type-big.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/11/conveyor-scrapper-grattoir-convoyeur-v1.jpg",
+      "destination": "/PRODUITS/Grattoir%20en%20V/conveyor-scrapper-grattoir-convoyeur-v-big.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/11/conveyor-scrapper-grattoir-convoyeur-impact-bed.jpg",
+      "destination": "/PRODUITS/Lit%20d%E2%80%99impact/conveyor-scrapper-grattoir-convoyeur-impact-bed-big.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/11/conveyor-scrapper-grattoir-convoyeur-skirting-system1.jpg",
+      "destination": "/PRODUITS/Syst%C3%A8me%20de%20jupes/conveyor-scrapper-grattoir-convoyeur-skirting-system-big.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/11/conveyor-scrapper-grattoir-convoyeur-return-roll-guard1.jpg",
+      "destination": "/PRODUITS/Garde%20de%20rouleau%20de%20retour/conveyor-scrapper-grattoir-convoyeur-return-roll-guard-big.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/11/conveyor-scrapper-grattoir-convoyeur-guide-rolls1.jpg",
+      "destination": "/PRODUITS/Rouleaux%20guide%20/conveyor-scrapper-grattoir-convoyeur-guide-rolls-big1.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/11/conveyor-scrapper-grattoir-convoyeur-sidewall-stub-idler1.jpg",
+      "destination": "/PRODUITS/Rouleaux%20de%20retour%20sidewall/conveyor-scrapper-grattoir-convoyeur-sidewall-stub-idler-big.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/11/conveyor-scrapper-grattoir-convoyeur-guiding-wheels1.jpg",
+      "destination": "/PRODUITS/Roues%20guide/conveyor-scrapper-grattoir-convoyeur-guiding-wheels-big1.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/grattoir_hd_xl_fr.pdf",
+      "destination": "/PRODUITS/GRATTOIR-PRIMAIRE/Fiche-technique.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/grattoir_hd_xl_fr.pdf&",
+      "destination": "/PRODUITS/GRATTOIR-PRIMAIRE/Fiche-technique.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/pxl.pdf",
+      "destination": "/PRODUITS/GRATTOIR-PRIMAIRE/dessin.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/pxl.pdf&",
+      "destination": "/PRODUITS/GRATTOIR-PRIMAIRE/dessin.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/pxl.dwg",
+      "destination": "/PRODUITS/GRATTOIR-PRIMAIRE/pxl.dwg",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/fiche-technique.pdf",
+      "destination": "/PRODUITS/Grattoir%20primaire%20grade%20minier/fiche-technique.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/mine_duty_scraper.dwg",
+      "destination": "/PRODUITS/Grattoir%20primaire%20grade%20minier/mine_duty_scraper.dwg",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/grattoir_sr_fr.pdf",
+      "destination": "/PRODUITS/Grattoir%20secondaire%20droit/grattoir_sr_fr.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/psr.pdf",
+      "destination": "/PRODUITS/Grattoir%20secondaire%20droit/psr.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/psr.dwg",
+      "destination": "/PRODUITS/Grattoir%20secondaire%20droit/psr.dwg",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/grattoir_sc_fr.pdf",
+      "destination": "/PRODUITS/Grattoir%20courb%C3%A9/grattoir_sc_fr.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/psc.pdf",
+      "destination": "/PRODUITS/Grattoir%20courb%C3%A9/psc.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/psc.dwg",
+      "destination": "/PRODUITS/Grattoir%20courb%C3%A9/psc.dwg",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/grattoir_sf_fr.pdf",
+      "destination": "/PRODUITS/Grattoir%20%C3%A0%20doigts/grattoir_sf_fr.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/psf.pdf",
+      "destination": "/PRODUITS/Grattoir%20%C3%A0%20doigts/psf.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/psf.dwg",
+      "destination": "/PRODUITS/Grattoir%20%C3%A0%20doigts/psf.dwg",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/v-plow.pdf",
+      "destination": "/PRODUITS/Grattoir%20en%20V/v-plow.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/v_plow.dwg",
+      "destination": "/PRODUITS/Grattoir%20en%20V/v_plow.dwg",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/lit_impact_fr.pdf",
+      "destination": "/PRODUITS/Lit%20d%E2%80%99impact/lit_impact_fr.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/impact_bed_4.pdf",
+      "destination": "/PRODUITS/Lit%20d%E2%80%99impact/impact_bed_4.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/impact_bed_4.dwg",
+      "destination": "/PRODUITS/Lit%20d%E2%80%99impact/impact_bed_4.dwg",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/sk3_fr.pdf",
+      "destination": "/PRODUITS/Syst%C3%A8me%20de%20jupes/sk3_fr.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/sk3_eng.pdf",
+      "destination": "/PRODUITS/Syst%C3%A8me%20de%20jupes/sk3_fr.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/sk3-8.pdf",
+      "destination": "/PRODUITS/Syst%C3%A8me%20de%20jupes/sk3-8.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/sk3-8.dwg",
+      "destination": "/PRODUITS/Syst%C3%A8me%20de%20jupes/sk3-8.dwg",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/ppg-1.pdf",
+      "destination": "/PRODUITS/Garde%20de%20rouleau%20de%20retour/ppg-1.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/ppg1.pdf",
+      "destination": "/PRODUITS/Garde%20de%20rouleau%20de%20retour/ppg1.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/ppg1.dwg",
+      "destination": "/PRODUITS/Garde%20de%20rouleau%20de%20retour/ppg1.dwg",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/rouleauxguide_fr.pdf",
+      "destination": "/PRODUITS/Rouleaux%20guide%20/rouleauxguide_fr.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/grc8090.pdf",
+      "destination": "/PRODUITS/Rouleaux%20guide%20/grc8090.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/grc8090.dwg",
+      "destination": "/PRODUITS/Rouleaux%20guide%20/grc8090.dwg",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/grc9095.pdf",
+      "destination": "/PRODUITS/Rouleaux%20guide%20/grc9095.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/grc9095.dwg",
+      "destination": "/PRODUITS/Rouleaux%20guide%20/grc9095.dwg",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/grct7395.pdf",
+      "destination": "/PRODUITS/Rouleaux%20guide%20/grct7395.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/grct7395.dwg",
+      "destination": "/PRODUITS/Rouleaux%20guide%20/grct7395.dwg",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/grct150145.pdf",
+      "destination": "/PRODUITS/Rouleaux%20guide%20/grct150145.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/grct150145.dwg",
+      "destination": "/PRODUITS/Rouleaux%20guide%20/grct150145.dwg",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/grs6280.pdf",
+      "destination": "/PRODUITS/Rouleaux%20guide%20/grs6280.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/grs6280.dwg",
+      "destination": "/PRODUITS/Rouleaux%20guide%20/grs6280.dwg",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/grs9095.pdf",
+      "destination": "/PRODUITS/Rouleaux%20guide%20/grs9095.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/grs9095.dwg",
+      "destination": "/PRODUITS/Rouleaux%20guide%20/grs9095.dwg",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/rrfw115_fr.pdf",
+      "destination": "/PRODUITS/Rouleaux%20de%20retour%20sidewall/rrfw115_fr.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/rrfw11580.pdf",
+      "destination": "/PRODUITS/Rouleaux%20de%20retour%20sidewall/rrfw11580.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/rrfw11580.dwg",
+      "destination": "/PRODUITS/Rouleaux%20de%20retour%20sidewall/rrfw11580.dwg",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/roueguide_fr.pdf",
+      "destination": "/PRODUITS/Roues%20guide/roueguide_fr.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/guiding_wheels.pdf",
+      "destination": "/PRODUITS/Roues%20guide/guiding_wheels.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/guiding_wheels.dwg",
+      "destination": "/PRODUITS/Roues%20guide/guiding_wheels.dwg",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/12/bandes-souffleuse-04.jpg",
+      "destination": "/#sur-mesure",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/11/pdf-icon-45.png",
+      "destination": "/PRODUITS/",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/2013/11/dwg-icon-45.png",
+      "destination": "/PRODUITS/",
+      "permanent": true
+    },
+    {
+      "source": "/feed",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/feed/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/comments/feed",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/comments/feed/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/xmlrpc.php",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/wp-includes/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/plugins/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/themes/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/uploads/:path*",
+      "destination": "/PRODUITS/",
+      "permanent": true
+    },
+    {
+      "source": "/en/conveyor-components-cleaners-scrapers-rolls/:path*",
+      "destination": "/PRODUITS/",
+      "permanent": true
+    },
+    {
+      "source": "/en/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/pieces-convoyeur-grattoirs-rouleaux/:path*",
+      "destination": "/PRODUITS/",
+      "permanent": true
+    }
+  ]
+}
