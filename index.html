@@ -8,6 +8,7 @@
   <meta name="description" content="Plasthane fabrique des pièces moulées en uréthane de haute qualité pour l'industrie des convoyeurs à bande. Racleurs, rouleaux guide, lits d'impact et plus.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="images-optimized/hero/overland-conveyor.webp" type="image/webp" fetchpriority="high">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="plasthane.css">
   <style>
@@ -67,7 +68,7 @@
 
   <!-- ═══ NAV ═══ -->
   <nav>
-    <a href="/" class="nav-logo"><img src="brand_assets/logo hq.png" alt="Plasthane"></a>
+    <a href="/" class="nav-logo"><img src="brand_assets/optimized/logo-hq.webp" alt="Plasthane"></a>
     <ul class="nav-links">
       <li>
         <a href="PRODUITS/" data-i18n="nav-products">Produits ▾</a>
@@ -117,9 +118,9 @@
   <section class="hero-s" style="background: var(--navy-dark); padding: 160px 56px 0; position: relative; overflow: hidden;">
     <!-- Hero Slideshow -->
     <div class="hero-slideshow" style="position:absolute; inset:0; z-index:0;">
-      <div class="hero-slide" style="position:absolute; inset:0; background-image:url('images-assets/overland_conveyor.jpg'); background-size:cover; background-position:center 40%; will-change:transform,opacity;"></div>
-      <div class="hero-slide" style="position:absolute; inset:0; background-image:url('images-assets/underground_mining.jpg'); background-size:cover; background-position:center; opacity:0; will-change:transform,opacity;"></div>
-      <div class="hero-slide" style="position:absolute; inset:0; background-image:url('images-assets/iron_ore.jpg'); background-size:cover; background-position:center 30%; opacity:0; will-change:transform,opacity;"></div>
+      <div class="hero-slide" style="position:absolute; inset:0; background-image:url('images-optimized/hero/overland-conveyor.webp'); background-size:cover; background-position:center 40%; will-change:transform,opacity;"></div>
+      <div class="hero-slide" data-bg="images-optimized/hero/underground-mining.webp" style="position:absolute; inset:0; background-size:cover; background-position:center; opacity:0; will-change:transform,opacity;"></div>
+      <div class="hero-slide" data-bg="images-optimized/hero/iron-ore.webp" style="position:absolute; inset:0; background-size:cover; background-position:center 30%; opacity:0; will-change:transform,opacity;"></div>
     </div>
     <!-- Overlays on top of slideshow -->
     <div style="position:absolute; inset:0; background: linear-gradient(135deg, rgba(10,22,38,0.88), rgba(18,40,68,0.72)); z-index:1;"></div>
@@ -189,7 +190,7 @@
     <div class="industries-track ind-track" style="display:flex; gap:3px; padding:0 56px 0; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch; cursor:grab; user-select:none; -webkit-user-select:none;">
 
       <div class="ind-card" data-label="01" style="flex:0 0 clamp(220px,22vw,300px); aspect-ratio:3/4; position:relative; overflow:hidden;">
-        <div class="ind-img" style="position:absolute; inset:0; background-image:url('présents-dans/mines_creative.jpg'); background-size:cover; background-position:center; transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
+        <div class="ind-img" data-bg="images-optimized/industries/mines-creative.webp" style="position:absolute; inset:0; background-size:cover; background-position:center; transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
         <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(8,18,32,0.92) 0%, rgba(8,18,32,0.3) 45%, rgba(8,18,32,0.05) 100%);"></div>
         <div class="ind-overlay" style="position:absolute; inset:0; background:rgba(29,111,224,0.0); transition:background 0.4s ease;"></div>
         <div style="position:absolute; bottom:0; left:0; right:0; padding:24px 20px;">
@@ -200,7 +201,7 @@
       </div>
 
       <div class="ind-card" data-label="02" style="flex:0 0 clamp(220px,22vw,300px); aspect-ratio:3/4; position:relative; overflow:hidden;">
-        <div class="ind-img" style="position:absolute; inset:0; background-image:url('présents-dans/carrieres_quarry.jpg'); background-size:cover; background-position:center; transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
+        <div class="ind-img" data-bg="images-optimized/industries/carrieres-quarry.webp" style="position:absolute; inset:0; background-size:cover; background-position:center; transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
         <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(8,18,32,0.92) 0%, rgba(8,18,32,0.3) 45%, rgba(8,18,32,0.05) 100%);"></div>
         <div class="ind-overlay" style="position:absolute; inset:0; background:rgba(29,111,224,0.0); transition:background 0.4s ease;"></div>
         <div style="position:absolute; bottom:0; left:0; right:0; padding:24px 20px;">
@@ -211,7 +212,7 @@
       </div>
 
       <div class="ind-card" data-label="03" style="flex:0 0 clamp(220px,22vw,300px); aspect-ratio:3/4; position:relative; overflow:hidden;">
-        <div class="ind-img" style="position:absolute; inset:0; background-image:url('présents-dans/industries_general.jpg'); background-size:cover; background-position:center; transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
+        <div class="ind-img" data-bg="images-optimized/industries/industries-general.webp" style="position:absolute; inset:0; background-size:cover; background-position:center; transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
         <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(8,18,32,0.92) 0%, rgba(8,18,32,0.3) 45%, rgba(8,18,32,0.05) 100%);"></div>
         <div class="ind-overlay" style="position:absolute; inset:0; background:rgba(29,111,224,0.0); transition:background 0.4s ease;"></div>
         <div style="position:absolute; bottom:0; left:0; right:0; padding:24px 20px;">
@@ -222,7 +223,7 @@
       </div>
 
       <div class="ind-card" data-label="04" style="flex:0 0 clamp(220px,22vw,300px); aspect-ratio:3/4; position:relative; overflow:hidden;">
-        <div class="ind-img" style="position:absolute; inset:0; background-image:url('présents-dans/port_facilities.jpg'); background-size:cover; background-position:center; transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
+        <div class="ind-img" data-bg="images-optimized/industries/port-facilities.webp" style="position:absolute; inset:0; background-size:cover; background-position:center; transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
         <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(8,18,32,0.92) 0%, rgba(8,18,32,0.3) 45%, rgba(8,18,32,0.05) 100%);"></div>
         <div class="ind-overlay" style="position:absolute; inset:0; background:rgba(29,111,224,0.0); transition:background 0.4s ease;"></div>
         <div style="position:absolute; bottom:0; left:0; right:0; padding:24px 20px;">
@@ -233,7 +234,7 @@
       </div>
 
       <div class="ind-card" data-label="05" style="flex:0 0 clamp(220px,22vw,300px); aspect-ratio:3/4; position:relative; overflow:hidden;">
-        <div class="ind-img" style="position:absolute; inset:0; background-image:url('présents-dans/recycling_plant.jpg'); background-size:cover; background-position:center; transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
+        <div class="ind-img" data-bg="images-optimized/industries/recycling-plant.webp" style="position:absolute; inset:0; background-size:cover; background-position:center; transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
         <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(8,18,32,0.92) 0%, rgba(8,18,32,0.3) 45%, rgba(8,18,32,0.05) 100%);"></div>
         <div class="ind-overlay" style="position:absolute; inset:0; background:rgba(29,111,224,0.0); transition:background 0.4s ease;"></div>
         <div style="position:absolute; bottom:0; left:0; right:0; padding:24px 20px;">
@@ -244,7 +245,7 @@
       </div>
 
       <div class="ind-card" data-label="06" style="flex:0 0 clamp(220px,22vw,300px); aspect-ratio:3/4; position:relative; overflow:hidden;">
-        <div class="ind-img" style="position:absolute; inset:0; background-image:url('présents-dans/bulk_handling.jpg'); background-size:cover; background-position:center; transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
+        <div class="ind-img" data-bg="images-optimized/industries/bulk-handling.webp" style="position:absolute; inset:0; background-size:cover; background-position:center; transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
         <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(8,18,32,0.92) 0%, rgba(8,18,32,0.3) 45%, rgba(8,18,32,0.05) 100%);"></div>
         <div class="ind-overlay" style="position:absolute; inset:0; background:rgba(29,111,224,0.0); transition:background 0.4s ease;"></div>
         <div style="position:absolute; bottom:0; left:0; right:0; padding:24px 20px;">
@@ -277,7 +278,7 @@
           <span class="p-desc" data-i18n="p01-desc">Lame en uréthane haute résistance à l'abrasion assurant un excellent nettoyage sans endommager la courroie.</span>
           <span class="p-arrow">→</span>
         </div>
-        <img class="p-card-img" src="PRODUITS/GRATTOIR-PRIMAIRE/conveyor-scrapper-grattoir-convoyeur-primary-big.jpg" alt="Grattoir primaire">
+        <img class="p-card-img" src="PRODUITS/GRATTOIR-PRIMAIRE/conveyor-scrapper-grattoir-convoyeur-primary-big.jpg" alt="Grattoir primaire" loading="lazy" decoding="async">
       </a>
       <a href="PRODUITS/grattoir-primaire-grade-minier.html" class="p-card reveal">
         <div class="p-card-text">
@@ -286,7 +287,7 @@
           <span class="p-desc" data-i18n="p02-desc">Lame extra robuste en uréthane pour conditions extrêmes dans le secteur minier.</span>
           <span class="p-arrow">→</span>
         </div>
-        <img class="p-card-img" src="PRODUITS/Grattoir%20primaire%20grade%20minier/conveyor-scrapper-grattoir-convoyeur-primary-mine-duty-big.jpg" alt="Grattoir primaire grade minier">
+        <img class="p-card-img" src="PRODUITS/Grattoir%20primaire%20grade%20minier/conveyor-scrapper-grattoir-convoyeur-primary-mine-duty-big.jpg" alt="Grattoir primaire grade minier" loading="lazy" decoding="async">
       </a>
       <a href="PRODUITS/grattoir-secondaire-droit.html" class="p-card reveal">
         <div class="p-card-text">
@@ -295,7 +296,7 @@
           <span class="p-desc" data-i18n="p03-desc">Lame en uréthane flexible avec insertions d'acier inoxydable pour un nettoyage fin.</span>
           <span class="p-arrow">→</span>
         </div>
-        <img class="p-card-img" src="PRODUITS/Grattoir%20secondaire%20droit/conveyor-scrapper-grattoir-convoyeur-straight-big.jpg" alt="Grattoir secondaire droit">
+        <img class="p-card-img" src="PRODUITS/Grattoir%20secondaire%20droit/conveyor-scrapper-grattoir-convoyeur-straight-big.jpg" alt="Grattoir secondaire droit" loading="lazy" decoding="async">
       </a>
       <a href="PRODUITS/grattoir-courbe.html" class="p-card reveal">
         <div class="p-card-text">
@@ -304,7 +305,7 @@
           <span class="p-desc" data-i18n="p04-desc">Lame incurvée avec système de pivot, s'adapte aux courroies de retour empreintes.</span>
           <span class="p-arrow">→</span>
         </div>
-        <img class="p-card-img" src="PRODUITS/Grattoir%20courb%C3%A9/conveyor-scrapper-grattoir-convoyeur-curved-big.jpg" alt="Grattoir courbé">
+        <img class="p-card-img" src="PRODUITS/Grattoir%20courb%C3%A9/conveyor-scrapper-grattoir-convoyeur-curved-big.jpg" alt="Grattoir courbé" loading="lazy" decoding="async">
       </a>
       <a href="PRODUITS/grattoir-a-doigts.html" class="p-card reveal">
         <div class="p-card-text">
@@ -313,7 +314,7 @@
           <span class="p-desc" data-i18n="p05-desc">Doigts flexibles en uréthane pour nettoyage intensif des courroies à surface rugueuse.</span>
           <span class="p-arrow">→</span>
         </div>
-        <img class="p-card-img" src="PRODUITS/Grattoir%20%C3%A0%20doigts/conveyor-scrapper-grattoir-convoyeur-finger-type-big.jpg" alt="Grattoir à doigts">
+        <img class="p-card-img" src="PRODUITS/Grattoir%20%C3%A0%20doigts/conveyor-scrapper-grattoir-convoyeur-finger-type-big.jpg" alt="Grattoir à doigts" loading="lazy" decoding="async">
       </a>
       <a href="PRODUITS/grattoir-en-v.html" class="p-card reveal">
         <div class="p-card-text">
@@ -322,7 +323,7 @@
           <span class="p-desc" data-i18n="p06-desc">Nettoyage efficace du brin de retour par déflexion latérale des matériaux.</span>
           <span class="p-arrow">→</span>
         </div>
-        <img class="p-card-img" src="PRODUITS/Grattoir%20en%20V/conveyor-scrapper-grattoir-convoyeur-v-big.jpg" alt="Grattoir en V">
+        <img class="p-card-img" src="PRODUITS/Grattoir%20en%20V/conveyor-scrapper-grattoir-convoyeur-v-big.jpg" alt="Grattoir en V" loading="lazy" decoding="async">
       </a>
       <a href="PRODUITS/lit-dimpact.html" class="p-card reveal">
         <div class="p-card-text">
@@ -331,7 +332,7 @@
           <span class="p-desc" data-i18n="p07-desc">Structure robuste et ajustable pour tout type de convoyeurs à courroie.</span>
           <span class="p-arrow">→</span>
         </div>
-        <img class="p-card-img" src="PRODUITS/Lit%20d%E2%80%99impact/conveyor-scrapper-grattoir-convoyeur-impact-bed-big.jpg" alt="Lit d'impact">
+        <img class="p-card-img" src="PRODUITS/Lit%20d%E2%80%99impact/conveyor-scrapper-grattoir-convoyeur-impact-bed-big.jpg" alt="Lit d'impact" loading="lazy" decoding="async">
       </a>
       <a href="PRODUITS/systeme-de-jupes.html" class="p-card reveal">
         <div class="p-card-text">
@@ -340,7 +341,7 @@
           <span class="p-desc" data-i18n="p08-desc">Concept d'étanchéité supérieur pour contrôle des fugitives entre trémie et courroie.</span>
           <span class="p-arrow">→</span>
         </div>
-        <img class="p-card-img" src="PRODUITS/Syst%C3%A8me%20de%20jupes/conveyor-scrapper-grattoir-convoyeur-skirting-system-big.jpg" alt="Système de jupes">
+        <img class="p-card-img" src="PRODUITS/Syst%C3%A8me%20de%20jupes/conveyor-scrapper-grattoir-convoyeur-skirting-system-big.jpg" alt="Système de jupes" loading="lazy" decoding="async">
       </a>
       <a href="PRODUITS/garde-de-rouleau-de-retour.html" class="p-card reveal">
         <div class="p-card-text">
@@ -349,7 +350,7 @@
           <span class="p-desc" data-i18n="p09-desc">Garde protecteur robuste d'angle rentrant tel que requis par la CSST.</span>
           <span class="p-arrow">→</span>
         </div>
-        <img class="p-card-img" src="PRODUITS/Garde%20de%20rouleau%20de%20retour/conveyor-scrapper-grattoir-convoyeur-return-roll-guard-big.jpg" alt="Garde de rouleau de retour">
+        <img class="p-card-img" src="PRODUITS/Garde%20de%20rouleau%20de%20retour/conveyor-scrapper-grattoir-convoyeur-return-roll-guard-big.jpg" alt="Garde de rouleau de retour" loading="lazy" decoding="async">
       </a>
       <a href="PRODUITS/rouleaux-guide.html" class="p-card reveal">
         <div class="p-card-text">
@@ -358,7 +359,7 @@
           <span class="p-desc" data-i18n="p10-desc">Appui latéral en uréthane empêchant le désaxement de la courroie.</span>
           <span class="p-arrow">→</span>
         </div>
-        <img class="p-card-img" src="PRODUITS/Rouleaux%20guide%20/conveyor-scrapper-grattoir-convoyeur-guide-rolls-big1.jpg" alt="Rouleaux guide">
+        <img class="p-card-img" src="PRODUITS/Rouleaux%20guide%20/conveyor-scrapper-grattoir-convoyeur-guide-rolls-big1.jpg" alt="Rouleaux guide" loading="lazy" decoding="async">
       </a>
       <a href="PRODUITS/rouleaux-de-retour-sidewall.html" class="p-card reveal">
         <div class="p-card-text">
@@ -367,7 +368,7 @@
           <span class="p-desc" data-i18n="p11-desc">Rouleaux en uréthane durable pour courroie de type beltwall sur arbres rigides.</span>
           <span class="p-arrow">→</span>
         </div>
-        <img class="p-card-img" src="PRODUITS/Rouleaux%20de%20retour%20sidewall/conveyor-scrapper-grattoir-convoyeur-sidewall-stub-idler-big.jpg" alt="Rouleaux de retour sidewall">
+        <img class="p-card-img" src="PRODUITS/Rouleaux%20de%20retour%20sidewall/conveyor-scrapper-grattoir-convoyeur-sidewall-stub-idler-big.jpg" alt="Rouleaux de retour sidewall" loading="lazy" decoding="async">
       </a>
       <a href="PRODUITS/roues-guide.html" class="p-card reveal">
         <div class="p-card-text">
@@ -376,7 +377,7 @@
           <span class="p-desc" data-i18n="p12-desc">Guidage de courroie à mur corrugé, grand diamètre, vitesse réduite.</span>
           <span class="p-arrow">→</span>
         </div>
-        <img class="p-card-img" src="PRODUITS/Roues%20guide/conveyor-scrapper-grattoir-convoyeur-guiding-wheels-big1.jpg" alt="Roues guide">
+        <img class="p-card-img" src="PRODUITS/Roues%20guide/conveyor-scrapper-grattoir-convoyeur-guiding-wheels-big1.jpg" alt="Roues guide" loading="lazy" decoding="async">
       </a>
     </div>
 
@@ -487,7 +488,7 @@
         <a href="contact.html" class="btn-a solid reveal" data-i18n="cta-quote-sm">Demandez une soumission</a>
       </div>
       <div class="reveal" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:center;">
-        <img src="images-assets/conveyor_components_modern.jpg" alt="Fabrication sur mesure" style="width:100%; height:auto; display:block; opacity:0.9;">
+        <img src="images-optimized/sections/conveyor-components-modern.webp" alt="Fabrication sur mesure" loading="lazy" decoding="async" style="width:100%; height:auto; display:block; opacity:0.9;">
       </div>
     </div>
   </section>
@@ -555,7 +556,7 @@
   <footer>
     <div class="ft-grid">
       <div>
-        <div class="ft-logo"><img src="brand_assets/logo hq.png" alt="Plasthane"></div>
+        <div class="ft-logo"><img src="brand_assets/optimized/logo-hq.webp" alt="Plasthane"></div>
         <p class="ft-tagline" data-i18n="ft-tagline">Fabricant québécois de composantes en uréthane de haute qualité pour l'industrie des convoyeurs à bande.</p>
       </div>
       <div>
@@ -644,8 +645,15 @@
       let current = 0;
       let timer;
 
+      function loadSlide(slide) {
+        if (!slide || !slide.dataset.bg) return;
+        slide.style.backgroundImage = `url('${slide.dataset.bg}')`;
+        slide.removeAttribute('data-bg');
+      }
+
       function goTo(idx) {
         const prev = current;
+        loadSlide(slides[idx]);
         current = idx;
 
         gsap.to(slides[prev], { opacity: 0, duration: 1.4, ease: 'power2.inOut' });
@@ -665,6 +673,9 @@
 
       // Initial ken-burns on slide 0
       gsap.fromTo(slides[0], { scale: 1.08 }, { scale: 1, duration: 7, ease: 'none' });
+      window.addEventListener('load', () => {
+        setTimeout(() => slides.forEach(loadSlide), 2200);
+      }, { once: true });
 
       function advance() { goTo((current + 1) % slides.length); }
       timer = setInterval(advance, 5500);
@@ -694,6 +705,26 @@
 
       // Remove margin-right from original last card (it's now in the middle)
       origCards[origCards.length - 1].style.marginRight = '0';
+
+      function loadIndustryImage(img) {
+        if (!img || !img.dataset.bg) return;
+        img.style.backgroundImage = `url('${img.dataset.bg}')`;
+        img.removeAttribute('data-bg');
+      }
+
+      const industryImages = track.querySelectorAll('.ind-img[data-bg]');
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            loadIndustryImage(entry.target);
+            observer.unobserve(entry.target);
+          });
+        }, { rootMargin: '120px 0px' });
+        industryImages.forEach(img => observer.observe(img));
+      } else {
+        industryImages.forEach(loadIndustryImage);
+      }
 
       const halfWidth = () => track.scrollWidth / 2;
 
