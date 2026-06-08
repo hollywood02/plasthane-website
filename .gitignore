@@ -1,0 +1,14 @@
+.vercel
+.env*
+
+# OS / editor cruft
+.DS_Store
+**/.DS_Store
+
+# Dev artifacts
+node_modules/
+temporary screenshots/
+
+# Tooling
+.agents/
+.claude/
