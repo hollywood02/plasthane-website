@@ -126,7 +126,7 @@
     <div style="position:absolute; inset:0; background: linear-gradient(135deg, rgba(10,22,38,0.88), rgba(18,40,68,0.72)); z-index:1;"></div>
     <div style="position:absolute; inset:0; background: radial-gradient(ellipse at 70% 30%, rgba(29,111,224,0.10) 0%, transparent 60%); z-index:1;"></div>
     <!-- Slide indicators -->
-    <div class="hero-dots" style="position:absolute; bottom:110px; left:56px; z-index:3; display:flex; gap:10px; align-items:center;">
+    <div class="hero-dots" style="position:absolute; bottom:56px; left:56px; z-index:3; display:flex; gap:10px; align-items:center;">
       <div class="hero-dot active" data-dot="0" style="width:28px; height:2px; background:var(--blue-cta); cursor:pointer; transition:width .3s ease,opacity .3s ease;"></div>
       <div class="hero-dot" data-dot="1" style="width:12px; height:2px; background:rgba(255,255,255,0.3); cursor:pointer; transition:width .3s ease,opacity .3s ease;"></div>
       <div class="hero-dot" data-dot="2" style="width:12px; height:2px; background:rgba(255,255,255,0.3); cursor:pointer; transition:width .3s ease,opacity .3s ease;"></div>
@@ -149,29 +149,7 @@
       </div>
     </div>
 
-    <!-- Angled bottom edge -->
-    <div style="position:absolute; bottom:0; left:0; right:0; height:80px; background:var(--steel-light); clip-path:polygon(0 100%, 100% 100%, 100% 0);"></div>
   </section>
-
-  <!-- ═══ STATS STRIP ═══ -->
-  <div class="stats-strip">
-    <div class="stat-cell">
-      <div class="stat-num" data-count="2008">2008</div>
-      <div class="stat-label" data-i18n="stat-since">Établis depuis</div>
-    </div>
-    <div class="stat-cell">
-      <div class="stat-num" data-count="12">12</div>
-      <div class="stat-label" data-i18n="stat-products">Produits</div>
-    </div>
-    <div class="stat-cell">
-      <div class="stat-num">100%</div>
-      <div class="stat-label" data-i18n="stat-guaranteed">Garanti</div>
-    </div>
-    <div class="stat-cell">
-      <div class="stat-num">1</div>
-      <div class="stat-label" data-i18n="stat-bench">Banc d'essai réel</div>
-    </div>
-  </div>
 
   <!-- ═══ INDUSTRIES SERVED ═══ -->
   <section style="background:var(--navy-dark); padding:80px 0 0; overflow:hidden; position:relative;">
@@ -398,51 +376,35 @@
         <p style="font-size:16px; color:var(--text-muted); max-width:480px; line-height:1.7; margin-bottom:32px;" data-i18n="exp-p">
           Nos composantes en uréthane sont conçues pour durer dans des conditions extrêmes — abrasion, chocs, humidité. Chaque produit est développé en collaboration avec nos clients, testé sur un convoyeur grandeur réelle, et fabriqué entièrement au Québec.
         </p>
-        <!-- Accent stats row -->
-        <div style="display:flex; gap:32px; margin-bottom:32px; padding:20px 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
-          <div>
-            <div class="f-display" style="font-weight:900; font-size:28px; color:var(--navy-dark); letter-spacing:-.02em; line-height:1;">2008</div>
-            <div style="font-size:11px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--text-muted); margin-top:4px;" data-i18n="exp-since">Fondés</div>
-          </div>
-          <div style="width:1px; background:var(--border);"></div>
-          <div>
-            <div class="f-display" style="font-weight:900; font-size:28px; color:var(--navy-dark); letter-spacing:-.02em; line-height:1;">100%</div>
-            <div style="font-size:11px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--text-muted); margin-top:4px;" data-i18n="exp-qc">Fabriqué au Québec</div>
-          </div>
-          <div style="width:1px; background:var(--border);"></div>
-          <div>
-            <div class="f-display" style="font-weight:900; font-size:28px; color:var(--navy-dark); letter-spacing:-.02em; line-height:1;">12</div>
-            <div style="font-size:11px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--text-muted); margin-top:4px;" data-i18n="exp-prods">Produits</div>
-          </div>
-        </div>
+        <p style="font-size:12px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--text-dark); margin-bottom:32px;" data-i18n="exp-since">Fondé en 2008 · 100&nbsp;% québécois</p>
         <a href="a-propos.html" style="font-size:13px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--blue-cta); text-decoration:none; display:inline-flex; align-items:center; gap:6px; transition:gap .2s ease;" onmouseover="this.style.gap='10px'" onmouseout="this.style.gap='6px'" data-i18n="exp-link">À propos de Plasthane →</a>
       </div>
       <!-- Right: 2×2 compact cards -->
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;" class="expertise-grid">
         <div class="reveal" style="background:var(--white); border:1px solid var(--border); padding:24px 20px;">
           <div style="width:36px; height:36px; background:var(--navy-dark); display:flex; align-items:center; justify-content:center; margin-bottom:14px;">
-            <svg width="18" height="18" fill="none" stroke="#1D6FE0" stroke-width="2"><path d="M9 12l2 2 4-4m5 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D6FE0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
           </div>
           <h3 class="f-display" style="font-weight:700; font-size:16px; text-transform:uppercase; letter-spacing:-.01em; margin-bottom:8px;" data-i18n="exp1-title">Qualité 100% garantie</h3>
           <p style="font-size:13px; color:var(--text-muted); line-height:1.6;" data-i18n="exp1-desc">Tous nos produits sont garantis à 100% contre tout défaut de fabrication.</p>
         </div>
         <div class="reveal" style="background:var(--white); border:1px solid var(--border); padding:24px 20px;">
           <div style="width:36px; height:36px; background:var(--navy-dark); display:flex; align-items:center; justify-content:center; margin-bottom:14px;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D6FE0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19a8 8 0 1116 0"/><path d="M12 14l3.5-3.5"/><path d="M8 19h8"/><path d="M12 4v2"/><path d="M6.34 6.34l1.42 1.42"/><path d="M17.66 6.34l-1.42 1.42"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D6FE0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="15" r="3"/><circle cx="18" cy="15" r="3"/><path d="M6 12h12M6 18h12"/><path d="M9 8h6V5H9z"/></svg>
           </div>
           <h3 class="f-display" style="font-weight:700; font-size:16px; text-transform:uppercase; letter-spacing:-.01em; margin-bottom:8px;" data-i18n="exp2-title">Banc d'essai grandeur réelle</h3>
           <p style="font-size:13px; color:var(--text-muted); line-height:1.6;" data-i18n="exp2-desc">Tests sur convoyeur réel dans des conditions identiques au terrain.</p>
         </div>
         <div class="reveal" style="background:var(--white); border:1px solid var(--border); padding:24px 20px;">
           <div style="width:36px; height:36px; background:var(--navy-dark); display:flex; align-items:center; justify-content:center; margin-bottom:14px;">
-            <svg width="18" height="18" fill="none" stroke="#1D6FE0" stroke-width="2"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.573-1.066z"/><circle cx="9" cy="9" r="2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D6FE0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
           </div>
           <h3 class="f-display" style="font-weight:700; font-size:16px; text-transform:uppercase; letter-spacing:-.01em; margin-bottom:8px;" data-i18n="exp3-title">Fabrication sur mesure</h3>
           <p style="font-size:13px; color:var(--text-muted); line-height:1.6;" data-i18n="exp3-desc">Ingénierie, atelier acier et usinage complet sur mesure.</p>
         </div>
         <div class="reveal" style="background:var(--white); border:1px solid var(--border); padding:24px 20px;">
           <div style="width:36px; height:36px; background:var(--navy-dark); display:flex; align-items:center; justify-content:center; margin-bottom:14px;">
-            <svg width="18" height="18" fill="none" stroke="#1D6FE0" stroke-width="2"><path d="M3 21V16.5M3 21h4.5M3 21l3.75-3.75M16.5 3H12M16.5 3v4.5M16.5 3L12.75 6.75"/><path d="M14 10l-5.09 5.09a1.5 1.5 0 002.122 2.122L16.12 12.12"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D6FE0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0114 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
           </div>
           <h3 class="f-display" style="font-weight:700; font-size:16px; text-transform:uppercase; letter-spacing:-.01em; margin-bottom:8px;" data-i18n="exp4-title">Fièrement québécois</h3>
           <p style="font-size:13px; color:var(--text-muted); line-height:1.6;" data-i18n="exp4-desc">Fabriqué à Beloeil, Québec — produits de calibre mondial.</p>
@@ -611,19 +573,6 @@
       gsap.to(el, {
         scrollTrigger: { trigger: el, start: 'top 88%', once: true },
         opacity: 1, x: 0, duration: 0.7, ease: 'power2.out'
-      });
-    });
-
-    // Stat counters
-    document.querySelectorAll('.stat-num[data-count]').forEach(el => {
-      const target = parseInt(el.dataset.count);
-      gsap.from(el, {
-        scrollTrigger: { trigger: el, start: 'top 90%', once: true },
-        textContent: 0,
-        duration: 1.5,
-        ease: 'power1.out',
-        snap: { textContent: 1 },
-        onUpdate() { el.textContent = Math.round(gsap.getProperty(el, 'textContent')); }
       });
     });
 
@@ -828,11 +777,6 @@
         'hero-p':     { fr: 'Plasthane fabrique des pièces moulées en uréthane de haute qualité pour l\'industrie des convoyeurs à bande. Racleurs, rouleaux guide, lits d\'impact, systèmes de jupes et plus.',
                         en: 'Plasthane manufactures high-quality urethane molded parts for the belt conveyor industry. Scrapers, guide rollers, impact beds, skirting systems and more.' },
         'hero-cta2':  { fr: 'Voir nos produits →', en: 'See our products →' },
-        // Stats
-        'stat-since':     { fr: 'Établis depuis',      en: 'Established since' },
-        'stat-products':  { fr: 'Produits',             en: 'Products' },
-        'stat-guaranteed':{ fr: 'Garanti',              en: 'Guaranteed' },
-        'stat-bench':     { fr: "Banc d'essai réel",    en: 'Real test bench' },
         // Industries
         'ind-label': { fr: 'Nos marchés', en: 'Our markets' },
         'ind-h2':    { fr: 'Présents dans<br><span style="color:var(--blue-cta);">chaque industrie</span>',
@@ -879,9 +823,7 @@
                         en: 'The expertise that<br>makes the <span class="hi">difference</span>' },
         'exp-p':      { fr: 'Nos composantes en uréthane sont conçues pour durer dans des conditions extrêmes — abrasion, chocs, humidité. Chaque produit est développé en collaboration avec nos clients, testé sur un convoyeur grandeur réelle, et fabriqué entièrement au Québec.',
                         en: 'Our urethane components are designed to last in extreme conditions — abrasion, impact, moisture. Every product is co-developed with our clients, tested on a full-size conveyor, and manufactured entirely in Québec.' },
-        'exp-since':  { fr: 'Fondés',                 en: 'Founded' },
-        'exp-qc':     { fr: 'Fabriqué au Québec',     en: 'Made in Québec' },
-        'exp-prods':  { fr: 'Produits',               en: 'Products' },
+        'exp-since':  { fr: 'Fondé en 2008 · 100&nbsp;% québécois', en: 'Founded in 2008 · 100% Québec-made' },
         'exp-link':   { fr: 'À propos de Plasthane →', en: 'About Plasthane →' },
         'exp1-title': { fr: 'Qualité 100% garantie',         en: '100% quality guarantee' },
         'exp1-desc':  { fr: 'Tous nos produits sont garantis à 100% contre tout défaut de fabrication.', en: 'All our products are 100% guaranteed against any manufacturing defect.' },

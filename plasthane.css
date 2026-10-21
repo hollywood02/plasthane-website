@@ -482,42 +482,6 @@ textarea.f-input {
   background: var(--blue-cta);
 }
 
-/* ─── STATS STRIP ─── */
-.stats-strip {
-  background: var(--navy-mid);
-  border-top: 3px solid var(--blue-cta);
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-}
-
-.stat-cell {
-  padding: 36px 32px;
-  text-align: center;
-  border-right: 1px solid rgba(255,255,255,0.08);
-}
-
-.stat-cell:last-child {
-  border-right: none;
-}
-
-.stat-num {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 900;
-  font-size: 42px;
-  color: #fff;
-  line-height: 1;
-  letter-spacing: -.02em;
-}
-
-.stat-label {
-  font-size: 12px;
-  font-weight: 500;
-  color: rgba(255,255,255,0.55);
-  text-transform: uppercase;
-  letter-spacing: .12em;
-  margin-top: 6px;
-}
-
 /* ─── FOOTER ─── */
 footer {
   background: var(--navy-dark);
@@ -689,9 +653,6 @@ footer {
     padding: 120px 32px 60px;
   }
 
-  .stats-strip {
-    grid-template-columns: repeat(2, 1fr);
-  }
 
   .ft-grid {
     grid-template-columns: 1fr 1fr;
@@ -757,17 +718,8 @@ footer {
     padding: 110px 20px 48px;
   }
 
-  .stats-strip {
-    grid-template-columns: 1fr 1fr;
-  }
 
-  .stat-cell {
-    padding: 24px 16px;
-  }
 
-  .stat-num {
-    font-size: 32px;
-  }
 
   .ft-grid {
     grid-template-columns: 1fr;
@@ -788,15 +740,6 @@ footer {
 @media (max-width: 480px) {
   .section-pad {
     padding: 52px 16px;
-  }
-  .stat-cell {
-    padding: 20px 12px;
-  }
-  .stat-num {
-    font-size: 28px;
-  }
-  .stat-label {
-    font-size: 10px;
   }
   .page-hero {
     padding: 100px 16px 40px;
